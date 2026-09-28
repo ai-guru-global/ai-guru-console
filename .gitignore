@@ -71,3 +71,13 @@ aihot-mirror/logs/
 
 # feed 生成器产物（Pages artifact，不入库）
 site/
+
+# 私人工作台：本机研判层（观点/行动项）与本地生成物，永不进公共库
+研判/
+console/data.local.js
+
+# Meoo CDN 发布目录（产物副本 + 平台绑定 .env）
+publish-meoo/
+
+# 操盘台私有台账（机会卡/实验/依赖/成本等），永不进公共库
+console/ops.local.js
