@@ -2,11 +2,11 @@
 <rss version="2.0">
 <channel>
     <title>AI News Database · 年度大事记</title>
-    <link>https://github.com/standup-coder/ai-news-database</link>
+    <link>https://github.com/ai-guru-global/ai-guru-console</link>
     <description>持续沉淀 AI 高质量新闻与重点事件的中文 Markdown 时间线库——年度重点事件索引。</description>
     <language>zh-CN</language>
     <atom:link href='https://standup-coder.github.io/ai-news-database/feed.xml' rel='self' type='application/rss+xml' xmlns:atom='http://www.w3.org/2005/Atom'/>
-    <lastBuildDate>Mon, 21 Sep 2026 07:31:46 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 08:06:12 +0000</lastBuildDate>
     <item>
       <title>2026-09-03 · OpenAI 发布 GPT-6 Astra 并公布安全概览</title>
       <link>https://aihot.virxact.com/items/cmtm02uu60t2arow5vd3nq4gi</link>
@@ -198,7 +198,7 @@
     </item>
     <item>
       <title>2026-07-31 · 慕尼黑地区法院裁定 Suno 侵犯版权</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-07-31-70f54d57c8</guid>
       <pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
       <description>GEMA 案驳回合理使用抗辩，AI 音乐训练数据版权在欧盟司法辖区首次受挫。 相关线索：语音与音频/Suno</description>
@@ -261,7 +261,7 @@
     </item>
     <item>
       <title>2026-07-13 · 阶跃星辰 STEPX 品牌 + Step AOS 发布</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-07-13-414382e19e</guid>
       <pubDate>Mon, 13 Jul 2026 00:00:00 +0000</pubDate>
       <description>全球首个大模型原生 AI 终端品牌、智能体手机。 相关线索：开源模型与生态/国产大模型群像</description>
@@ -324,7 +324,7 @@
     </item>
     <item>
       <title>2026-06-12 · Claude Fable 5 / Mythos 5 访问暂停</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-06-12-5edca9f9a8</guid>
       <pubDate>Fri, 12 Jun 2026 00:00:00 +0000</pubDate>
       <description>美国政府突然施加出口管制，Fable 5 仅上线约 72 小时。 相关线索：AI安全与对齐/AI监管政策</description>
@@ -338,14 +338,14 @@
     </item>
     <item>
       <title>2026-06-02 · Qwen 4 Coder 32B-A3B 发布</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-06-02-de397e02e9</guid>
       <pubDate>Tue, 02 Jun 2026 00:00:00 +0000</pubDate>
       <description>首个迈入第四代的 Qwen 模型，开源。 相关线索：开源模型与生态/Qwen</description>
     </item>
     <item>
       <title>2026-06-02 · Windsurf 更名为 Devin Desktop</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-06-02-657e8e3f4a</guid>
       <pubDate>Tue, 02 Jun 2026 00:00:00 +0000</pubDate>
       <description>Cognition OTA 更新。 相关线索：Agentic编码/Cursor</description>
@@ -380,14 +380,14 @@
     </item>
     <item>
       <title>2026-05-13 · Create 2026 百度 AI 开发者大会</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-05-13-1b745a4534</guid>
       <pubDate>Wed, 13 May 2026 00:00:00 +0000</pubDate>
       <description>主题「万物一体」。 相关线索：开源模型与生态/国产大模型群像</description>
     </item>
     <item>
       <title>2026-05 · Anthropic ARR 达 470 亿美元反超 OpenAI</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-05-25aaac177f</guid>
       <pubDate>Fri, 01 May 2026 00:00:00 +0000</pubDate>
       <description>CNBC 口径；注意云厂商分成口径差异。✅ 已核实。 相关线索：商业与投融资/OpenAI融资与重组</description>
@@ -450,7 +450,7 @@
     </item>
     <item>
       <title>2026-04-02 · [Gemma 4 发布](https://en.wikipedia.org/wiki/Gemini_(language_model))</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-04-02-23436cf4cf</guid>
       <pubDate>Thu, 02 Apr 2026 00:00:00 +0000</pubDate>
       <description>开源轻量系列迭代。 相关线索：基础模型/Gemini</description>
@@ -513,7 +513,7 @@
     </item>
     <item>
       <title>2026-03-03 · Gemini 3.1 Flash Lite 开发者发布。</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-03-03-01126df62f</guid>
       <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
       <description>Gemini 3.1 Flash Lite 开发者发布。 相关线索：基础模型/Gemini</description>
@@ -639,21 +639,21 @@
     </item>
     <item>
       <title>2026-01 · 阿里发布超万亿参数推理模型 Qwen3-Max-Thinking。</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-01-33a2c5cfcb</guid>
       <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
       <description>阿里发布超万亿参数推理模型 Qwen3-Max-Thinking。 相关线索：开源模型与生态/Qwen</description>
     </item>
     <item>
       <title>2026-01 · xAI Grok 图像编辑功能被滥用生成真人色情内容引发国际风波，多国启动限制或调查；韩国 AI 基本法正式施行。</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2026大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2026大事记.md</link>
       <guid isPermaLink='false'>ainews-2026-01-f2dc765171</guid>
       <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
       <description>xAI Grok 图像编辑功能被滥用生成真人色情内容引发国际风波，多国启动限制或调查；韩国 AI 基本法正式施行。 相关线索：AI安全与对齐/AI监管政策</description>
     </item>
     <item>
       <title>2025-12 · MCP 捐赠给 Linux 基金会</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2025大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2025大事记.md</link>
       <guid isPermaLink='false'>ainews-2025-12-ba748a9b32</guid>
       <pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate>
       <description>Anthropic 宣布将 MCP 移交中立治理（Agentic AI 基金会方向），回应「单一厂商控制标准」的顾虑，巩固其行业标准地位。 相关线索：智能体平台/MCP协议</description>
@@ -674,7 +674,7 @@
     </item>
     <item>
       <title>2025-11 · Marble 正式发布</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2025大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2025大事记.md</link>
       <guid isPermaLink='false'>ainews-2025-11-349849a03e</guid>
       <pubDate>Sat, 01 Nov 2025 00:00:00 +0000</pubDate>
       <description>World Labs 首个商用产品：从文本/图像/视频生成持久、可下载的 3D 高斯泼溅世界，世界模型赛道出现第一个规模化商用产品。 相关线索：世界模型/WorldLabs</description>
@@ -688,14 +688,14 @@
     </item>
     <item>
       <title>2025-09 · Sora 2 与独立 App 发布</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2025大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2025大事记.md</link>
       <guid isPermaLink='false'>ainews-2025-09-31c42c36dd</guid>
       <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
       <description>视频质量、物理一致性与音视频同步大幅提升，配套 App 主打「AI 视频社交流」（含 Cameo 数字分身），上线即登顶美区 App Store，同时引发肖像权与版权新争议。 相关线索：多模态大模型/Sora</description>
     </item>
     <item>
       <title>2025-09 · Claude Code SDK 更名为 Claude Agent SDK</title>
-      <link>https://github.com/standup-coder/ai-news-database/blob/main/_2025大事记.md</link>
+      <link>https://github.com/ai-guru-global/ai-guru-console/blob/main/_2025大事记.md</link>
       <guid isPermaLink='false'>ainews-2025-09-811a25f291</guid>
       <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
       <description>标志能力定位从「编码」扩展到通用 Agent 编排，官方示例覆盖客服、研究等非编码场景，与 Claude Sonnet 4.5 同期发布。 相关线索：智能体平台/ClaudeAgentSDK Agentic编码/ClaudeCode</description>
