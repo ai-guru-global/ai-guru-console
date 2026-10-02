@@ -35,7 +35,17 @@ DB.orgs = {
       { n: 'Scale AI', d: '数据供应链枢纽', k: ['scale ai', 'scaleai'] },
       { n: 'CoreWeave', d: '算力租赁标杆', k: ['coreweave'] },
       { n: 'Together AI', d: '开源模型托管平台', k: ['together'] },
-      { n: 'Databricks', d: '数据平台 + 自研模型', k: ['databricks'] }
+      { n: 'Databricks', d: '数据平台 + 自研模型', k: ['databricks'] },
+      { n: 'AMD', d: '算力第二极：Instinct + EPYC + ROCm', k: ['amd', 'instinct', 'rocm', '苏姿丰'] },
+      { n: 'Broadcom（博通）', d: '网络芯片垄断 + 云厂定制 ASIC', k: ['broadcom', '博通', 'jalapeño', 'tomahawk'] },
+      { n: '美光（Micron）', d: 'HBM 三供之一，显存即瓶颈', k: ['美光', 'micron', 'hbm'] },
+      { n: 'Alphabet（谷歌）', d: 'TPU + Gemini + 云 + 分发入口的全栈母公司', k: ['alphabet', '谷歌', 'google', 'waymo'] },
+      { n: 'Tesla（特斯拉）', d: 'FSD 数据栈迁移至 Optimus', k: ['tesla', '特斯拉', 'optimus', 'fsd', 'cybercab'] },
+      { n: 'SpaceX', d: '轨道算力 + xAI/Cursor 的资本主体', k: ['spacex', 'starlink'] },
+      { n: 'Palantir', d: '模型接入决策链的乙方样板', k: ['palantir'] },
+      { n: 'ServiceNow', d: '工作流 SaaS 的代理化样本', k: ['servicenow', 'now assist'] },
+      { n: 'Palo Alto Networks', d: '安全平台化整合，AI 既是产品也是攻击面', k: ['palo alto', 'prisma', 'cortex cloud'] },
+      { n: 'Exiger', d: '供应链与制裁情报，管制执行侧数据层', k: ['exiger'] }
     ]},
     { key: 'univ', name: '高校与实验室', en: 'Universities', desc: '学术研究的源点：论文、人才与开源项目的孵化地。', items: [
       { n: 'Stanford HAI', d: 'AI 指数与政策研究重镇', k: ['stanford', 'hai'] },
@@ -99,7 +109,10 @@ DB.orgs = {
       { n: '中金资本', d: '券商系 PE', k: ['中金资本'] },
       { n: '上海国投/国资产业基金', d: '地方引导基金样本', k: ['国资', '引导基金'] },
       { n: 'MGX（阿布扎比）', d: '中东主权资本入场', k: ['mgx', '阿布扎比'] },
-      { n: 'Temasek / GIC', d: '新加坡主权资本', k: ['temasek', 'gic', '淡马锡'] }
+      { n: 'Temasek / GIC', d: '新加坡主权资本', k: ['temasek', 'gic', '淡马锡'] },
+      { n: 'Altimeter Capital', d: 'Gerstner 的 AI 重仓基金，一级与二级双向喊话', k: ['altimeter'] },
+      { n: 'Social Capital', d: 'Palihapitiya 的 SPAC/基金结构', k: ['social capital', 'palihapitiya', 'chamath'] },
+      { n: 'Craft Ventures', d: 'Sacks 的方法论基金（兼政府科技顾问身份）', k: ['craft ventures'] }
     ]},
     { key: 'media', name: '媒体与数据', en: 'Media & Data', items: [
       { n: 'The Information', d: '科技商业深度报道标杆', k: ['the information'] },

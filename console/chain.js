@@ -1,7 +1,7 @@
 /* AI 产业链五层拆解，手工策展（本文件不被构建覆盖）。
  * 每个节点 = 产业链上的一页：def 一句话定义，keywords 用于对全库语料（线索/大事/档案/玩家/模型）
  * 做运行时聚合；upstream/downstream 为节点 id，构成价值流关系。
- * 某节点聚合数为 0 不是错误，是采集缺口的信号——与「建线信号」同一哲学。 */
+ * 某节点聚合数为 0 不是错误，是采集缺口的信号——与「研究缺口」同一哲学。 */
 DB.chain = {
   layers: [
     {
@@ -50,7 +50,7 @@ DB.chain = {
         { id: 'rag', name: 'RAG 与知识库', def: '企业把私有知识接进模型的标准化路径，落地项目的第一站。', keywords: ['rag', '向量', '知识库', '检索增强', 'embedding', '企业知识'], upstream: ['maas'], downstream: ['enterprise', 'legal'] },
         { id: 'devtools', name: '开发者工具链', def: 'SDK、CLI 与调试工作流：开发体验即生态护城河。', keywords: ['开发者工具', 'sdk', 'cli', '调试', '工作流', '开发者'], upstream: ['coding'], downstream: ['office'] },
         { id: 'guardrail', name: '安全护栏与评测服务', def: '红队、护栏与安全评估的产业化：前沿能力 commercialize 的前提。', keywords: ['护栏', '安全评估', '红队', 'preparedness', 'aisi', '安全评测'], upstream: ['training'], downstream: ['regulation'] },
-        { id: 'deploy', name: '部署与可观测', def: '模型的灰度、监控与成本治理：生产环境与 demo 的分界线。', keywords: ['部署', '可观测', '监控', '灰度', '运维'], upstream: ['inference'], downstream: ['enterprise'] },
+        { id: 'deploy', name: '部署与可观测', def: '模型的灰度、监控与成本治理：生产环境与 demo 的分界线。', keywords: ['部署', '可观测', '监控', '灰度', '运维', '交付', 'fde', '部署工程', '实施', '伙伴认证', '专业服务'], upstream: ['inference'], downstream: ['enterprise'] },
         { id: 'computeruse', name: '浏览器与计算机使用', def: '让模型直接操作电脑与浏览器：通用 agent 的最后一公里。', keywords: ['computer use', '浏览器', '桌面自动化', '操作电脑', 'computer'], upstream: ['agentfw'], downstream: ['office', 'enterprise'] },
         { id: 'mcp', name: '协议与互操作', def: 'MCP 等协议把工具调用标准化：agent 生态的 USB 接口。', keywords: ['mcp', '协议', '互操作', 'function calling', '标准化'], upstream: ['agentfw'], downstream: ['devtools', 'enterprise'] }
       ]
@@ -62,15 +62,15 @@ DB.chain = {
         { id: 'assistant', name: '消费级 AI 助手', def: '面向大众的超级入口：ChatGPT/豆包/Kimi 的用户数竞赛与广告变现。', keywords: ['chatgpt', '助手', '豆包', 'kimi', '月之暗面', '消费级', '用户数'], upstream: ['maas', 'search', 'edge'], downstream: ['bizmodel', 'distribution'] },
         { id: 'enterprise', name: '企业服务与客服', def: '企业级落地最宽的跑道：客服、营销、销售与内部效率。', keywords: ['企业', '客服', '营销', 'crm', '销售', 'b 端', 'to b'], upstream: ['agentfw', 'rag'], downstream: ['bizmodel'] },
         { id: 'health', name: '医疗 AI', def: '诊断、药物研发与临床流程：监管最严、周期最长、价值最深的垂直。', keywords: ['医疗', '诊断', '药物', '临床', '健康', '医院'], upstream: ['rag', 'multimodal'], downstream: ['bizmodel'] },
-        { id: 'finance', name: '金融 AI', def: '投研、量化与风控：数据密集与合规敏感的行业。', keywords: ['金融', '投研', '量化', '风控', '银行', '证券', '保险'], upstream: ['rag'], downstream: ['bizmodel'] },
-        { id: 'legal', name: '法律与合规 AI', def: '合同、检索与合规自动化：文本密集型行业的天然适配。', keywords: ['法律', '律师', '合规', '合同', '司法', '法务'], upstream: ['rag'], downstream: ['bizmodel'] },
-        { id: 'edu', name: '教育 AI', def: '辅导、测评与个性化学习：政策敏感但需求刚性。', keywords: ['教育', '学习', '辅导', '课程', '学校', '教学'], upstream: ['assistant'], downstream: ['bizmodel'] },
+        { id: 'finance', name: '金融 AI', def: '投研、量化与风控：数据密集与合规敏感的行业。', keywords: ['金融', '投研', '量化', '风控', '银行', '证券', '保险', 'claude for excel', 'chatgpt for excel', 'grok for excel', '盈透', 'interactive brokers', '普华永道', '欧洲央行'], upstream: ['rag'], downstream: ['bizmodel'] },
+        { id: 'legal', name: '法律与合规 AI', def: '合同、检索与合规自动化：文本密集型行业的天然适配。', keywords: ['法律', '律师', '合规', '合同', '司法', '法务', 'harvey', 'legora', 'legal-kb'], upstream: ['rag'], downstream: ['bizmodel'] },
+        { id: 'edu', name: '教育 AI', def: '辅导、测评与个性化学习：政策敏感但需求刚性。', keywords: ['教育', '学习成本', '学习新方式', '学习方法论', '学习体验', '辅导', '课程', '学校', '教学', 'chatgpt for teens', 'guided learning', 'learnvector', 'k-12', '教师', '教育部'], upstream: ['assistant'], downstream: ['bizmodel'] },
         { id: 'creative', name: '图像与视频创作', def: '生成式创作工具：从玩具到生产力的临界点正在发生。', keywords: ['创作', '视频', '图像', 'midjourney', '剪辑', '设计', '生成'], upstream: ['multimodal'], downstream: ['distribution'] },
         { id: 'audio', name: '音乐与语音产品', def: '音乐生成、播客与有声内容：版权与创作伦理的焦点区。', keywords: ['音乐', '播客', '配音', '有声', '语音产品'], upstream: ['speech'], downstream: ['distribution'] },
         { id: 'device', name: 'AI 硬件终端', def: '把模型装进眼镜、耳机与专用硬件：入口焦虑的产物。', keywords: ['ai 硬件', '眼镜', '耳机', '终端设备', '硬件产品'], upstream: ['edge', 'assistant'], downstream: ['distribution'] },
         { id: 'embodiedapp', name: '具身智能应用', def: '人形机器人进入工厂与家庭：整机、场景与数据闭环的竞赛。', keywords: ['具身', '人形机器人', 'figure', 'optimus', '工厂', '仓储', '运动会'], upstream: ['robothw', 'worldmodel'], downstream: ['bizmodel'] },
         { id: 'game', name: '游戏与娱乐', def: 'NPC、内容生成与互动叙事：游戏是最宽容的试验场。', keywords: ['游戏', 'npc', '互动', '娱乐', '叙事'], upstream: ['agentfw', 'multimodal'], downstream: ['distribution'] },
-        { id: 'office', name: '办公与协同', def: '文档、PPT、会议与邮件的 AI 化：存量软件的重新洗牌。', keywords: ['办公', '协同', '文档', 'ppt', '会议', '邮件', '效率'], upstream: ['agentfw', 'computeruse'], downstream: ['distribution'] }
+        { id: 'office', name: '办公与协同', def: '文档、PPT、会议与邮件的 AI 化：存量软件的重新洗牌。', keywords: ['办公', '协同', '文档', 'ppt', '会议', '邮件', '效率', 'workbuddy', 'qwenwork', '千问办公', 'trae', '钉钉', '飞书', 'copilot', 'workspace'], upstream: ['agentfw', 'computeruse'], downstream: ['distribution'] }
       ]
     },
     {
@@ -81,6 +81,7 @@ DB.chain = {
         { id: 'funding', name: '融资与估值', def: '万亿级的资本开支与融资竞赛：一级市场的信念定价。', keywords: ['融资', '估值', '领投', '风投', '筹款', '融资轮'], upstream: [], downstream: ['economics'] },
         { id: 'mna', name: '并购与整合', def: '巨头用并购补能力拼图：SpaceX-xAI、NVIDIA-HF 式的重构。', keywords: ['收购', '并购', '合并', '整合', '交割', '全资'], upstream: [], downstream: ['competition'] },
         { id: 'talent', name: '人才流动', def: '联创离职、研究员创业与人才战：智力的再分配即未来的分配。', keywords: ['离职', '人才', '联创', '跳槽', '招聘', '研究员'], upstream: [], downstream: ['competition'] },
+        { id: 'delivery', name: '交付与实施（FDE）', def: '把模型接进客户现场：FDE 人力、服务伙伴认证与交付毛利，AI 应用的乙方层。', keywords: ['fde', '交付', '部署工程', '前沿部署', '实施', '服务伙伴', '专业服务', '伙伴认证', 'adp 认证', '返点', '保证金', '交付成本'], upstream: ['talent'], downstream: ['enterprise'] },
         { id: 'regulation', name: '监管与地缘', def: '欧盟 AI Act、美国出口管制与各国立法：合规成本成为产品变量。', keywords: ['监管', '法案', '欧盟', '立法', '合规要求', '执法', '管制'], upstream: [], downstream: ['supply', 'bizmodel'] },
         { id: 'opensource', name: '开源治理与许可', def: 'Apache/MIT 与开源定义之争：许可即商业策略。', keywords: ['开源许可', 'apache', 'mit 许可', '许可证', '开源治理'], upstream: ['openweight'], downstream: ['economics'] },
         { id: 'economics', name: '成本与单位经济', def: '训练成本、推理毛利与烧钱速度：智能生意的会计学。', keywords: ['成本', '毛利', '单位经济', '烧钱', '盈利', '亏损', '现金流'], upstream: ['bizmodel', 'funding', 'token'], downstream: [] },

@@ -2,7 +2,7 @@
  * Day One 出海研究所，轻量 Markdown 渲染器，GFM 子集
  * 覆盖仓库 md 实际用法：标题，表格，围栏代码，列表，含嵌套与任务，引用，
  * 分隔线，行内元素，如 code，粗体，斜体，删除线，链接与图片。
- * 链接策略：ai-news-wikilink: 走台内线索跳转，.md 走台内文档跳转，http(s) 开新窗口，其余相对路径指向仓库源文件。
+ * 链接策略：ai-news-wikilink: 走台内线索跳转，.md 命中线索源文件走线索详情、已内嵌走文档中心、未内嵌落仓库原文，http(s) 开新窗口，其余相对路径指向仓库源文件。
  * 用法：Md.render(src, { base: "市场/竞品/拆解.md" }) 返回 HTML 字符串
  * ============================================================================ */
 var Md = (function () {
@@ -36,11 +36,33 @@ function strongEm(s) {
   s = s.replace(/~~([^~]+?)~~/g, "<del>$1</del>");
   return s;
 }
+/* 线索文件路径（主题/名.md）优先落线索详情：文档库只收仓库根与 docs/，
+   指向主题文件夹内线索的 .md 链接若走文档中心会落回文件列表，此处按 _src 命中改跳 #/clue */
+function clueHrefBySrc(resolved) {
+  if (typeof DB === "undefined" || !DB || !DB.clues) return "";
+  var stem = String(resolved).replace(/\.md$/i, "");
+  for (var i = 0; i < DB.clues.length; i++) {
+    var c = DB.clues[i];
+    if (c._src && c._src.replace(/\.md$/i, "") === stem) {
+      return "#/clue/" + encodeURIComponent(c.topic) + "/" + encodeURIComponent(c.name);
+    }
+  }
+  return "";
+}
+/* 未内嵌的 .md（如两份大事记，构建规则不收进文档中心）不应生成台内死链 */
+function docEmbedded(resolved) {
+  if (typeof DB === "undefined" || !DB || !DB.library || !DB.library.files) return false;
+  for (var i = 0; i < DB.library.files.length; i++) {
+    if (DB.library.files[i].n === resolved) return true;
+  }
+  return false;
+}
 function linkOut(ctx, href, text) {
   /* href 与 text 来自已 escHtml 的整行文本，此处禁止再次 escHtml，防 &amp; 二次转义成 &amp;amp; */
   /* 构建期 [[主题/线索]] 双链转换出的伪协议：跳台内线索详情 */
   if (/^ai-news-wikilink:/i.test(href)) {
-    var wl = href.slice("ai-news-wikilink:".length);
+    /* 伪协议带 //  authority 分隔符，必须剥掉，否则线索 id 多出前导斜号、查不到详情 */
+    var wl = href.slice("ai-news-wikilink:".length).replace(/^\/+/, "");
     var seg = wl.split("/").map(function (p) { return encodeURIComponent(p); }).join("/");
     return '<a class="wl" href="#/clue/' + seg + '" title="台内线索：' + wl + '">' + text + "</a>";
   }
@@ -59,8 +81,13 @@ function linkOut(ctx, href, text) {
   if (ai >= 0) { anchor = href.slice(ai + 1); clean = href.slice(0, ai); }
   var resolved = resolvePath(ctx.base || "", clean);
   if (/\.md$/i.test(clean)) { /* 台内文档 */
-    return '<a class="md-link" data-doc="' + resolved + '" title="台内打开：' + resolved +
-      '" href="#/library/' + encodeURIComponent(resolved) + '">' + text + "</a>";
+    var ch = clueHrefBySrc(resolved); /* 命中线索源文件则跳线索详情 */
+    if (ch) return '<a class="wl" href="' + ch + '" title="台内线索：' + resolved + '">' + text + "</a>";
+    if (docEmbedded(resolved)) {
+      return '<a class="md-link" data-doc="' + resolved + '" title="台内打开：' + resolved +
+        '" href="#/library/files/' + encodeURIComponent(resolved) + '">' + text + "</a>";
+    }
+    /* 未内嵌：落到仓库原文，不落回文件列表 */
   }
   /* 其他仓库文件，如 yaml，py，xlsx，html 等：console 目录出发的相对路径 */
   return '<a class="md-file" href="../' + resolved + (anchor ? "#" + anchor : "") + '" target="_blank" rel="noopener">' + text + "</a>";

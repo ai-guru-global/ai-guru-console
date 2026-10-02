@@ -2,7 +2,7 @@
  * 5 维各 1-5 分：momentum 势能 / biz 商业化 / moat 壁垒 / policy 政策敞口 / coverage 本库覆盖。
  * 评分为分析判断（与事实分离），conf 标注置信度；权重可在前台实时调整重排。 */
 DB.score = {
-  asOf: '2026-09-25',
+  asOf: '2026-09-30',
   dims: {
     momentum: { label: '势能', desc: '未来 6 个月变化幅度预期：事件密度 × 事件烈度' },
     biz: { label: '商业化', desc: '收入距离：变现路径是否已经跑通' },
@@ -28,13 +28,14 @@ DB.score = {
     { id: '评测与基准', name: '评测与基准', dims: { momentum: 3, biz: 2, moat: 2, policy: 1, coverage: 4 }, conf: 'medium', note: '榜单即信任，LMArena 与专项基准双线' },
     { id: '具身智能', name: '具身智能', dims: { momentum: 5, biz: 3, moat: 4, policy: 3, coverage: 4 }, conf: 'high', note: '宇树 IPO 定价人形机器人叙事，运动会显示保有量翻倍' },
     { id: '世界模型', name: '世界模型', dims: { momentum: 3, biz: 1, moat: 3, policy: 1, coverage: 2 }, conf: 'low', note: '视频生成作世界模拟器，离商业化最远' },
-    { id: '行业应用', name: '行业应用', dims: { momentum: 3, biz: 3, moat: 2, policy: 3, coverage: 2 }, conf: 'low', note: '垂直落地披露零散，需要定向补充信源' },
+    { id: '行业应用', name: '行业应用', dims: { momentum: 3, biz: 3, moat: 2, policy: 3, coverage: 4 }, conf: 'low', note: '6 条线索：AI 办公 + 教育/金融/法律垂类均已建档，医疗与科研在列；信源仍以镜像与厂商公告为主，一手财报口径缺位' },
     { id: 'AI安全与对齐', name: 'AI 安全与对齐', dims: { momentum: 5, biz: 2, moat: 3, policy: 5, coverage: 2 }, conf: 'high', note: '失控事件 + 水印 + 诉讼高发，政策敞口全赛道最大' },
     { id: '开发者工具', name: '开发者工具', dims: { momentum: 4, biz: 4, moat: 2, policy: 2, coverage: 2 }, conf: 'medium', note: '被 Agentic 编码吸收中，独立赛道边界模糊' },
     { id: '语音与音频', name: '语音与音频', dims: { momentum: 3, biz: 3, moat: 2, policy: 3, coverage: 2 }, conf: 'low', note: 'Suno 版权裁定 + 全双工语音，版权是主线' },
     { id: 'AI搜索与信息获取', name: 'AI 搜索与信息获取', dims: { momentum: 4, biz: 4, moat: 2, policy: 3, coverage: 2 }, conf: 'medium', note: '答案引擎动摇传统分发权，本库覆盖不足' },
-    { id: '商业与投融资', name: '商业与投融资', dims: { momentum: 4, biz: 4, moat: 1, policy: 4, coverage: 2 }, conf: 'medium', note: '资本事件 20 条集中在两条线索，结构化回填是关键' },
-    { id: '消费级AI应用', name: '消费级 AI 应用', dims: { momentum: 4, biz: 5, moat: 2, policy: 3, coverage: 2 }, conf: 'medium', note: 'ChatGPT Ads 年化 10 亿美元，广告变现跑通' }
+    { id: '商业与投融资', name: '商业与投融资', dims: { momentum: 4, biz: 4, moat: 1, policy: 4, coverage: 2 }, conf: 'medium', note: '大事记打标资本事件 21 条，其中 14 条落在本赛道两条线索，结构化回填是关键' },
+    { id: '消费级AI应用', name: '消费级 AI 应用', dims: { momentum: 4, biz: 5, moat: 2, policy: 3, coverage: 2 }, conf: 'medium', note: 'ChatGPT Ads 年化 10 亿美元，广告变现跑通' },
+    { id: '交付与组织', name: '交付与组织', dims: { momentum: 4, biz: 3, moat: 2, policy: 2, coverage: 3 }, conf: 'low', note: '3 条线索（FDE / 服务伙伴与认证体系 / AI 交付成本结构）；认证与成本的取证档案已建，但一线源仍稀疏，国内交付认证多为缺位记录' }
   ],
   redlines: [
     '单源信息一律标 ⚠️，未双源核验前不作为结论引用',

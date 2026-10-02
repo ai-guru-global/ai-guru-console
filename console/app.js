@@ -1,6 +1,6 @@
 /* ============================================================================
- * AI News Database，AI 行业研究台应用逻辑
- * 双层 hash 路由：#/视图 + #/视图/页签，16 视图 × 2–3 分页
+ * AI GURU 工作台，AI 全行业研究台应用逻辑
+ * 双层 hash 路由：#/视图 + #/视图/页签，32 节 99 页，侧栏归入 12 个板块
  * 交互含筛选、线索详情、主题详情、大事记、档案检索、日报、玩家详情、议题账本、全局搜索
  * ============================================================================ */
 (function () {
@@ -58,7 +58,14 @@ var TOPIC_BY_KEY = {};
 DB.topics.forEach(function (t) { TOPIC_BY_KEY[t.key] = t; });
 
 var STATUS_STYLE = { '活跃': 'gold', '观察中': '', '已完结': 'plain' };
-var VERIFY_STYLE = { '✅': { cls: 'pos', label: '已核实' }, '⚠️': { cls: '', label: '存疑' }, '❓': { cls: 'neg', label: '高度可疑' }, '🔍': { cls: 'pine', label: '需一手源' } };
+var VERIFY_STYLE = { '✅': { cls: 'pos', label: '已核实' }, '⚠️': { cls: '', label: '存疑' }, '❓': { cls: 'neg', label: '高度可疑' }, '🔍': { cls: 'pine', label: '需一手源' }, '✗': { cls: 'neg', label: '一手不可达' }, 'E': { cls: 'plain', label: '非正式来源' } };
+var VERIFY_MARKS = ['✅', '⚠️', '❓', '🔍', '✗', 'E'];
+var VERIFY_COUNTS = (function () {
+  var b = {};
+  DB.verify.forEach(function (v) { b[v.status] = (b[v.status] || 0) + 1; });
+  return b;
+})();
+var VERIFY_ORDER = VERIFY_MARKS.filter(function (m) { return VERIFY_COUNTS[m]; });
 var STATUS_ORDER = ['all', '活跃', '观察中', '已完结'];
 var TODAY = DB.meta.builtAt.slice(0, 10);
 
@@ -80,6 +87,15 @@ function linkify(s) {
     return '<a class="wl" href="' + clueHref(id) + '">' + esc(id.split('/').pop()) + '</a>';
   });
   return t;
+}
+function summaryHtml(s, n) {
+  var full = s || '';
+  var t = n ? full.slice(0, n) : full;
+  if (n && full.length > n) {
+    var b = t.lastIndexOf('[');
+    if (b >= 0 && t.indexOf('](', b) < 0) t = t.slice(0, b);
+  }
+  return linkify(t) + (n && full.length > n ? '…' : '');
 }
 function bar(v, max, color) {
   if (!max) return '';
@@ -191,18 +207,18 @@ function topicEvents(key) {
 /* ------------------------------------------------------------ 页签注册表 */
 var TABS = {
   guide: [{ k: 'paths', l: '阅读路线' }, { k: 'tour', l: '通读序列' }],
-  overview: [{ k: 'panorama', l: '全景' }, { k: 'pulse', l: '本周脉搏' }, { k: 'radar', l: '风险雷达' }, { k: 'unknowns', l: '未知清单' }],
+  overview: [{ k: 'panorama', l: '全景' }, { k: 'pulse', l: '本周脉搏' }, { k: 'radar', l: '风险雷达' }, { k: 'unknowns', l: '开放问题' }],
   topics: [{ k: 'table', l: '总表' }, { k: 'coverage', l: '覆盖度仪表' }],
-  clues: [{ k: 'list', l: '列表' }, { k: 'hot', l: '热榜' }, { k: 'analysis', l: '观点库' }, { k: 'updates', l: '更新流' }],
+  clues: [{ k: 'list', l: '列表' }, { k: 'hot', l: '热榜' }, { k: 'analysis', l: '观点库' }, { k: 'updates', l: '收录动态' }],
   chronicle: [{ k: 'flow', l: '流水' }, { k: 'monthly', l: '月度统计' }, { k: 'hubs', l: '枢纽事件' }],
   archive: [{ k: 'search', l: '检索' }, { k: 'sources', l: '来源分布' }, { k: 'cats', l: '分类分布' }, { k: 'years', l: '年度节奏' }],
   daily: [{ k: 'day', l: '单日回看' }, { k: 'rhythm', l: '近7日节奏' }],
   library: [{ k: 'files', l: '文件中心' }],
   directory: [{ k: 'companies', l: '公司' }, { k: 'univ', l: '高校与实验室' }, { k: 'labs', l: '研究机构' }, { k: 'orgs', l: '非营利与治理' }, { k: 'funds', l: '资本' }, { k: 'media', l: '媒体与数据' }],
-  verify: [{ k: 'queue', l: '核验队列' }, { k: 'byclue', l: '关联线索' }, { k: 'stats', l: '统计' }],
+  verify: [{ k: 'queue', l: '事实核查' }, { k: 'byclue', l: '关联线索' }, { k: 'stats', l: '统计' }],
   method: [{ k: 'standards', l: '收录标准' }, { k: 'methodology', l: '核验方法论' }, { k: 'template', l: '线索模板' }, { k: 'redlines', l: '研究红线' }, { k: 'corrections', l: '修正记录' }],
   players: [{ k: 'table', l: '总表' }, { k: 'detail', l: '玩家详情' }],
-  sectors: [{ k: 'matrix', l: '矩阵' }, { k: 'rank', l: '热度排行' }, { k: 'gaps', l: '建线信号' }],
+  sectors: [{ k: 'matrix', l: '矩阵' }, { k: 'rank', l: '热度排行' }, { k: 'gaps', l: '研究缺口' }],
   models: [{ k: 'table', l: '总表' }, { k: 'pricing', l: '定价对比' }, { k: 'timeline', l: '发布时间线' }],
   capital: [{ k: 'flow', l: '流水' }, { k: 'rank', l: '金额榜' }],
   scores: [{ k: 'rank', l: '排名' }, { k: 'weights', l: '权重与假设' }, { k: 'method', l: '口径与红线' }],
@@ -210,7 +226,7 @@ var TABS = {
   decisions: [{ k: 'board', l: '决策板' }, { k: 'log', l: '已决归档' }],
   calendar: [{ k: 'year', l: DB.calendar.year + ' 全年' }, { k: 'next', l: '未来 90 天' }],
   glossary: [{ k: 'dict', l: '术语词典' }],
-  kb: [{ k: 'method', l: '方法论' }, { k: 'eng', l: '工程方式' }, { k: 'roles', l: '岗位' }, { k: 'companies', l: '公司' }, { k: 'biz', l: '商业模式' }, { k: 'career', l: '职业路径' }],
+  kb: [{ k: 'method', l: '方法论' }, { k: 'eng', l: '工程方式' }, { k: 'roles', l: '岗位' }, { k: 'companies', l: '公司' }, { k: 'biz', l: '商业模式' }, { k: 'career', l: '职业路径' }, { k: 'ops', l: '操盘手册' }],
   chain: [{ k: 'map', l: '全景' }, { k: 'L1', l: '算力硬件' }, { k: 'L2', l: '数据模型' }, { k: 'L3', l: '平台工具' }, { k: 'L4', l: '行业应用' }, { k: 'L5', l: '商业生态' }],
   research: [{ k: 'docs', l: '文档' }, { k: 'guide', l: '使用说明' }],
   theses: [{ k: 'ledger', l: '账本' }, { k: 'settle', l: '结算台' }, { k: 'stats', l: '统计' }],
@@ -231,7 +247,7 @@ function tabLabel(v, k) {
 
 /* ------------------------------------------------------------ 路由 */
 var VIEWS = ['guide', 'overview', 'topics', 'clues', 'chronicle', 'archive', 'daily', 'library', 'verify', 'method', 'players', 'sectors', 'models', 'capital', 'chain', 'directory', 'scores', 'sim', 'decisions', 'calendar', 'glossary', 'kb', 'research', 'theses', 'digest', 'actions', 'opp', 'exp', 'red', 'risk', 'eco', 'meta'];
-var NAMES = { guide: '阅读指南', overview: '总览', topics: '主题', clues: '线索库', chronicle: '大事记', archive: '全文检索', daily: '日报', library: '文档中心', verify: '待核实', method: '方法论', players: '玩家图谱', sectors: '赛道地图', models: '模型登记册', capital: '资本动向', chain: '产业链', directory: '机构名录', scores: '赛道评分卡', sim: '成本模拟器', decisions: '决策台', calendar: '年度日历', glossary: '术语库', kb: '知识库', research: '研判', theses: '议题追踪', digest: '周报', actions: '行动项', opp: '机会台', exp: '实验台', red: '红蓝对抗', risk: '护栏台', eco: '生态位', meta: '系统台' };
+var NAMES = { guide: '阅读指南', overview: '总览', topics: '主题', clues: '线索库', chronicle: '大事记', archive: '语料检索', daily: '日报', library: '文档中心', verify: '待核实', method: '方法论', players: '玩家图谱', sectors: '赛道地图', models: '模型登记册', capital: '资本动向', chain: '产业链', directory: '机构名录', scores: '赛道评分卡', sim: '成本模拟器', decisions: '决策台', calendar: '年度日历', glossary: '术语库', kb: '知识库', research: '研判', theses: '议题追踪', digest: '周报', actions: '行动项', opp: '机会台', exp: '实验台', red: '红蓝对抗', risk: '护栏台', eco: '生态位', meta: '系统台' };
 
 function hashSegs() {
   return (location.hash || '').replace(/^#\/?/, '').split('/');
@@ -272,6 +288,33 @@ function currentChainNode() {
   }
   return null;
 }
+
+/* 玩家个体：#/players/detail/<名称> */
+function currentPlayerName() {
+  var segs = hashSegs();
+  if (segs[0] !== 'players' || segs[1] !== 'detail' || !segs[2]) return '';
+  var n;
+  try { n = decodeURIComponent(segs[2]); } catch (e) { n = segs[2]; }
+  return DB.players.some(function (p) { return p.name === n; }) ? n : '';
+}
+/* 赛道档案：#/sectors/<id>，id 与页签键不重叠故可直接区分 */
+function currentSectorId() {
+  var segs = hashSegs();
+  if (segs[0] !== 'sectors' || !segs[1]) return '';
+  var k;
+  try { k = decodeURIComponent(segs[1]); } catch (e) { k = segs[1]; }
+  if (TABS.sectors.some(function (t) { return t.k === k; })) return '';
+  return DB.score.sectors.some(function (s) { return s.id === k; }) ? k : '';
+}
+function sectorById(id) {
+  return DB.score.sectors.filter(function (s) { return s.id === id; })[0] || null;
+}
+function topicByKey(key) {
+  return DB.topics.filter(function (t) { return t.key === key; })[0] || null;
+}
+function playerHref(name) { return '#/players/detail/' + encodeURIComponent(name); }
+function sectorHref(id) { return '#/sectors/' + encodeURIComponent(id); }
+function chainNodeHref(layerKey, id) { return '#/chain/' + layerKey + '/' + encodeURIComponent(id); }
 
 /* 知识库单页：#/kb/<组>/<页id> */
 function currentKbPage() {
@@ -336,6 +379,14 @@ function syncRoute(v) {
     var cn = currentChainNode();
     if (cn) nm = '产业链：' + cn.node.name;
   }
+  if (v === 'players') {
+    var pn = currentPlayerName();
+    if (pn) nm = '玩家：' + pn;
+  }
+  if (v === 'sectors') {
+    var sid = currentSectorId();
+    if (sid && sectorById(sid)) nm = '赛道档案：' + sectorById(sid).name;
+  }
   if (v === 'kb') {
     var kp = currentKbPage();
     if (kp) nm = '知识库：' + kp.page.name;
@@ -343,7 +394,7 @@ function syncRoute(v) {
   var tab = state.tabs[v];
   if (tab && tabLabel(v, tab) && TABS[v][0].k !== tab) nm += ' · ' + tabLabel(v, tab);
   $('#crumbNow').textContent = nm;
-  document.title = nm + ' · AI News Database 研究台';
+  document.title = nm + ' · AI GURU 工作台';
 }
 function switchTo(path) { location.hash = '#/' + path; }
 
@@ -376,7 +427,7 @@ RENDER.guide = function () {
     '<div class="view-head">' +
       '<h2>阅读指南<span class="en">Reading Guide</span></h2>' +
       '<div class="vh-meta"><span class="m">' + DB.guide.paths.length + ' 条路线</span><span class="m">' + DB.guide.tour.length + ' 站通读</span><span class="m">进度存本机</span></div>' +
-      '<p class="lead">75 个页面按课程组织：<b>路线读书 → 参考查证 → 工具产判断</b>。按 P1→P6 顺序读完整套，即完成从听懂行话到能下判断的全程；或在「通读序列」里开启逐站通读模式。</p>' +
+      '<p class="lead">99 个页面按 12 个板块铺成一条研究动线：<b>看结构 → 找证据 → 做核验 → 下判断 → 落成行动</b>，本机运营独立收尾。不知从哪进：按 P1→P7 顺序读完整套，即完成从听懂行话到能下判断的全程；或在「通读序列」里开启逐站通读模式。</p>' +
     '</div>');
 };
 
@@ -477,13 +528,12 @@ BIND.guide = function () {
 RENDER.overview = function () {
   var n = DB.meta.counts;
   var st = DB.stats.statusCount;
-  var vb = DB.stats.verifyByStatus;
   var latest = DB.events[0] || { date: '—', title: '' };
   return viewShell('overview',
     '<div class="view-head">' +
       '<h2>总览，一屏开局<span class="en">Overview</span></h2>' +
       '<div class="vh-meta"><span class="m">快照 ' + esc(DB.meta.builtAt) + '</span><span class="m">' + n.clues + ' 线索 · ' + n.topics + ' 主题 · ' + n.events + ' 大事 · ' + n.archive + ' 档案</span><span class="m">时间线式线索库，宁漏勿错</span></div>' +
-      '<p class="lead">这是 <b>AI News Database</b> 的私人研究台：' + n.clues + ' 条持续追踪的线索、' + n.events + ' 条大事、' + n.verify + ' 条待核实、' + n.archive + ' 条精选档案，全部由仓库 md 构建内嵌。最近更新 ' + esc(DB.stats.lastUpdated) + '。</p>' +
+      '<p class="lead">这是 <b>AI GURU 工作台</b>：' + n.clues + ' 条持续追踪的线索、' + n.events + ' 条大事、' + n.verify + ' 条待核实、' + n.archive + ' 条精选档案，全部由 AI News Database 内容库的仓库 md 构建内嵌。最近更新 ' + esc(DB.stats.lastUpdated) + '。</p>' +
     '</div>');
 };
 
@@ -492,7 +542,6 @@ PANE.overview = function () {
   if (!el) return;
   var n = DB.meta.counts;
   var st = DB.stats.statusCount;
-  var vb = DB.stats.verifyByStatus;
   var latest = DB.events[0] || { date: '—', title: '', url: '', summary: '' };
 
   if (state.tabs.overview === 'pulse') {
@@ -524,9 +573,9 @@ PANE.overview = function () {
     }).join('');
     el.innerHTML =
       '<div class="kpi-strip">' +
-        '<div class="kpi dark"><div class="k">待核实总量</div><div class="v">' + n.verify + ' <small>条</small></div><div class="w">⚠️ ' + (vb['⚠️'] || 0) + ' 存疑 · ❓ ' + (vb['❓'] || 0) + ' 可疑 · 🔍 ' + (vb['🔍'] || 0) + ' 需一手源</div></div>' +
+        '<div class="kpi dark"><div class="k">待核实总量</div><div class="v">' + n.verify + ' <small>条</small></div><div class="w">' + VERIFY_ORDER.map(function (m) { return m + ' ' + VERIFY_COUNTS[m]; }).join(' · ') + '</div></div>' +
         '<div class="kpi"><div class="k">含未核实标注的线索</div><div class="v">' + pend.length + ' <small>条</small></div><div class="w">线索时间线内有 ⚠️ 单源标注，采信前先看原文</div></div>' +
-        '<div class="kpi"><div class="k">已核实入库</div><div class="v">' + (vb['✅'] || 0) + ' <small>条</small></div><div class="w">核验通过并回填线索与大事记的记录</div></div>' +
+        '<div class="kpi"><div class="k">已核实入库</div><div class="v">' + (VERIFY_COUNTS['✅'] || 0) + ' <small>条</small></div><div class="w">核验通过并回填线索与大事记的记录</div></div>' +
         '<div class="kpi"><div class="k">线索 ⚠️ 标注总数</div><div class="v">' + DB.clues.reduce(function (s, c) { return s + c.pending; }, 0) + ' <small>处</small></div><div class="w">散落在时间线里的单源标注，全量清单见各线索</div></div>' +
       '</div>' +
       '<div class="grid g2" style="margin-top:16px">' +
@@ -550,9 +599,9 @@ PANE.overview = function () {
       }).join('');
       return '<h3 class="sec"><span class="no">' + g.items.length + '</span><span class="t">' + esc(g.name) + '</span><span class="en">Unknowns</span></h3>' + lis;
     }).join('');
-    el.innerHTML = '<div class="callout red"><div class="c-t">未知清单 · ' + unkTotal() + ' 条 · 更新 ' + esc(DB.unknowns.updated) + '</div>' +
+    el.innerHTML = '<div class="callout red"><div class="c-t">开放问题 · ' + unkTotal() + ' 条 · 更新 ' + esc(DB.unknowns.updated) + '</div>' +
       '参考台纪律的本地化：<b>每个模块显式列出「不知道什么」</b>——问题、为何未知、获取路径三字段。未知不是缺陷陈列，是研究议程；每清一条，本台信息量涨一格。' +
-      '与<a href="#/verify/queue">核验队列</a>（已知存疑）互为镜像。</div>' +
+      '与<a href="#/verify/queue">事实核查</a>（已知存疑）互为镜像。</div>' +
       '<div class="grid g2">' + groups.map(function (g, gi) {
         return '<div class="card"><h4><span class="no">0' + (gi + 1) + '</span>' + esc(g.name) + '<span class="en">' + g.items.length + ' 条</span></h4>' +
           '<ul class="plain">' + g.items.map(function (it) { return '<li>' + esc(it.q) + '</li>'; }).join('') + '</ul></div>';
@@ -566,7 +615,7 @@ PANE.overview = function () {
     return '<li>' +
       '<div class="ph">' + esc(e.date.slice(0, 7)) + '<span class="when">' + esc(e.date) + '</span></div>' +
       '<div class="tt">' + extLink(e.url, esc(e.title)) + '</div>' +
-      '<div class="td">' + esc(e.summary).slice(0, 110) + (e.summary.length > 110 ? '…' : '') + '</div></li>';
+      '<div class="td">' + summaryHtml(e.summary, 110) + '</div></li>';
   }).join('');
   var hotRows = DB.stats.hotClues.map(function (c, i) {
     var rk = '<span class="rk ' + (i < 3 ? 't' + (i + 1) : '') + '">' + (i + 1) + '</span>';
@@ -587,7 +636,7 @@ PANE.overview = function () {
   var capSum = 0;
   capEvs.forEach(function (e) { if (e.meta && e.meta.amountUsd) capSum += e.meta.amountUsd; });
   var assetFlow = '<div class="flow" style="margin-top:14px">' +
-    '<div class="step"><div class="t">观点判断</div><div class="v">' + analysisTotal + ' <small style="font-size:12px">条</small></div><div class="d">50 条线索「分析」段的结构化观点，见 <a href="#/clues/analysis">观点库</a></div></div>' +
+    '<div class="step"><div class="t">观点判断</div><div class="v">' + analysisTotal + ' <small style="font-size:12px">条</small></div><div class="d">' + n.clues + ' 条线索「分析」段的结构化观点，见 <a href="#/clues/analysis">观点库</a></div></div>' +
     '<div class="step"><div class="t">档案来源</div><div class="v">' + Object.keys(srcSet).length + ' <small style="font-size:12px">个</small></div><div class="d">3512 条精选资讯的独立信源，见 <a href="#/archive/sources">来源分布</a></div></div>' +
     '<div class="step"><div class="t">模型登记</div><div class="v">' + DB.models.length + ' <small style="font-size:12px">个</small></div><div class="d">前沿模型规格登记册，待回填字段持续填数</div></div>' +
     '<div class="step"><div class="t">资本事件</div><div class="v">' + capEvs.length + ' <small style="font-size:12px">条</small></div><div class="d">披露合计约 ' + (capSum >= 10000 ? (capSum / 10000) + ' 万亿' : capSum + ' 亿') + ' 美元，见 <a href="#/capital/rank">金额榜</a></div></div>' +
@@ -596,14 +645,14 @@ PANE.overview = function () {
     '<div class="kpi-strip">' +
       '<div class="kpi"><div class="k">线索库</div><div class="v">' + n.clues + ' <small>条，' + n.topics + ' 主题</small></div><div class="w">活跃 ' + (st['活跃'] || 0) + ' · 观察中 ' + (st['观察中'] || 0) + ' · 已完结 ' + (st['已完结'] || 0) + '</div></div>' +
       '<div class="kpi dark"><div class="k">大事记 · 最新</div><div class="v">' + esc(latest.date) + ' <small>' + esc(latest.title.slice(0, 14)) + '</small></div><div class="w">2025–2026 两卷归档，仅收官方一手源与多源印证</div></div>' +
-      '<div class="kpi"><div class="k">待核实</div><div class="v">' + n.verify + ' <small>条</small></div><div class="w">✅ ' + (vb['✅'] || 0) + ' · ⚠️ ' + (vb['⚠️'] || 0) + ' · ❓ ' + (vb['❓'] || 0) + ' · 🔍 ' + (vb['🔍'] || 0) + '，详见风险雷达</div></div>' +
+      '<div class="kpi"><div class="k">待核实</div><div class="v">' + n.verify + ' <small>条</small></div><div class="w">' + VERIFY_ORDER.map(function (m) { return m + ' ' + VERIFY_COUNTS[m]; }).join(' · ') + '，详见风险雷达</div></div>' +
       '<div class="kpi"><div class="k">精选档案</div><div class="v">' + n.archive + ' <small>条，2017 起沉淀</small></div><div class="w">标题级全文检索：<a href="#/archive">Archive</a> · <a href="#/daily">日报</a></div></div>' +
     '</div>' +
 
     '<div class="grid g4 map-grid" style="margin-top:14px">' +
       navCard('01', '线索库', 'Clues', '每条线索一个持续追加的时间线文档：概述、时间线、分析、关联线索。', '<a href="#/clues">浏览全部 ' + n.clues + ' 条</a><a href="#/topics">按主题进入</a>') +
       navCard('02', '大事记与周报', 'Chronicle', '年度重点事件一行登记 + 类型打标；周报自动攒每周增量。', '<a href="#/chronicle">大事记</a><a href="#/digest">本周周报</a><a href="#/capital">资本动向</a>') +
-      navCard('03', '档案检索', 'Archive', '3512 条精选资讯的标题级检索与按日回看，2017 至今。', '<a href="#/archive">全文检索</a><a href="#/daily">日报回看</a>') +
+      navCard('03', '档案检索', 'Archive', '3512 条精选资讯的标题级检索与按日回看，2017 至今。', '<a href="#/archive">语料检索</a><a href="#/daily">日报回看</a>') +
       navCard('04', '图谱与研判', 'Map & Research', '玩家、赛道、模型登记册、资本结构层；研判与议题在本机。', '<a href="#/players">玩家</a><a href="#/sectors">赛道</a><a href="#/models">模型</a><a href="#/theses">议题</a>') +
     '</div>' +
     assetFlow +
@@ -642,7 +691,7 @@ PANE.topics = function () {
       return '<tr><td><a href="' + clueHref(c.id) + '"><b>' + esc(c.name) + '</b></a></td><td>' + statusTag(c.status) + '</td><td class="mono"><b>' + c.nEvents + '</b></td><td class="mono">' + esc(c.lastEvent || '—') + '</td><td class="mono">' + esc(c.updated) + '</td></tr>';
     }).join('');
     var evs = topicEvents(tk).slice(0, 12).map(function (e) {
-      return '<li><b>' + esc(e.date) + '</b> · ' + extLink(e.url, esc(e.title)) + '<div class="dim" style="font-size:11.5px">' + esc(e.summary).slice(0, 90) + '</div></li>';
+      return '<li><b>' + esc(e.date) + '</b> · ' + extLink(e.url, esc(e.title)) + '<div class="dim" style="font-size:11.5px">' + summaryHtml(e.summary, 90) + '</div></li>';
     }).join('');
     el.innerHTML = h(
       '<div class="callout pine"><div class="c-t">范围定义</div>' + esc(t.def) + '</div>' +
@@ -690,7 +739,7 @@ PANE.topics = function () {
         '<div class="kpi"><div class="k">关联大事密度</div><div class="v">' + rows.reduce(function (s, r) { return s + r.ev; }, 0) + ' <small>条</small></div><div class="w">按双链主题前缀统计</div></div>' +
       '</div>' +
       '<div class="table-scroll" style="margin-top:16px"><table class="dense"><thead><tr><th>主题</th><th>势能</th><th>线索</th><th>关联大事</th><th>最近更新</th><th>状态</th></tr></thead><tbody>' + trows + '</tbody></table></div>' +
-      '<p class="note" style="margin-top:10px">覆盖分是反身指标（研究红线第 7 条）：低分赛道先补信源，再下结论。与<a href="#/sectors/gaps">建线信号</a>互为印证。</p>';
+      '<p class="note" style="margin-top:10px">覆盖分是反身指标（研究红线第 7 条）：低分赛道先补信源，再下结论。与<a href="#/sectors/gaps">研究缺口</a>互为印证。</p>';
     return;
   }
   var rows = DB.topics.map(function (x) {
@@ -717,7 +766,7 @@ RENDER.clues = function () {
   return viewShell('clues',
     '<div class="view-head">' +
       '<h2>线索库<span class="en">Clue Library</span></h2>' +
-      '<div class="vh-meta"><span class="m">' + DB.clues.length + ' 条线索</span><span class="m">点击行进详情</span><span class="m">分页：列表 / 热榜 / 观点库 / 更新流</span></div>' +
+      '<div class="vh-meta"><span class="m">' + DB.clues.length + ' 条线索</span><span class="m">点击行进详情</span><span class="m">分页：列表 / 热榜 / 观点库 / 收录动态</span></div>' +
       '<p class="lead">每条线索一份时间线文档：概述给事实，时间线给脉络，分析给观点，关联线索给网络。观点库聚合全部「分析」段——事实与观点分离设计的观点侧总账。</p>' +
     '</div>');
 };
@@ -909,7 +958,7 @@ function chronFlowHtml() {
       return '<li>' +
         '<div class="ph">' + esc(mo) + '<span class="when">' + esc(e.date) + '</span></div>' +
         '<div class="tt">' + extLink(e.url, esc(e.title)) + '</div>' +
-        '<div class="td">' + esc(e.summary) + (links ? '　→ ' + links : '') + '</div></li>';
+        '<div class="td">' + summaryHtml(e.summary, 0) + (links ? '　→ ' + links : '') + '</div></li>';
     }).join('');
     return '<h3 class="sec"><span class="no">' + esc(mo) + '</span><span class="t">' + byMonth[mo].length + ' 条</span><span class="en">Month</span></h3><ul class="timeline">' + lis + '</ul>';
   }).join('');
@@ -971,11 +1020,11 @@ BIND.chronicle = function () {
   });
 };
 
-/* ============================================================ 全文检索 */
+/* ============================================================ 语料检索 */
 RENDER.archive = function () {
   return viewShell('archive',
     '<div class="view-head">' +
-      '<h2>全文检索<span class="en">Archive</span></h2>' +
+      '<h2>语料检索<span class="en">Archive</span></h2>' +
       '<div class="vh-meta"><span class="m">' + DB.archive.length + ' 条精选资讯</span><span class="m">aihot-mirror，2017 至今</span><span class="m">标题与来源级检索</span></div>' +
       '<p class="lead">镜像站每日精选的全量索引：回答「这个话题历史上都报过什么」。命中后按日期回看当天全量，见<a href="#/daily">日报</a>。</p>' +
     '</div>');
@@ -1165,15 +1214,15 @@ PANE.verify = function () {
   if (!el) return;
   var tab = state.tabs.verify;
   if (tab === 'stats') {
-    var vb = DB.stats.verifyByStatus;
     var secCount = {};
     DB.verify.forEach(function (v) { secCount[v.sec] = (secCount[v.sec] || 0) + 1; });
     var secRows = Object.keys(secCount).map(function (s) {
       return '<tr><td>' + esc(s) + '</td><td class="mono"><b>' + secCount[s] + '</b></td></tr>';
     }).join('');
     el.innerHTML = '<div class="kpi-strip">' +
-      ['✅', '⚠️', '❓', '🔍'].map(function (m) {
-        return '<div class="kpi' + (m === '✅' ? ' dark' : '') + '"><div class="k">' + esc((VERIFY_STYLE[m] || {}).label || m) + '</div><div class="v">' + (vb[m] || 0) + ' <small>条</small></div><div class="w">' + m + '</div></div>';
+      VERIFY_ORDER.map(function (m) {
+        var n = VERIFY_COUNTS[m];
+        return '<div class="kpi' + (m === '✅' ? ' dark' : '') + '"><div class="k">' + esc(VERIFY_STYLE[m].label) + '</div><div class="v">' + n + ' <small>条</small></div><div class="w">' + m + ' · 占台账 ' + Math.round(n / DB.verify.length * 100) + '%</div></div>';
       }).join('') + '</div>' +
       '<h3 class="sec" style="margin-top:18px"><span class="no">' + DB.verify.length + '</span><span class="t">按章节</span><span class="en">Sections</span></h3>' +
       '<div class="table-scroll"><table class="dense"><thead><tr><th>章节</th><th>条数</th></tr></thead><tbody>' + secRows + '</tbody></table></div>';
@@ -1219,8 +1268,8 @@ PANE.verify = function () {
     return '<h3 class="sec"><span class="no">' + bySec[sec].length + '</span><span class="t">' + esc(sec) + '</span><span class="en">Section</span></h3>' + cards;
   }).join('');
   var seg = '<button data-v="all"' + (state.vStatus === 'all' ? ' class="on"' : '') + '>全部 ' + DB.verify.length + '</button>';
-  ['✅', '⚠️', '❓', '🔍'].forEach(function (m) {
-    seg += '<button data-v="' + m + '"' + (state.vStatus === m ? ' class="on"' : '') + '>' + m + ' ' + (DB.stats.verifyByStatus[m] || 0) + '</button>';
+  VERIFY_ORDER.forEach(function (m) {
+    seg += '<button data-v="' + m + '"' + (state.vStatus === m ? ' class="on"' : '') + '>' + m + ' ' + VERIFY_COUNTS[m] + '</button>';
   });
   el.innerHTML = '<div class="tools"><span class="seg" id="verifySeg">' + seg + '</span><span class="count">' + items.length + ' / ' + DB.verify.length + ' 条</span></div>' +
     (html || '<div class="callout">该状态暂无条目。</div>');
@@ -1289,7 +1338,10 @@ PANE.players = function () {
   var el = $('#pane-players');
   if (!el) return;
   if (state.tabs.players === 'detail') {
-    if (!state.plSel || !DB.players.some(function (p) { return p.name === state.plSel; })) state.plSel = DB.players.length ? DB.players[0].name : '';
+    /* 选中项优先取 URL，其次内存态，最后回落名单首位 */
+    var want = currentPlayerName() || state.plSel;
+    if (!want || !DB.players.some(function (p) { return p.name === want; })) want = DB.players.length ? DB.players[0].name : '';
+    state.plSel = want;
     var p = DB.players.filter(function (x) { return x.name === state.plSel; })[0];
     if (!p) { el.innerHTML = '<div class="callout">players.js 为空。</div>'; return; }
     var s = playerStats(p);
@@ -1300,9 +1352,19 @@ PANE.players = function () {
     var evs = s.events.slice(0, 10).map(function (e) {
       return '<li><b>' + esc(e.date) + '</b> · ' + extLink(e.url, esc(e.title)) + '</li>';
     }).join('');
+    /* 涉足赛道：该玩家（含别名）作为线索「关键角色」出现的主题分布 */
+    var touched = {};
+    DB.clues.forEach(function (c) {
+      if ((c.roles || []).some(function (r) { return names.indexOf(r) >= 0; })) touched[c.topic] = (touched[c.topic] || 0) + 1;
+    });
+    var touchedChips = Object.keys(touched).sort(function (a, b) { return touched[b] - touched[a]; }).map(function (t) {
+      var label = esc(t) + ' <span class="dim mono">' + touched[t] + '</span>';
+      return sectorById(t) ? '<a class="fchip" href="' + sectorHref(t) + '" title="看该赛道档案">' + label + '</a>'
+                           : '<span class="tag plain">' + label + '</span>';
+    }).join('');
     el.innerHTML = '<div style="display:flex;flex-wrap:wrap;gap:5px 10px;margin:2px 0 14px">' +
         DB.players.map(function (x) {
-          return '<a class="fchip" data-p="' + esc(x.name) + '" href="javascript:void(0)" style="' + (x.name === state.plSel ? '' : 'opacity:.62') + '">' + esc(x.name) + '</a>';
+          return '<a class="fchip" href="' + playerHref(x.name) + '" style="' + (x.name === state.plSel ? '' : 'opacity:.62') + '">' + esc(x.name) + '</a>';
         }).join('') + '</div>' +
       '<div class="kpi-strip">' +
         '<div class="kpi dark"><div class="k">玩家</div><div class="v" style="font-size:19px">' + esc(p.name) + '</div><div class="w">' + esc(p.type || '待归类') + (p.positioning ? ' · ' + esc(p.positioning) : '') + '</div></div>' +
@@ -1310,12 +1372,17 @@ PANE.players = function () {
         '<div class="kpi"><div class="k">大事记提及</div><div class="v">' + s.nEvents + ' <small>条</small></div><div class="w">最近 ' + esc(s.last || '—') + '</div></div>' +
         '<div class="kpi"><div class="k">别名</div><div class="v" style="font-size:14px;line-height:1.5">' + (p.aliases && p.aliases.length ? esc(p.aliases.join(' / ')) : '—') + '</div><div class="w">别名参与线索与事件匹配</div></div>' +
       '</div>' +
+      (p.note ? '<div class="callout" style="margin-top:16px"><div class="c-t">策展备注</div>' + esc(p.note) + '</div>' : '') +
       '<div class="grid g2" style="margin-top:16px">' +
         '<div><h3 class="sec"><span class="no">' + s.clues.length + '</span><span class="t">关联线索</span><span class="en">Clues</span></h3>' +
           '<div class="table-scroll"><table class="dense"><thead><tr><th>线索</th><th>主题</th><th>事件数</th><th>最近</th></tr></thead><tbody>' + (clueRows || '<tr><td colspan="4" class="dim">无</td></tr>') + '</tbody></table></div></div>' +
         '<div><h3 class="sec"><span class="no">' + s.nEvents + '</span><span class="t">大事记提及</span><span class="en">Events</span></h3>' +
           '<ul class="plain">' + (evs || '<li class="dim">无</li>') + '</ul></div>' +
-      '</div>';
+      '</div>' +
+      '<h3 class="sec" style="margin-top:18px"><span class="no">' + Object.keys(touched).length + '</span><span class="t">涉足赛道</span><span class="en">Sectors</span></h3>' +
+      '<div class="fchips">' + (touchedChips || '<span class="dim">该玩家尚未作为关键角色出现在任何线索中。</span>') + '</div>' +
+      '<p class="note" style="margin-top:8px">按该玩家（含别名）在线索「关键角色」中的出现次数排序；灰标为「赛道地图」尚未评分的主题。' +
+        '<a href="#/players/table">← 回玩家总表</a> · <a href="#/sectors/matrix">赛道矩阵</a></p>';
     return;
   }
   var types = {};
@@ -1328,7 +1395,7 @@ PANE.players = function () {
     var s = playerStats(p);
     var firstClue = s.clues[0];
     return '<tr>' +
-      '<td><b>' + esc(p.name) + '</b>' + (p.aliases && p.aliases.length ? ' <span class="dim mono" style="font-size:10px">' + esc(p.aliases.slice(0, 3).join(' / ')) + '</span>' : '') + '</td>' +
+      '<td><b><a href="' + playerHref(p.name) + '">' + esc(p.name) + '</a></b>' + (p.aliases && p.aliases.length ? ' <span class="dim mono" style="font-size:10px">' + esc(p.aliases.slice(0, 3).join(' / ')) + '</span>' : '') + '</td>' +
       '<td>' + (p.type && p.type !== '待归类' ? '<span class="tag">' + esc(p.type) + '</span>' : '<span class="tag plain">待归类</span>') + '</td>' +
       '<td>' + (p.positioning ? esc(p.positioning) : '<span class="dim">' + esc(p.note || '—') + '</span>') + '</td>' +
       '<td class="mono"><b>' + s.clues.length + '</b>' + (firstClue ? ' <a href="' + clueHref(firstClue.id) + '" title="' + esc(firstClue.id) + '">↗</a>' : '') + '</td>' +
@@ -1338,15 +1405,13 @@ PANE.players = function () {
   el.innerHTML = '<div class="tools"><span class="seg" id="playerSeg">' + seg + '</span><span class="count">' + rows.length + ' / ' + DB.players.length + ' 家</span></div>' +
     '<div class="table-scroll"><table class="dense"><thead><tr><th>玩家</th><th>类型</th><th>定位</th><th>线索</th><th>大事记</th><th>最近事件</th></tr></thead><tbody>' +
     (rows || '<tr><td colspan="6" class="dim">无该类型玩家</td></tr>') + '</tbody></table></div>' +
-    '<p class="note" style="margin-top:10px">大事记列为该玩家名称或别名在事件标题与摘要中出现的次数，供交叉参考，非严格归属。</p>';
+    '<p class="note" style="margin-top:10px">点击名称进入该玩家的独立档案（也可从左侧菜单「玩家详情」直达）。大事记列为该玩家名称或别名在事件标题与摘要中出现的次数，供交叉参考，非严格归属。</p>';
 };
 
 BIND.players = function () {
   $('#v-players').addEventListener('click', function (e) {
     var b = e.target.closest('#playerSeg button');
-    if (b) { state.pType = b.getAttribute('data-t'); PANE.players(); return; }
-    var chip = e.target.closest('.fchip[data-p]');
-    if (chip) { state.plSel = chip.getAttribute('data-p'); PANE.players(); }
+    if (b) { state.pType = b.getAttribute('data-t'); PANE.players(); }
   });
 };
 
@@ -1355,7 +1420,7 @@ RENDER.sectors = function () {
   return viewShell('sectors',
     '<div class="view-head">' +
       '<h2>赛道地图<span class="en">Sectors</span></h2>' +
-      '<div class="vh-meta"><span class="m">17 赛道 × 玩家 × 热度</span><span class="m">线索与大事记实时统计</span></div>' +
+      '<div class="vh-meta"><span class="m">' + DB.score.sectors.length + ' 赛道 × 玩家 × 热度</span><span class="m">线索与大事记实时统计</span></div>' +
       '<p class="lead">一眼看出人和钱往哪挤：线索数是关注度存量，关联大事是当期热度，头部玩家来自各赛道线索的「关键角色」频次。</p>' +
     '</div>');
 };
@@ -1379,10 +1444,86 @@ function sectorStats() {
   return { ev: ev, last: last, roles: roles };
 }
 
+/* 关键角色名 → 玩家档案：按策展过的名称与别名匹配，匹配不到即视为未建档 */
+function playerByName(name) {
+  return DB.players.filter(function (p) {
+    return p.name === name || (p.aliases || []).indexOf(name) >= 0;
+  })[0] || null;
+}
+
+/* 赛道档案：单条赛道的评分 + 追踪密度 + 头部玩家 + 线索与大事，全部由库内数据 join 得出 */
+function sectorProfileHtml(sid, S) {
+  var sec = sectorById(sid);
+  if (!sec) return '<div class="callout red">score.js 中没有 id 为 ' + esc(sid) + ' 的赛道。</div>';
+  var tp = topicByKey(sid);
+  var w = scoreWeights();
+  var ranked = Engine.computeAll(DB.score.sectors, w);
+  var pos = 0, total = 0;
+  ranked.forEach(function (r, i) { if (r.id === sid) { pos = i + 1; total = r.total; } });
+  var confLv = sec.conf === 'high' ? '高' : (sec.conf === 'medium' ? '中' : '低');
+  var ev = S.ev[sid] || 0;
+  var clues = DB.clues.filter(function (c) { return c.topic === sid; });
+  var crows = clues.map(function (c) {
+    return '<tr><td><a href="' + clueHref(c.id) + '"><b>' + esc(c.name) + '</b></a></td><td>' + statusTag(c.status) +
+      '</td><td class="mono"><b>' + c.nEvents + '</b></td><td class="mono">' + esc(c.lastEvent || '—') + '</td><td class="mono">' + esc(c.updated) + '</td></tr>';
+  }).join('');
+  var roleMap = S.roles[sid] || {};
+  var topRoles = Object.keys(roleMap).sort(function (a, b) { return roleMap[b] - roleMap[a]; }).slice(0, 10);
+  var chips = topRoles.map(function (r) {
+    var pl = playerByName(r);
+    var label = esc(r) + ' <span class="dim mono">' + roleMap[r] + '</span>';
+    return pl ? '<a class="fchip" href="' + playerHref(pl.name) + '" title="已在玩家图谱建档">' + label + '</a>'
+              : '<span class="tag plain" title="尚未建档，仅在线索「关键角色」中出现">' + label + '</span>';
+  }).join('');
+  var dimRows = Object.keys(DB.score.dims).map(function (k) {
+    var v = (sec.dims && sec.dims[k]) || 0;
+    return '<tr><td><span class="tag">' + esc(DB.score.dims[k].label) + '</span></td>' +
+      '<td class="mono"><b>' + v + '</b> / 5 ' + bar(v, 5, 'var(--gold-2)') + '</td>' +
+      '<td class="mono">' + (w[k] || 0) + '%</td>' +
+      '<td class="dim">' + esc(DB.score.dims[k].desc) + '</td></tr>';
+  }).join('');
+  var evs = topicEvents(sid).sort(function (a, b) { return a.date < b.date ? 1 : -1; }).slice(0, 8).map(function (e) {
+    return '<li><b>' + esc(e.date) + '</b> · ' + extLink(e.url, esc(e.title)) +
+      '<div class="dim" style="font-size:11.5px">' + summaryHtml(e.summary, 90) + '</div></li>';
+  }).join('');
+  return h(
+    '<div class="callout pine"><div class="c-t">赛道界定' + (tp && tp.en ? ' · ' + esc(tp.en) : '') + '</div>' +
+      esc(tp ? tp.def : '（score.js 的该赛道在 data.js 主题表中没有对应条目，定义待补。）') +
+      (sec.note ? '<div style="margin-top:6px"><b>判断：</b>' + esc(sec.note) + '</div>' : '') + '</div>' +
+    '<div class="kpi-strip">' +
+      '<div class="kpi dark"><div class="k">加权总分</div><div class="v">' + total.toFixed(2) + ' <small>/ 5</small></div>' +
+        '<div class="w">第 ' + pos + ' / ' + ranked.length + ' 名 · ' + esc(Engine.band(total)) + '</div></div>' +
+      '<div class="kpi"><div class="k">五维</div><div class="v" style="padding-top:9px">' + dimsHtml(sec.dims || {}) + '</div>' +
+        '<div class="w">评分置信度' + confLv + ' · 评分基准日 ' + esc(DB.score.asOf) + '</div></div>' +
+      '<div class="kpi"><div class="k">本赛道线索</div><div class="v">' + (tp ? tp.count : clues.length) + ' <small>条</small></div>' +
+        '<div class="w">主题表登记值，与下方清单同一口径</div></div>' +
+      '<div class="kpi"><div class="k">关联大事</div><div class="v">' + ev + ' <small>条</small></div>' +
+        '<div class="w">最近 ' + esc(S.last[sid] || '—') + '</div></div>' +
+    '</div>' +
+    '<div class="grid g2" style="margin-top:16px">' +
+      '<div><h3 class="sec"><span class="no">01</span><span class="t">五维评分</span><span class="en">Scores</span></h3>' +
+        '<div class="table-scroll"><table class="dense"><thead><tr><th>维度</th><th>评分</th><th>当前权重</th><th>口径</th></tr></thead><tbody>' + dimRows + '</tbody></table></div>' +
+        '<p class="note" style="margin-top:8px">权重取自<a href="#/scores/weights">权重与假设</a>页签的当前值（刷新即回默认），总分与排名随之变动。</p></div>' +
+      '<div><h3 class="sec"><span class="no">' + topRoles.length + '</span><span class="t">头部玩家</span><span class="en">Players</span></h3>' +
+        '<div class="fchips">' + (chips || '<span class="dim">该赛道线索尚未登记关键角色。</span>') + '</div>' +
+        '<p class="note" style="margin-top:8px">按本赛道线索「关键角色」出现次数排序；金色标签为玩家图谱已建档者，灰标为尚未建档的角色名。</p>' +
+        '<h3 class="sec" style="margin-top:18px"><span class="no">' + ev + '</span><span class="t">近期大事</span><span class="en">Timeline</span></h3>' +
+        '<ul class="plain">' + (evs || '<li class="dim">暂无关联大事</li>') + '</ul></div>' +
+    '</div>' +
+    '<h3 class="sec" style="margin-top:18px"><span class="no">' + clues.length + '</span><span class="t">本赛道线索</span><span class="en">Clues</span></h3>' +
+    '<div class="table-scroll"><table class="dense"><thead><tr><th>线索</th><th>状态</th><th>时间线</th><th>最近事件</th><th>更新</th></tr></thead><tbody>' +
+      (crows || '<tr><td colspan="5" class="dim">尚未建线——该赛道目前只有热度、没有追踪。</td></tr>') + '</tbody></table></div>' +
+    '<p class="note" style="margin-top:10px">同看：<a href="#/topics/' + encodeURIComponent(sid) + '">主题详情</a> · ' +
+      '<a href="#/scores/rank">赛道评分卡</a> · <a href="#/sectors/gaps">研究缺口</a> · <a href="#/sectors/matrix">回矩阵</a></p>' +
+    provBlock('sectors'));
+}
+
 PANE.sectors = function () {
   var el = $('#pane-sectors');
   if (!el) return;
   var S = sectorStats();
+  var sid = currentSectorId();
+  if (sid) { el.innerHTML = sectorProfileHtml(sid, S); return; }
   var tab = state.tabs.sectors;
   if (tab === 'rank') {
     var sorted = DB.topics.slice().sort(function (a, b) { return (S.ev[b.key] || 0) - (S.ev[a.key] || 0); });
@@ -1425,7 +1566,7 @@ PANE.sectors = function () {
       '<td class="dim">' + esc(t.def.slice(0, 34)) + '</td></tr>';
   }).join('');
   el.innerHTML = '<div class="table-scroll"><table class="dense"><thead><tr><th>赛道</th><th>线索</th><th>关联大事</th><th>最近大事</th><th>头部玩家</th><th>范围</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-    '<p class="note" style="margin-top:10px">线索数为零但大事密集的赛道 = 关注度高但追踪不足，是建新线索的信号（见「建线信号」页签）。</p>';
+    '<p class="note" style="margin-top:10px">线索数为零但大事密集的赛道 = 关注度高但追踪不足，是建新线索的信号（见「研究缺口」页签）。</p>';
 };
 
 /* ============================================================ 模型登记册 */
@@ -1546,7 +1687,7 @@ function chainTable(layer) {
   var rows = layer.nodes.map(function (nd) {
     var st = nodeStats(nd);
     return '<tr data-node="' + nd.id + '" data-layer="' + layer.key + '" style="cursor:pointer">' +
-      '<td><a href="#/chain/' + layer.key + '/' + nd.id + '"><b>' + esc(nd.name) + '</b></a></td>' +
+      '<td><a href="' + chainNodeHref(layer.key, nd.id) + '"><b>' + esc(nd.name) + '</b></a></td>' +
       '<td class="dim">' + esc(nd.def) + '</td>' +
       '<td class="mono"><b>' + st.clues.length + '</b></td>' +
       '<td class="mono">' + st.events.length + '</td>' +
@@ -1616,10 +1757,10 @@ function chainLayerHtml(layer) {
     return '<li><b>' + esc(e.date) + '</b> · ' + extLink(e.url, esc(e.title)) + '</li>';
   }).join('');
   var playerChips = agg.players.map(function (p) {
-    return '<a class="fchip" href="#/players/detail" title="' + esc(p.type) + '">' + esc(p.name) + '</a>';
+    return '<a class="fchip" href="' + playerHref(p.name) + '" title="' + esc(p.type) + '">' + esc(p.name) + '</a>';
   }).join('');
   var weakRows = weak.map(function (x) {
-    return '<tr><td><a href="#/chain/' + layer.key + '/' + x.nd.id + '"><b>' + esc(x.nd.name) + '</b></a></td>' +
+    return '<tr><td><a href="' + chainNodeHref(layer.key, x.nd.id) + '"><b>' + esc(x.nd.name) + '</b></a></td>' +
       '<td class="mono">' + x.st.clues.length + '</td><td class="mono">' + x.st.events.length + '</td><td class="mono">' + x.st.archive.length + '</td>' +
       '<td><span class="tag ' + (x.score < 3 ? 'neg' : 'plain') + '">' + (x.score < 3 ? '采集缺口' : '待补追踪') + '</span></td></tr>';
   }).join('');
@@ -1638,7 +1779,7 @@ function chainLayerHtml(layer) {
         '<ul class="timeline">' + (timeline || '<li class="dim">暂无</li>') + '</ul></div>' +
       '<div><h3 class="sec"><span class="no">02</span><span class="t">弱节点仪表</span><span class="en">Coverage Gauge</span></h3>' +
         '<div class="table-scroll"><table class="dense"><thead><tr><th>节点</th><th>线索</th><th>大事</th><th>档案</th><th>判定</th></tr></thead><tbody>' + weakRows + '</tbody></table></div>' +
-        '<p class="note" style="margin-top:8px">按「线索×3 + 大事×2 + 档案/10」综合分排序的本层最弱三节点——聚合为零是采集缺口信号（与建线信号同哲学）。</p>' +
+        '<p class="note" style="margin-top:8px">按「线索×3 + 大事×2 + 档案/10」综合分排序的本层最弱三节点——聚合为零是采集缺口信号（与研究缺口同哲学）。</p>' +
         (playerChips ? '<h3 class="sec" style="margin-top:18px"><span class="no">03</span><span class="t">本层玩家</span><span class="en">Layer Players</span></h3><div style="display:flex;flex-wrap:wrap;gap:5px 10px">' + playerChips + '</div>' : '') +
       '</div>' +
     '</div>'
@@ -1677,7 +1818,7 @@ function chainNodeHtml(node, layer) {
   var relChips = function (list, label) {
     if (!list.length) return '<p class="note">（' + label + '：无）</p>';
     return list.map(function (x) {
-      return '<a class="fchip" href="#/chain/' + x.layer.key + '/' + x.node.id + '">' + esc(x.node.name) + '</a>';
+      return '<a class="fchip" href="' + chainNodeHref(x.layer.key, x.node.id) + '">' + esc(x.node.name) + '</a>';
     }).join('');
   };
   var clueRows = st.clues.slice(0, 12).map(function (c) {
@@ -1687,7 +1828,7 @@ function chainNodeHtml(node, layer) {
     return '<li><b>' + esc(e.date) + '</b> · ' + extLink(e.url, esc(e.title)) + '</li>';
   }).join('');
   var playerChips = st.players.map(function (p) {
-    return '<a class="fchip" href="#/players/detail" title="详见玩家图谱">' + esc(p.name) + '</a>';
+    return '<a class="fchip" href="' + playerHref(p.name) + '" title="详见玩家图谱">' + esc(p.name) + '</a>';
   }).join('');
   var modelRows = st.models.map(function (m) {
     return '<tr><td><b>' + esc(m.name) + '</b></td><td class="mono dim">' + esc(m.org) + '</td><td class="mono">' + esc(m.date || '—') + '</td></tr>';
@@ -1914,7 +2055,7 @@ PANE.sim = function () {
     '<div class="sim-head"><span class="t">推理月账单</span><span class="en">Monthly Inference Bill</span><span class="count" style="margin-left:auto;color:var(--deck-ink-2)">仅本机内存状态</span></div>' +
     '<div class="sim-body">' + msel + sliders + '</div>' +
     '<div class="sim-out" style="padding:14px 18px;border-top:1px solid var(--deck-line)">' +
-      '<span style="font-family:var(--mono);font-size:30px;font-weight:600;color:#fff">' + simFmt(cost) + '</span>' +
+      '<span style="font-family:var(--mono);font-size:30px;font-weight:600;color:var(--deck-ink)">' + simFmt(cost) + '</span>' +
       ' <span style="color:var(--deck-ink-2);font-size:12px">/ 月（' + esc(cur ? cur.name : '—') + ' · ' + req.toLocaleString() + ' 次/日）</span>' +
       '<p class="note" style="color:var(--deck-ink-2);margin-top:6px">换到 <a href="#/sim/table">全模型对比</a> 看同负载下的成本排序。' + cite('sim', 1) + ' ' + cite('sim', 2) + '</p>' +
     '</div></div>';
@@ -2037,7 +2178,7 @@ RENDER.glossary = function () {
     '<div class="view-head">' +
       '<h2>术语库<span class="en">Glossary</span></h2>' +
       '<div class="vh-meta"><span class="m">' + DB.glossary.items.length + ' 条 · ' + Object.keys(DB.glossary.cats).length + ' 类</span><span class="m">点击术语弹定义</span><span class="m">知识库单页正文的术语词自动可点</span></div>' +
-      '<p class="lead">AI 研究的公共词汇表：模型、训练、推理、智能体、安全、基础设施、商业、评测八类。每写研判遇到新术语即回填一条。</p>' +
+      '<p class="lead">AI 研究的公共词汇表：' + Object.keys(DB.glossary.cats).map(function (c) { return DB.glossary.cats[c]; }).join('、') + '，共 ' + Object.keys(DB.glossary.cats).length + ' 类。每写研判遇到新术语即回填一条。</p>' +
     '</div>');
 };
 
@@ -2096,7 +2237,7 @@ RENDER.kb = function () {
   return viewShell('kb',
     '<div class="view-head">' +
       '<h2>知识库<span class="en">Knowledge Base</span></h2>' +
-      '<div class="vh-meta"><span class="m">' + DB.kb.groups.length + ' 组 · ' + kbTotal() + ' 单页</span><span class="m">手工策展 console/kb.js</span><span class="m">方法论 / 工程 / 岗位 / 公司 / 商业 / 职业</span></div>' +
+      '<div class="vh-meta"><span class="m">' + DB.kb.groups.length + ' 组 · ' + kbTotal() + ' 单页</span><span class="m">手工策展 console/kb.js</span><span class="m">方法论 / 工程 / 岗位 / 公司 / 商业 / 职业 / 操盘</span></div>' +
       '<p class="lead">超越新闻语料的结构化知识层：每个方法论、工程方式、岗位、公司、商业模式与职业路径各占一页。公司与玩家图谱联动，术语弹层通用。</p>' +
     '</div>');
 };
@@ -2116,12 +2257,12 @@ PANE.kb = function () {
       '<div class="callout pine"><div class="c-t">' + esc(g.name) + ' · ' + esc(g.en) + '</div><b>' + esc(p.name) + '</b> — ' + esc(p.def) +
       '<div class="fchips" style="margin-top:9px"><a class="fchip" href="#/kb/' + g.key + '">← 回' + esc(g.name) + '</a><a class="fchip" href="#/kb">知识库全景</a></div></div>' +
       '<div class="md-body">' + termify(Md.render(p.body, { base: 'kb/' + g.key })) + '</div>' +
-      (player ? '<div class="callout"><div class="c-t">关联玩家</div>玩家图谱已收录 <b>' + esc(player.name) + '</b>（' + esc(player.type) + '）——<a href="#/players/detail">看关联线索与大事记提及</a>。</div>' : '') +
+      (player ? '<div class="callout"><div class="c-t">关联玩家</div>玩家图谱已收录 <b>' + esc(player.name) + '</b>（' + esc(player.type) + '）——<a href="' + playerHref(player.name) + '">看关联线索与大事记提及</a>。</div>' : '') +
       (cur.group.key === 'companies' ? (function () {
         var cn = chainNodesForName(p.name);
         if (!cn.length) return '';
         return '<div class="callout"><div class="c-t">产业链坐标</div>' + cn.map(function (x) {
-          return '<a class="fchip" href="#/chain/' + x.layer.key + '/' + x.node.id + '">' + esc(x.layer.key + ' ' + x.layer.name) + ' · ' + esc(x.node.name) + '</a>';
+          return '<a class="fchip" href="' + chainNodeHref(x.layer.key, x.node.id) + '">' + esc(x.layer.key + ' ' + x.layer.name) + ' · ' + esc(x.node.name) + '</a>';
         }).join(' ') + '</div>';
       })() : '') +
       '<h3 class="sec"><span class="no">' + g.pages.length + '</span><span class="t">' + esc(g.name) + ' 全部页面</span><span class="en">' + esc(g.en) + '</span></h3>' +
@@ -2238,7 +2379,7 @@ PANE.directory = function () {
   }).join('');
   el.innerHTML = '<div class="callout pine"><div class="c-t">' + esc(g.name) + ' · ' + esc(g.en) + '</div>' + esc(g.desc || '') + '</div>' +
     '<div class="table-scroll"><table class="dense"><thead><tr><th>名称</th><th>定位</th><th>线索提及</th><th>大事提及</th><th>档案提及</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
-    '<p class="note" style="margin-top:10px">提及数按关键词在语料中的出现量级统计；0 提及 ≠ 不重要，只说明本库尚未覆盖——与<a href="#/overview/unknowns">未知清单</a>同源。</p>';
+    '<p class="note" style="margin-top:10px">提及数按关键词在语料中的出现量级统计；0 提及 ≠ 不重要，只说明本库尚未覆盖——与<a href="#/overview/unknowns">开放问题</a>同源。</p>';
 };
 
 /* ============================================================ 研判 */
@@ -2384,7 +2525,7 @@ PANE.digest = function () {
       '<div class="table-scroll"><table class="dense"><thead><tr><th>线索</th><th>主题</th><th>更新</th><th>事件数</th></tr></thead><tbody>' +
       (clueRows || '<tr><td colspan="4" class="dim">区间内无线索更新</td></tr>') + '</tbody></table></div>' +
       '<h3 class="sec" style="margin-top:22px"><span class="no">03</span><span class="t">档案动态</span><span class="en">Archive</span></h3>' +
-      '<p class="note">区间内精选档案 ' + d.items + ' 条，覆盖 ' + d.days + ' 天，详见<a href="#/daily">日报</a>与<a href="#/archive">全文检索</a>。</p>' +
+      '<p class="note">区间内精选档案 ' + d.items + ' 条，覆盖 ' + d.days + ' 天，详见<a href="#/daily">日报</a>与<a href="#/archive">语料检索</a>。</p>' +
       '<h3 class="sec" style="margin-top:22px"><span class="no">04</span><span class="t">本周类型分布</span><span class="en">By Category</span></h3>' +
       '<p>' + (catChips || '<span class="dim">区间内无事件</span>') + '</p><p class="note">一条事件可属多类，计数按类型分别累计。</p></div>' +
     '</div>';
@@ -2599,7 +2740,10 @@ function bindSearch() {
 function navCanonical(v) {
   if (v === 'clues' && currentClueId()) return '#/clues/list';
   if (v === 'topics' && currentTopicKey()) return '#/topics/table';
-  if (v === 'chain') { var cn = currentChainNode(); if (cn) return '#/chain/' + cn.layer.key; }
+  /* 三级树逐项可点选：节点、玩家、赛道各自高亮，其父支路由 on-branch 标记 */
+  if (v === 'chain') { var cn = currentChainNode(); if (cn) return chainNodeHref(cn.layer.key, cn.node.id); }
+  if (v === 'players') { var pn = currentPlayerName(); if (pn) return playerHref(pn); }
+  if (v === 'sectors') { var sid = currentSectorId(); if (sid) return sectorHref(sid); }
   if (v === 'kb') { var kp = currentKbPage(); if (kp) return '#/kb/' + kp.group.key; }
   if (v === 'library' && currentLibraryDoc()) return '#/library/files';
   var tabs = TABS[v] || [];
@@ -3410,7 +3554,7 @@ PANE.meta = function () {
               '<td class="mono">' + x.score.toFixed(2) + '</td><td><span class="tag plain">休眠候选</span></td></tr>';
           }).join('') + '</tbody></table></div>'
         : '<p class="dim" style="margin-top:12px">没有低于阈值的线索——库还年轻，或更新节奏健康。</p>') +
-      '<p class="note" style="margin-top:10px">' + esc(rule.note || '') + ' 衰减按<b>浏览器当日</b>计算（ops 台账不随构建刷新，用快照日会失真）。休眠是降权不是删除；归档前先过一遍「<a href="#/verify/queue">核验队列</a>」。</p>';
+      '<p class="note" style="margin-top:10px">' + esc(rule.note || '') + ' 衰减按<b>浏览器当日</b>计算（ops 台账不随构建刷新，用快照日会失真）。休眠是降权不是删除；归档前先过一遍「<a href="#/verify/queue">事实核查</a>」。</p>';
     return;
   }
   if (tab === 'review') {
@@ -3463,30 +3607,104 @@ PANE.meta = function () {
 };
 
 
-var NAV_KEY = 'ainews.navClosed';
+var NAV_KEY = 'ainews.navClosed.v2';   /* 12 板块换了组名，旧存档里 11 个组名一律作废 */
+var NAV_TREE_KEY = 'ainews.navTreeOpen';
+var NAV_NARROW = '(max-width:980px)';
 function navClosedSet() {
   try { return JSON.parse(localStorage.getItem(NAV_KEY) || '[]'); } catch (e) { return []; }
+}
+function navHasSaved() {
+  try { return localStorage.getItem(NAV_KEY) !== null; } catch (e) { return false; }
 }
 function navSaveClosed() {
   var closed = $$('.sb-sec.closed').map(function (s) { return s.getAttribute('data-sec'); });
   try { localStorage.setItem(NAV_KEY, JSON.stringify(closed)); } catch (e) { /* 无痕模式静默降级 */ }
 }
-function bindNav() {
+function navTreeSet() {
+  try { return JSON.parse(localStorage.getItem(NAV_TREE_KEY) || '[]'); } catch (e) { return []; }
+}
+function navSaveTree() {
+  var open = $$('.sb-tree.open').map(function (t) { return t.getAttribute('data-tree'); });
+  try { localStorage.setItem(NAV_TREE_KEY, JSON.stringify(open)); } catch (e) { /* 无痕模式静默降级 */ }
+}
+function navLeaf(href, view, label, title, cnt) {
+  return '<a href="' + href + '" data-v="' + view + '" data-h="' + href + '"' +
+    (title ? ' title="' + esc(title) + '"' : '') + '>' +
+    '<span class="lb">' + esc(label) + '</span>' +
+    (cnt ? '<span class="cnt">' + esc(cnt) + '</span>' : '') + '</a>';
+}
+function fillTree(key, rows) {
+  var kids = $('#nav .sb-tree[data-tree="' + key + '"] .sb-kids');
+  if (kids) kids.innerHTML = rows.join('');
+}
+/* 三级叶子由数据生成，保证菜单与库内条目同步。
+ * 链路/玩家计数要扫 3500+ 行档案（nodeStats），建侧栏时不付这个代价，
+ * 故只赛道叶子带 DB.topics[].count，另两类靠 title 提示。 */
+function buildNavTree() {
+  DB.chain.layers.forEach(function (ly) {
+    fillTree('chain/' + ly.key, ly.nodes.map(function (nd) {
+      return navLeaf(chainNodeHref(ly.key, nd.id), 'chain', nd.name, nd.def, '');
+    }));
+  });
+  fillTree('players/detail', DB.players.map(function (p) {
+    return navLeaf(playerHref(p.name), 'players', p.name, p.positioning || p.note || '', '');
+  }));
+  fillTree('sectors/matrix', DB.score.sectors.map(function (s) {
+    var tp = topicByKey(s.id);
+    return navLeaf(sectorHref(s.id), 'sectors', s.name, s.note || '', tp ? tp.count : '');
+  }));
+}
+function setTreeOpen(tree, open) {
+  tree.classList.toggle('open', open);
+  var x = $('.sb-x', tree);
+  if (x) x.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+/* 折叠态的唯一权威写入点。
+ * 存档存在即以存档为准（旧实现只 add 不 remove，导致 markup 的默认收起
+ * 永远压过用户「全部展开」的偏好）；首访不写 DOM，保留 markup 默认。
+ * ≤980px 时侧栏被媒体查询改成横向条，组头与 .sb-x 都 display:none，
+ * 收起的组没有任何控件可以打开——等于把页面藏死，故窄屏一律展开，且不落盘。 */
+function navApplyClosed() {
+  var narrow = window.matchMedia && window.matchMedia(NAV_NARROW).matches;
   var saved = navClosedSet();
+  var hasSaved = navHasSaved();
   $$('.sb-sec').forEach(function (sec) {
-    if (saved.indexOf(sec.getAttribute('data-sec')) >= 0) sec.classList.add('closed');
+    if (narrow) { sec.classList.remove('closed'); return; }
+    if (hasSaved) sec.classList.toggle('closed', saved.indexOf(sec.getAttribute('data-sec')) >= 0);
+  });
+}
+function bindNav() {
+  navApplyClosed();
+  if (window.matchMedia) {
+    var mq = window.matchMedia(NAV_NARROW);
+    if (mq.addEventListener) mq.addEventListener('change', navApplyClosed);
+    else if (mq.addListener) mq.addListener(navApplyClosed);
+  }
+  var savedTree = navTreeSet();
+  $$('.sb-tree').forEach(function (t) {
+    setTreeOpen(t, savedTree.indexOf(t.getAttribute('data-tree')) >= 0);
   });
   $('#nav').addEventListener('click', function (e) {
     var g = e.target.closest('.sb-group');
-    if (g) { g.closest('.sb-sec').classList.toggle('closed'); navSaveClosed(); }
+    if (g) { g.closest('.sb-sec').classList.toggle('closed'); navSaveClosed(); return; }
+    var x = e.target.closest('.sb-x');
+    if (x) {
+      var t = x.closest('.sb-tree');
+      setTreeOpen(t, !t.classList.contains('open'));
+      navSaveTree();
+    }
   });
   $('#navExpandAll').addEventListener('click', function () {
     $$('.sb-sec').forEach(function (s) { s.classList.remove('closed'); });
-    navSaveClosed();
+    $$('.sb-tree').forEach(function (t) { setTreeOpen(t, true); });
+    navSaveClosed(); navSaveTree();
+    navApplyClosed();   /* 窄屏无组头可点，收起必须立即还原，偏好只留给宽屏 */
   });
   $('#navCollapseAll').addEventListener('click', function () {
     $$('.sb-sec').forEach(function (s) { s.classList.add('closed'); });
-    navSaveClosed();
+    $$('.sb-tree').forEach(function (t) { setTreeOpen(t, false); });
+    navSaveClosed(); navSaveTree();
+    navApplyClosed();
   });
 }
 
@@ -3499,6 +3717,7 @@ function init() {
   setCnt('navTopicCnt', DB.meta.counts.topics + ' 类');
   setCnt('navClueCnt', DB.meta.counts.clues + ' 条');
   setCnt('navEventCnt', DB.meta.counts.events + ' 条');
+  setCnt('navAnalysisCnt', DB.clues.reduce(function (s, c) { return s + (c.nAnalysis || 0); }, 0));
   setCnt('navArchiveCnt', DB.meta.counts.archive);
   setCnt('navDailyCnt', DB.meta.counts.archiveDays + ' 天');
   setCnt('navVerifyCnt', DB.meta.counts.verify + ' 条');
@@ -3525,13 +3744,15 @@ function init() {
   setCnt('navGlossCnt', DB.glossary.items.length);
   setCnt('navKbCnt', kbTotal());
   setCnt('navLibCnt', DB.library.count + ' 篇');
-  setCnt('navOrgCnt', orgsTotal() + ' 家');
+  /* 该链接直达「公司」一组，徽标取本组数（6 类 · 111 家 的全名录合计写在名录页头） */
+  setCnt('navOrgCnt', (DB.orgs.groups.filter(function (g) { return g.name === '公司'; })[0] || { items: [] }).items.length + ' 家');
   setCnt('navUnkCnt', unkTotal() + ' 条');
   setCnt('navGuideCnt', DB.guide.paths.length + ' 路线');
   setCnt('navTourCnt', DB.guide.tour.length + ' 站');
 
   bindSearch();
   bindTourBar();
+  buildNavTree();
   bindNav();
 
   /* 术语弹框、引用角标与复制按钮的全局交互 */
@@ -3555,9 +3776,16 @@ function init() {
     var canon = navCanonical(v);
     $$('#nav a').forEach(function (a) { a.classList.toggle('on', a.getAttribute('data-h') === canon); });
     var active = $('#nav a.on');
+    $$('.sb-tree').forEach(function (t) { t.classList.remove('on-branch'); });
     if (active) {
       var sec = active.closest('.sb-sec');
       if (sec && sec.classList.contains('closed')) { sec.classList.remove('closed'); navSaveClosed(); }
+      /* 命中三级叶子时自动展开所属分支，仅本次生效，不覆盖用户偏好 */
+      var tree = active.closest('.sb-tree');
+      if (tree) {
+        tree.classList.add('on-branch');
+        if (!tree.classList.contains('open')) setTreeOpen(tree, true);
+      }
     }
     syncRoute(v);
     renderTourBar();
