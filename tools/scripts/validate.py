@@ -19,7 +19,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-SKIP_PREFIXES = ("docs", "tools", "aihot-mirror", "local", ".")
+# 研判/ 是 .gitignore 的私人工作台（观点/行动项），不受公共线索格式契约约束
+SKIP_PREFIXES = ("docs", "tools", "aihot-mirror", "local", ".", "研判")
 CHRONICLES = ["_2026大事记.md", "_2025大事记.md"]
 
 MONTH_HEADING = re.compile(r"^### (\d{4}-\d{2})\b", re.M)

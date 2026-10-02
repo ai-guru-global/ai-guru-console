@@ -42,7 +42,7 @@ OUT_LOCAL = CONSOLE_DIR / "data.local.js"
 OUT_PLAYERS = CONSOLE_DIR / "players.js"
 
 WIKI = re.compile(r"\[\[([^\[\]]+)\]\]")
-STATUS_MARKS = ["✅", "⚠️", "❓", "🔍"]  # 列表而非字符串：⚠️ 含变体选择符，字符串迭代会拆成两个码位
+STATUS_MARKS = ["✅", "⚠️", "❓", "🔍", "✗", "E"]  # 列表而非字符串：⚠️ 含变体选择符，字符串迭代会拆成两个码位；六态须与 2026待核实清单.md 的「标记图例」同集，否则 verifyByStatus 相加 ≠ verify 总数
 WIKILINK_SCHEME = "ai-news-wikilink://"
 
 # 事件自动打标：按优先级首个命中为主类型，全部命中保留为数组；建设目标为筛选与统计，规则可长期迭代
@@ -164,8 +164,13 @@ def parse_events() -> list[dict]:
         if not path.exists():
             continue
         year = fname[1:5]
+        in_fence = False
         for line in path.read_text(encoding="utf-8").splitlines():
-            if not line.startswith("- **"):
+            # 「登记格式」模板示例位于 ```markdown 代码块内，不是事件行
+            if line.lstrip().startswith("```"):
+                in_fence = not in_fence
+                continue
+            if in_fence or not line.startswith("- **"):
                 continue
             m = ENTRY.match(line)
             if not m:
@@ -205,6 +210,11 @@ def parse_verify() -> list[dict]:
                 mark = "❓"
             elif "🔍" in head:
                 mark = "🔍"
+            # ✗／E 是本文件「标记图例（六态）」声明的第 5、6 态；不识别则六态被静默折成四态
+            elif "✗" in head:
+                mark = "✗"
+            elif re.search(r"—\s*E\s", head):
+                mark = "E"
             else:
                 mark = ""
             parts = head.rsplit("—", 1)
