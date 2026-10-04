@@ -18,7 +18,10 @@ ElevenLabs 成立于 2022 年，由前 Palantir 工程师 Piotr Dąbkowski 与�
 
 在语音合成赛道，ElevenLabs 以「音质逼真 + 开发者友好 API」快速占领市场，客户涵盖出版、游戏、影视与客服行业，是评估语音生成技术演进的核心观察对象。
 
-## 时间线
+### 2026-09
+
+- **2026-09-30** · [ElevenLabs 完成 3 亿美元员工股份回购，估值升至 220 亿美元](https://aihot.news/items/fkaymng16iu4hg5x53jpq7o8p)
+  同期发布 Eleven v4 与低延迟 Turbo 版（语音生成最富表现力档位，[镜像](https://aihot.virxact.com/items/iifms67rvtfuhqqwj1hfqkysw)）；上一次估值为 2025 年的 30 亿，17 个月内涨约 7 倍，语音 AI 估值锚由 ElevenLabs 与 Suno 两端共同托起。
 
 ### 2026-08
 

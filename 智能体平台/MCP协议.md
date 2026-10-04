@@ -18,7 +18,14 @@ Model Context Protocol（MCP）是 Anthropic 于 2024 年 11 月开源的开放�
 
 2025 年 OpenAI、Google、Microsoft 相继宣布支持，MCP 事实上赢得了 Agent 工具层的标准之争，社区服务器数量以千计。2026 年 7 月的规范修订将协议重构为 stateless、可缓存的 Web 式架构，目标是支撑全球可扩展的企业级 Agent 工具调用；同年 8 月 Google 联合亚马逊、微软推出 Agent Plugins 规范，工具层标准进入多方竞争阶段。
 
-## 时间线
+### 2026-09
+
+- **2026-09-30** · [Google DeepMind 发布 SynthID Bio，为 AI 生成的蛋白质嵌入可验证水印](https://aihot.news/items/deivg466iwv9ypddacud3hd7d)
+  DeepMind：SynthID Bio 作为面向 AI 生成生物设计的新型水印方法家族，首次实现将不可感知的签名直接嵌入蛋白质序列、且不影响其生物功能——与 SynthID 文本 / 图像 / 音频 / 视频系列衔接。
+- **2026-09-24** · [Google Cloud API Gateway 推出 MCP 支持，可将现有 REST API 直接暴露为智能体工具](https://aihot.news/items/cmufsle61073uroxzkvtgtnyg)
+  Google Developers Blog：API Gateway 直接支持 MCP 协议，企业现有 REST API 不改后端即可作为智能体工具——MCP 从「客户端 / 客户端框架」扩展到「企业 API 网关层」，是 MCP 协议从开发者工具向企业基础设施推进的关键一步。
+- **2026-09-17** · [Google 与 Speakeasy 开源 OpenAPI SDK 生成套件](https://aihot.news/items/cmu5whj4t04n6roiqgera0t3j)
+  Google Developers Blog：与 Speakeasy 合作开源 OpenAPI SDK 生成套件，把 OpenAPI 规范直接转译为 MCP 兼容的智能体工具——MCP 工具侧从「手写 SDK」过渡到「OpenAPI 自动生成」。
 
 ### 2026-08
 

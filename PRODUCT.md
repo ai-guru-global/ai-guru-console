@@ -17,7 +17,7 @@ web
 
 ## Product Purpose
 
-AI News Database（AI 新闻数据库）是一个持续沉淀 AI 高质量新闻与重点事件的中文 Markdown 内容库：按 17 个 AI 全景主题组织，一条线索 = 一个持续追加的时间线文档，另有按月归档的年度大事记。存在意义：中文世界缺少「宁可漏收、不可错收」的高信噪比 AI 新闻沉淀。成功 = 开发者把它当作可长期依赖的 AI 行业信息底座，并持续有人按规范贡献。
+AI News Database（AI 新闻数据库）是一个持续沉淀 AI 高质量新闻与重点事件的中文 Markdown 内容库：按 18 个 AI 全景主题组织，一条线索 = 一个持续追加的时间线文档，另有按月归档的年度大事记。存在意义：中文世界缺少「宁可漏收、不可错收」的高信噪比 AI 新闻沉淀。成功 = 开发者把它当作可长期依赖的 AI 行业信息底座，并持续有人按规范贡献。
 
 ## Positioning
 
@@ -43,11 +43,15 @@ AI News Database（AI 新闻数据库）是一个持续沉淀 AI 高质量新闻
 
 ## Brand Commitments
 
-- 名称口径以 README 为准：「AI News Database（AI 新闻数据库）」，全仓库统一此名（历史代号 News4Coder 已于 2026-08 全量更名）。
+- 名称采用**双口径**，两个名字各自成立、不是彼此替代（2026-10-01 起）：
+  - **研究台 UI** = 「AI GURU 工作台」（副题 `AI Industry Research Workbench`）。消费面：`console/index.html` 的 `<title>`/`<h1>`/面包屑前缀与页脚、`console/app.js` 的 `document.title` 与首页 lead 句。
+  - **内容库与数据资产** = 「AI News Database（AI 新闻数据库）」，以 README 为准。消费面：`README.md:1` 标题、`README.md:73` 的 CC BY-SA 署名串、`console/data.js` 生成头注释、页面内「语料/档案来自 AI News Database」的出处句（`app.js`、`index.html` 页脚），以及 `docs/` 与内容层的既有留痕。
+  - `tools/`（Go CLI/Web/扩展）保留其自身产品名，不随 UI 改名。
+- 历史代号 News4Coder 已于 2026-08 全量更名；UI 名此前长期钉为 AI News Database，2026-10-01 按「左上角 console 名称改成 AI GURU 工作台」的明确要求改为上述双口径，署名与出处口径未变。
 
 ## Evidence on Hand
 
-- README.md（产品口径与目录结构）、_topics.md（13 主题清单）、_2026大事记.md（2026 按月大事记，真实性约定原文）、docs/线索模板.md、CONTRIBUTING.md；
+- README.md（产品口径与目录结构）、_topics.md（18 主题清单）、_2026大事记.md（2026 按月大事记，真实性约定原文）、docs/线索模板.md、CONTRIBUTING.md；
 - 真实内容样本：各主题线索文件（如 基础模型/Claude.md、开源模型与生态/DeepSeek.md）；
 - **不存在**：logo/品牌视觉资产、用户证言、流量/Star 数据、媒体报道——页面严禁虚构上述内容。
 

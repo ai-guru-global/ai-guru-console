@@ -18,8 +18,6 @@ MAI 是微软 AI 部门（Microsoft AI，2024 年 3 月成立）的自研模型�
 
 该线索追踪 MAI 家族的模型发布、在 Copilot/Foundry/Azure 生态中的替换进度，以及微软「低成本前沿 + 专用模型」路线与 OpenAI/Anthropic 的竞合变化。
 
-## 时间线
-
 ### 2026-08
 
 - **2026-08-12** · [微软首发自研推理模型MAI-Thinking-1](https://aihot.virxact.com/items/cmsqbnb8j01nrroosmwa5r6mj)

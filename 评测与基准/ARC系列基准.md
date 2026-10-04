@@ -18,8 +18,6 @@ ARC 系列由前 Google 研究员、《Python 深度学习》作者 François Ch
 
 该线索追踪各代 ARC 基准的演进、模型刷线历史，以及随之而来的「基准饱和」争论。
 
-## 时间线
-
 ### 2026-09
 
 - **2026-09-04** · [OpenAI GPT-6 Astra 在 ARC-AGI-3 上取得 SOTA 并超越人类动作效率基线](https://aihot.virxact.com/items/cmtm7yl5s01d5robnsn25onbz)

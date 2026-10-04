@@ -4,7 +4,7 @@
 别名: [反向收购, acqui-hire, AI 人才战争]
 状态: 活跃
 创建: 2026-07-30
-更新: 2026-09-04
+更新: 2026-10-03
 关键角色: [Microsoft, Google, Amazon, Meta, 智谱, MiniMax, Cognition, Google(Wiz), NVIDIA, SpaceX]
 ---
 
@@ -18,10 +18,16 @@
 
 该线索追踪 AI 行业的人才流动、准并购交易与监管反应。
 
-## 时间线
-
 ### 2026-09
 
+- **2026-09-28** · [World Labs 宣布加入 AMD，李飞飞将出任 AMD 执行副总裁兼首席科学家](https://aihot.news/items/ukbm1pni8gdc5ciwwuywzkhwb)
+  李飞飞从斯坦福休假加入 AMD 主理物理 AI 与世界模型方向，World Labs 由独立公司转为 AMD 旗下；同步落地 AMD 端到端 3D / 4D 空间智能管线。AMD 一侧一手印证为同一日新闻发布（amd.com），故为「双方官方 + 主流媒体」双源级别。→ [[世界模型/WorldLabs]]
+- **2026-09-12** · [英伟达洽谈以基石投资者身份参与 Anthropic IPO，投资至多 100 亿美元](https://aihot.virxact.com/items/cmtxmd06905q5roi3ds616hwo)
+  IT之家报道：英伟达与 Anthropic 进入 IPO 基石谈判，金额至多 100 亿美元；与 9-08 Mistral D 轮形成「NVIDIA 同时押注欧洲主权 + 美国前沿闭源」的双锚策略。✅ 2026-10-03 核验升级：Reuters 2026-09-11 首发 + Bloomberg 同日独立成稿，双主流索引级印证（正文超时），见待核实清单九·新加 5；匿名消息源层级，「洽谈中」可核、「最终投资额」不可核。
+- **2026-09-08** · [Mistral 完成 30 亿欧元 D 轮融资，估值超 210 亿欧元](https://aihot.news/items/cmts9dr2m029hrobq86wrny37)
+  欧洲 AI 估值首次进入 200 亿欧元档位，资本侧标志欧洲主权模型路线已从「政策叙事」过渡到「机构估值」；与 9-12「英伟达洽谈以基石投资者身份参与 Anthropic IPO，投资至多 100 亿美元」（[IT之家](https://aihot.virxact.com/items/cmtxmd06905q5roi3ds616hwo)）并置，可看出 NVIDIA 同时把赌注压在欧洲主权模型与美国前沿闭源两条路径上。
+- **2026-09-07** · [Cognition 完成超 20 亿美元 E 轮融资，估值达 480 亿美元](https://aihot.news/items/cmtym40hx0006roskf9ja0kdg)
+  9 个月之内由 20 亿（2025-12）涨至 480 亿（24 倍），AI 编码 Agent 赛道的资本锚锚定在 ARR 估值比 ≈ 60x（按 9-25 ARR $10 亿）；与 9-25「Cognition ARR 突破 10 亿」相隔约 18 天，估值锚跑赢 ARR 锚。→ [[Agentic编码/Devin]]
 - **2026-09-03** · [NVIDIA 宣布以 129.303 亿美元收购 Hugging Face](https://aihot.virxact.com/items/cmtli5yd109u4row52i1xg9j4)
   英伟达官方博客官宣收购开源模型社区 Hugging Face（约 129.3 亿美元），黄仁勋承诺维持开放平台，纳德拉与 Pichai 相继表态支持开源生态，IT之家 9-4 跟进——开源模型生态迄今最大并购。
 

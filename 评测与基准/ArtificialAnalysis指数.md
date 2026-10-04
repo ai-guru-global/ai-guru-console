@@ -18,10 +18,31 @@ Artificial Analysis（AA）是独立第三方模型评测机构，以「智能�
 
 该线索追踪智能指数方法论变化、榜首更迭与相关争议。
 
-## 时间线
+### 2026-10
+
+- **2026-10-02** · [Artificial Analysis：Claude Sonnet 5.5、GPT-6.1 Sol 与 Gemini 4 Argon 登顶 Coding Agent Index 榜单但成本差异大](https://aihot.news/items/jhshh53c18f71tkzk44izbs25)
+  AA：Sonnet 5.5、GPT-6.1 Sol 与 Gemini 4 Argon 登顶 Coding Agent Index 榜单，三家并列但单任务成本差距显著——编码 Agent Index 的「榜首成本带宽」首次被并列标定。→ [[基础模型/Gemini]] [[基础模型/Claude]] [[基础模型/GPT系列]]
+- **2026-10-02** · [Gemini 4 Argon 智能指数追平 GPT-6 Astra，每任务成本仅为其 60%](https://x.com/demishassabis/status/2105803651864285301)
+  AA X：Google 新推出的 Gemini 4 Argon 在 Artificial Analysis Intelligence Index 上追平 GPT-6 Astra，且在折扣价格下每任务成本仅为后者的 60%——Demis Hassabis 转发，定调 9 月末到 10 月初的「智能 + 价格」双坐标重新排序。→ [[基础模型/Gemini]]
+- **2026-10-01** · [Artificial Analysis 评测：Qwen-Image-2.1 登顶两个 AA-Image 榜单的开源权重模型](https://aihot.news/items/kaz49j9sbrf1rcugch9d2fdjm)
+  AA：Qwen-Image-2.1 登顶两个 AA-Image 榜单的开源权重模型——AA 首次在图像生成赛道给出「开源权重榜首」的明确席位。→ [[开源模型与生态/Qwen]]
 
 ### 2026-09
 
+- **2026-09-30** · [Artificial Analysis 评测 Gemini 4 Argon：Google 重回智能前三梯队](https://aihot.virxact.com/items/thdata2aa7ex9kgzv72mk4kn3)
+  AA 完整评测：Gemini 4 Argon 智能指数追平 GPT-6 Astra，折扣价下每任务成本仅 Astra 的 60%——Google 凭 Argon 重新进入智能前三梯队，是 2026 年首次在前沿榜首两席上同列 Astra 与 Gemini 4。→ [[基础模型/Gemini]]
+- **2026-09-29** · [GPT-6.1 Sol 发布 7 天后接替 GPT-6 Sol，智能指数距 GPT-6 Astra 仅 1 分](https://aihot.virxact.com/items/i6rwpn2rwk4atkww9xa23vr6y)
+  AA 完整评测：GPT-6.1 Sol 发布 7 天后接替 GPT-6 Sol、智能指数距 GPT-6 Astra 仅 1 分，API 价格约 Astra 五分之一——DevDay 2026 发布 7 天后即在 AA 标尺上完成档位重排。
+- **2026-09-28** · [Claude Sonnet 5.5 达到 Artificial Analysis 智能指数第 2 名](https://aihot.virxact.com/items/x9olzxvbbm1780q0x9xesjtaq)
+  AA：Sonnet 5.5 上线 7 天内智能指数升至第 2 名——Sonnet 线首次进入 AA 智能指数前三。→ [[基础模型/Claude]]
+- **2026-09-24** · [Artificial Analysis：Claude Opus 5.5 登顶 Coding Agent Index，但单任务成本升至 $13.04](https://aihot.news/items/cmuevlgvm04y3royqizmoqx3s)
+  AA：Opus 5.5 登顶 Coding Agent Index，但单任务成本升至 $13.04——能力收敛但单价未降，与 9-22 Opus 5.5「成本 -40%」的官方口径需在 Agent Index 单任务维度重新校准。
+- **2026-09-22** · [Artificial Analysis 评测 GPT-6 Sol 和 Luna：价格减半但各项表现有升有降](https://aihot.virxact.com/items/cmud2ya2c03wnrov6lnmiq2dv)
+  AA 完整评测：GPT-6 Sol 和 Luna 在能力上较 GPT-6 Astra 有升有降，但 API 价格较 GPT-5.6 降 50%——「能力让步 + 价格让步」的双坐标决定档位梯度。
+- **2026-09-22** · [Artificial Analysis 评测 Step 5 Preview：Intelligence Index 得 44 分，成本约为同档主流 80%](https://aihot.news/items/cmuc0pmnx04g0rotscsnqd50c)
+  AA：阶跃星辰 Step 5 Preview 以 Intelligence Index 44 分上榜，成本约为同档主流模型的 80%——中国「二线梯队」首次以「成本低于同档 20%」进入 AA 视角。
+- **2026-09-22** · [Artificial Analysis 评测 Grok 4.7：智能指数 46 分进入前四，编码智能体升至第 4](https://aihot.virxact.com/items/cmubni6yr03ihro4v6pea4amm)
+  AA：Grok 4.7 智能指数 46 分进入前四，编码智能体升至第 4——xAI 主线在前沿榜单中首次进入 Top 4。→ [[基础模型/GPT系列]]
 - **2026-09-03** · [Artificial Analysis 评测 GPT-6 Astra：编码智能体追平 Fable 5 但价格涨至 2.5 倍](https://aihot.virxact.com/items/cmtly53c50r9srow5ux7p8arw)
   AA 官方 X 实测：GPT-6 Astra 编码智能体能力追平 Claude Fable 5，单位价格约为后者 2.5 倍——能力收敛后价格差成为头条。→ [[基础模型/GPT系列]]
 - **2026-09-03** · [Meta Muse Spark 1.3 在 Artificial Analysis 编码智能体指数中与 Claude 组合对比评测结果公布](https://aihot.virxact.com/items/cmtktzp3605o8roals1ci2tza)

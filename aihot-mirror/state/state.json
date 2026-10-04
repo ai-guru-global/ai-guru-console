@@ -1,11 +1,9 @@
 {
-  "cursor": "v1s.eyJrIjoic2VsZWN0ZWQtc3luYyIsInYiOjEsInciOiIyMzQ4MCIsImYiOiJtaW5pbWFsIn0",
-  "asOf": "2026-08-05T05:56:17.827Z",
-  "count": 3512,
+  "cursor": "ax1.eyJrIjoic3luYyIsImUiOiJzaWhVRzBPUyIsInciOjQ3NDMsImYiOiJtaW5pbWFsIn0",
+  "asOf": "2026-10-02T03:42:01.065Z",
+  "count": 4243,
   "fields": "minimal",
-  "fetchedAt": "2026-09-04T05:12:03+00:00",
-  "pages": 7,
-  "lastChangesAt": "2026-09-04T05:07:09+00:00",
-  "lastChangesUpsert": 112,
-  "lastChangesRemove": 2532
+  "fetchedAt": "2026-10-02T03:52:37+00:00",
+  "pages": 9,
+  "snapshot_source": "aihot.virxact.com/api/v1/selected/snapshot"
 }

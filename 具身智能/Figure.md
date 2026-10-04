@@ -18,8 +18,6 @@ Figure AI 成立于 2022 年，创始人 Brett Adcock（此前创办 Archer Avia
 
 该线索追踪 Figure 的产品迭代、模型自研与商业化进展。
 
-## 时间线
-
 ### 2026-06
 
 - **2026-06-19** · [Figure 机器人数量首次超过人类员工](https://aihot.virxact.com/items/cmqlgwh3f006nsljg3exh1nge)

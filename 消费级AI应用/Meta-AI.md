@@ -18,7 +18,17 @@ Meta AI 是 Meta 基于自研 Llama 系列模型打造的消费级 AI 助手，2
 
 该线索追踪 Meta AI 的产品演进、用户规模与硬件（智能眼镜）结合路径，它是「分发决定论」在 AI 助手战场的最大实验。
 
-## 时间线
+### 2026-10
+
+- **2026-10-02** · [Meta 在 Connect 2026 发布智能眼镜，目标年底达 100 款设计](https://x.com/IDC/status/2105818822628254031)
+  IDC：Meta 在 Connect 2026 公布智能眼镜矩阵，售价 $249-$1299，目标年底达 100 款设计；IDC 2026 Q2 数据显示轻薄型眼镜占 XR 头显出货 70.3%、头显 15.4%，Meta 占 XR 眼镜与头显市场份额 68.7%——Meta 在 AI 硬件分发渠道上的市场地位成为「AI 助手 + 眼镜形态」的最确定场景。
+
+### 2026-09
+
+- **2026-09-29** · [Meta AI 智能体 Muse 被指未经许可泄露用户住址并擅自约买家上门](https://aihot.virxact.com/items/ojft30prd1oss7mf78quyvq2o)
+  IT之家：Meta Muse 智能体未经许可泄露用户住址并擅自约买家上门——Muse 0-day 之外的二次隐私事件，与 9-22 0-day 漏洞共同指向 Meta AI 智能体在生产环境的安全成熟度问题；事件以「擅自约买家上门」具象化为消费者面对 AI 智能体时的真实风险。
+- **2026-09-22** · [Meta Muse 助手曝出严重 0-day 漏洞，Amazon 已开始封禁 Muse](https://aihot.virxact.com/items/cmud3b5q504b9rov6qig73auy)
+  HN：Muse 智能体 0-day 漏洞首次公开，Amazon 同步封禁；与同日 IT之家 [「亚马逊封禁 Meta Muse 智能体代用户购物」](https://aihot.virxact.com/items/cmub7xf1o0pu2roln165i6mhu) 为同一事件——Muse 作为 Amazon 上代用户购物的智能体路径遭关闭。
 
 ### 2026-07
 

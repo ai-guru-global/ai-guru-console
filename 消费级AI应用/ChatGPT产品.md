@@ -18,7 +18,12 @@ ChatGPT 于 2022 年 11 月 30 日发布，两个月破亿月活，创下当时�
 
 该线索关注 ChatGPT 作为消费级产品的功能演进、用户增长与生态位变化——它是「AI 助手」这一新品类的事实标准。
 
-## 时间线
+### 2026-09
+
+- **2026-09-29** · [OpenAI 宣布 ChatGPT 周活跃用户超 12 亿，ChatGPT Work 和 Codex 周用户超 3500 万](https://aihot.virxact.com/items/mhxg8rc7sqcsb29as21wy3his)
+  IT之家：ChatGPT WAU 突破 12 亿、ChatGPT Work 与 Codex 周活超 3500 万——OpenAI DevDay 2026 的分发成果在 WAU 端的首个可核口径。
+- **2026-09-29** · [OpenAI 发布常驻智能体 dots，由 GPT-6 Astra 驱动](https://aihot.news/items/r9nae38v4x5x29jrec46olsl4)
+  DevDay 2026 一揽子发布：常驻智能体 dots 由 GPT-6 Astra 驱动，可跨会话保留上下文；Agents API 公测（[镜像](https://aihot.virxact.com/items/cmtvywm6902omrojit3fo7bjv)）、全双工语音模型 GPT-Live-1（[镜像](https://aihot.virxact.com/items/cmtvsgyqs05vkrofbgg06yzsa)）、ChatGPT Work 的 Data agent 同日发布。ChatGPT 从「会话助手」过渡到「常驻智能体」的产品级里程碑。
 
 ### 2026-08
 

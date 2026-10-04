@@ -18,10 +18,25 @@ Claude Agent SDK 前身是 2025 年 6 月发布的 Claude Code SDK，同年 9 �
 
 该线索追踪 Anthropic 的 Agent 平台化战略及其与 LangChain、OpenAI Agents SDK 等框架的竞争。2026 年 Anthropic 将 SDK 进一步平台化为 Claude 托管智能体（Managed Agents），并通过收购 Vercept、Stainless 补强 computer use 与 SDK/MCP 工具链。
 
-## 时间线
+### 2026-10
+
+- **2026-10-01** · [Claude Code 推出 mods，可用 TypeScript 函数改写提示词、替换内置功能](https://aihot.news/items/qzfc4nrsqe4rk8yxlk16ox6in)
+  Anthropic：Claude Code 的可编程面正式开放——用户可用 TypeScript 自定义 Token Weather 等插件；与 9-29 dots 常驻智能体形成「Claude Code 升级 mods + ChatGPT Work 升级 dots」的双侧可编程智能体平台格局。
 
 ### 2026-09
 
+- **2026-09-29** · [OpenAI 发布常驻智能体 dots，由 GPT-6 Astra 驱动](https://aihot.news/items/r9nae38v4x5x29jrec46olsl4)
+  DevDay 2026 一揽子发布：常驻智能体 dots 由 GPT-6 Astra 驱动，可跨会话保留上下文；Agents API 公测、全双工语音模型 GPT-Live-1、ChatGPT Work 的 Data agent 同日发布——常驻智能体正式进入「前沿厂商产品标配」阶段。
+- **2026-09-29** · [Anthropic 评测 GLM-5.3：能自主构建端到端网络漏洞利用且防护易被绕过](https://aihot.news/items/eqf3o3tlak08851t52unuji2o)
+  Anthropic Research：GLM-5.3 能自主构建端到端网络漏洞利用，且现有防护易被绕过——继 9-10 红队评测之后，前沿实验室首次以官方报告点名评估一家中国开源前沿模型的网络安全能力。
+- **2026-09-24** · [Claude Code 云会话正式上线，Pro 和 Max 订阅者可领一次性额度](https://aihot.news/items/cmueurvwl03tvroyqdzcth166)
+  Claude Devs 官宣：编码会话可托管在云端运行（不再强制本地），Pro 与 Max 订阅者获一次性额度，是 Claude Code 从「本地终端 IDE」向「云端会话」过渡的产品级里程碑。
+- **2026-09-22** · [Claude Code v2.1.280 发布，新增 Claude Opus 5.5 为默认 Opus 模型](https://aihot.news/items/cmucxceh40salroedruwhn0ee)
+  Claude Code：v2.1.280 默认 Opus 模型由 Opus 5 升 Opus 5.5，与 9-22 Opus 5.5 官方发布同日。
+- **2026-09-17** · [Claude Code Projects 改版：从文件夹到对话式协调](https://aihot.news/items/cmu5tujnp0jvoroqoq64oqnjr)
+  Claude Blog：Projects 从「文件夹式代码集合」升级为「对话式协调」，多 agent 协同编排从「主从式」（8-07 会话间消息）扩展到「项目级协调」。
+- **2026-09-16** · [Anthropic 将 Claude Cowork 与聊天合并为统一 Claude，并推出 Docs 和 Slides](https://aihot.news/items/cmu4c8qar0hzero4w3b6n1jyf)
+  Claude Blog：Claude Cowork 与 Claude 聊天合并为统一入口，同日推出 Docs 与 Slides —— Claude 从「聊天 + Cowork 双入口」走向「统一 Claude + Docs / Slides 套件」。
 - **2026-09-02** · [Claude 在 Cowork 和 Claude Code 中支持后台操作电脑](https://aihot.virxact.com/items/cmtkh71ky017vrolly7trswyx)
   官方 X 宣布 Cowork 与 Claude Code 支持后台操作电脑，computer use 从「前台接管」走向「后台异步执行」，长时间运行的多任务智能体形态进一步成熟。
 

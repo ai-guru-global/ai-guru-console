@@ -18,7 +18,12 @@ ChatGPT 搜索（前身为 2024 年 7 月发布的 SearchGPT 原型）是 OpenAI
 
 它的意义超出功能本身——当全球周活数亿的 ChatGPT 默认具备搜索能力，用户的信息入口习惯将被重塑。该线索追踪 OpenAI 在搜索/信息获取上的产品演进及其对搜索市场格局的影响。
 
-## 时间线
+### 2026-09
+
+- **2026-09-30** · [OpenAI 披露并处置一起有组织的模型蒸馏攻击行动](https://aihot.news/items/gq8k1ru5wb2hx8ihtno5rrlrf)
+  OpenAI 官方：披露并处置一起有组织的模型蒸馏攻击，与 9-09 美方指控 6 家中国公司 + 9-10 Anthropic 蒸馏攻击 + 10-01 OpenAI 拦截蒸馏窃取构成「蒸馏」四连发的最后一份官方报告——下游搜索产品同样受蒸馏威胁。
+- **2026-09-10** · [OpenAI 在 ChatGPT Work 中推出 Data agent](https://aihot.news/items/cmtvopug40gnbronbmfh6c077)
+  DevDay 2026 一揽子发布：ChatGPT Work 中的 Data agent 让企业用户以自然语言触发结构化数据分析任务——搜索从「公共互联网搜索」过渡到「企业结构化数据搜索」。
 
 ### 2025-04
 

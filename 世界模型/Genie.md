@@ -18,8 +18,6 @@ Genie 是 Google DeepMind 的「生成式交互环境（Generative Interactive E
 
 该线索追踪 Genie 系列的迭代与世界模型赛道（含 World Labs、NVIDIA Cosmos 等）的路线竞争。
 
-## 时间线
-
 ### 2026-08
 
 - **2026-08-31** · [Runway 发布 Interface World Models 首个模型 Solaris，实时逐帧生成可交互界面](https://aihot.virxact.com/items/cmthhmoi10e71rodmx6wngoz1)

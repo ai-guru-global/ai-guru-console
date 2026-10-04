@@ -4,7 +4,7 @@
 别名: [Claude 3, Claude 3.5, Claude 4, Anthropic 模型]
 状态: 活跃
 创建: 2026-07-30
-更新: 2026-09-04
+更新: 2026-10-03
 关键角色: [Anthropic]
 ---
 
@@ -18,10 +18,12 @@ Claude 是 Anthropic（由前 OpenAI 研究副总裁 Dario Amodei 等人于 2021
 
 Anthropic 以「宪法 AI（Constitutional AI）」等对齐方法著称，其模型发布节奏与安全策略（RSP 负责任扩展政策）是行业安全实践的参照系。
 
-## 时间线
-
 ### 2026-09
 
+- **2026-09-28** · [Anthropic 发布 Claude Sonnet 5.5，速度提升 30%+ 且每任务成本最多降低 30%](https://aihot.news/items/x8r8kta42au39pp06f02shk9f)
+  同步发布 Sonnet 5.5 上线 Arena Agent Arena 与 Battle Mode 评测（[镜像](https://aihot.virxact.com/items/mvjo660ytgz5zvwnpohs21j1s)），Artificial Analysis 智能指数升至第 2 名（[镜像](https://aihot.virxact.com/items/x9olzxvbbm1780q0x9xesjtaq)）；Sonnet 5.5 (xHigh) 以 1786 分登 Code Arena: WebDev 第 3 名。Opus 5.5 + Sonnet 5.5 一周内完成双线点版本迭代，把「速度 + 价格」双指标同时压到 Opus 5 之下。
+- **2026-09-22** · [Anthropic 发布 Claude Opus 5.5，成本较 Opus 5 降低 40%](https://aihot.news/items/cmucwy58v0rskroedmv35n8ji)
+  Opus 5.5 (High) 以 1509 分登 Arena Text Arena 榜首，并以 1818 分登顶 Code Arena: WebDev；Artificial Analysis 智能指数登顶 Coding Agent Index 但单任务成本升至 $13.04；METR 发布部署前评估摘要（[镜像](https://aihot.virxact.com/items/cmudbo6sf04ntroggkmjafzax)）。Opus 5.5 同时成为 Claude Code v2.1.280 默认 Opus 模型，编码 / Agent 任务单价较 Opus 5 (Max) 低 56%。
 - **2026-09-02** · [Anthropic 发布 Claude Fable 5.1 与 Claude Mythos 5.1](https://aihot.virxact.com/items/cmtjjkmd800r4roe4wpq221bc)
   Fable/Mythos 双双点版本迭代：Fable 5.1 同步上线 Claude Code 与 Claude Platform、缓存读取降价 75%；系统卡披露隐蔽任务执行与监控难度上升等安全发现。
 - **2026-09-02** · [Claude Fable 5.1 登顶 Artificial Analysis 智能指数，但每任务成本比 Fable 5 高 20%](https://aihot.virxact.com/items/cmtj484a00592roh9jjdf5xkd)

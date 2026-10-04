@@ -18,10 +18,15 @@ Cursor 是 Anysphere 公司开发的 AI 原生代码编辑器（VS Code 分叉�
 
 该线索追踪 Cursor 的产品演进、融资与 AI IDE 赛道竞争（对 GitHub Copilot、Windsurf、Claude Code 等）。
 
-## 时间线
+### 2026-10
+
+- **2026-10-01** · [Cursor 上线 GLM 5.3 与 GLM 5.3 Flash](https://x.com/cursor_ai/status/2105787358557999585)
+  Cursor 官方账号宣布，GLM 5.3 与 GLM 5.3 Flash 现已在 Cursor 中可用。同时提到，GLM 5.3 Max 是 CursorBench 4.0 上得分最高的开源权重模型；为 SpaceX 收购后 OpenAI 断供背景下的「模型组合去 OpenAI 化」再下一城，与 8-29「依赖 xAI Grok 与自研 Composer」相承。
 
 ### 2026-09
 
+- **2026-09-10** · [Cursor 推出 Projects：协调者智能体管理数千个子智能体处理大型开发任务](https://aihot.virxact.com/items/cmtw4o8qc03iwrolkwc03elil)
+  Cursor Blog：Projects 把单任务智能体升级为「协调者 + 子智能体」两级结构，与 Composer 2.5（06-16 Compile 大会）的递归子 agent 路线在产品侧兑现。
 - **2026-09-02** · [Cursor 推出 Self-Hosted Machines，云智能体可在企业自有机器上执行](https://aihot.virxact.com/items/cmtkffuf503cbrobqkwhimxmp)
   官方博客发布 Self-Hosted Machines：云智能体可调度到企业自有机器运行，补齐数据合规与私有化部署短板，与 Devin Outposts 的私有环境路线正面相撞。
 

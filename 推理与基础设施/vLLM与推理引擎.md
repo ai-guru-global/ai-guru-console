@@ -4,7 +4,7 @@
 别名: [vLLM, SGLang, TensorRT-LLM, 推理优化]
 状态: 活跃
 创建: 2026-07-30
-更新: 2026-09-04
+更新: 2026-10-03
 关键角色: [vLLM 社区, UC Berkeley, NVIDIA, LMSYS, DeepSeek]
 ---
 
@@ -18,10 +18,18 @@ vLLM 起源于 UC Berkeley 的 PagedAttention 论文（2023），以类操作系
 
 该线索追踪推理引擎的技术演进（连续批处理、投机解码、前缀缓存、分布式推理）与生态格局。
 
-## 时间线
-
 ### 2026-09
 
+- **2026-09-30** · [vLLM 分离式推理（Disaggregated Serving）实用指南](https://aihot.virxact.com/items/seoe3daylyyh1pqcwj4cklrpe)
+  vLLM 官方博客：Prefill/Decode 分离式部署的生产实践指南——PD 分离从论文形态进入主流开源引擎的官方文档层。
+- **2026-09-24** · [vLLM 新增基于 Gumbel-max 的无失真文本水印功能](https://aihot.virxact.com/items/cmuftlsmy08bfroxz8mnqow1d)
+  vLLM 官方博客：Gumbel-max 采样实现无失真文本水印——与 Anthropic Claude 文本水印（08-11）、Google DeepMind SynthID Bio（09-30）并列，水印能力首次下沉到开源推理引擎层。
+- **2026-09-23** · [vLLM 发布 vllm-metal v0.28.0：在 Apple Silicon 上支持并发推理服务](https://aihot.virxact.com/items/cmue9uxe20smtroghgwne9l3u)
+  vLLM 官方博客：Apple Silicon 并发推理服务——开源推理引擎把「本地 Mac 当推理服务器」做成官方支持形态，端侧推理与开发机自托管场景扩容。
+- **2026-09-08** · [vLLM x AgentX：面向真实世界智能体推理服务的全栈优化](https://aihot.virxact.com/items/cmtym20dc0005rovuprjuu7xo)
+  vLLM 官方博客：与 AgentX 合作的全栈智能体推理优化——Agent 负载（长上下文、多轮、工具调用）取代单轮对话成为推理引擎的头等优化对象；与 Modal 9-23「万亿 token 规模服务 Kimi K2.6 编码 Agent」同向。
+- **2026-09-07** · [Cohere 详解 North Mini Code 的 megakernel 推理引擎，单 H100 上比 vLLM 快 1.25–1.41 倍](https://aihot.virxact.com/items/gpw1qeypdu4lyt3u0ijp5m2s5)
+  Cohere Labs 官方研究博客：megakernel 架构在单 H100 上较 vLLM 提速 1.25–1.41 倍（厂商自测口径 ⚠️）——自研推理引擎对 vLLM 的正面挑战从创业公司（SGLang 系）蔓延到模型厂商。
 - **2026-09-01** · [Hugging Face 发布 @huggingface/kernels，提供 207 个 WebGPU 内核用于浏览器本地 AI 推理](https://aihot.virxact.com/items/cmtitozyq04j2ro9ydv3oxgsd)
   Hugging Face 官方发布 kernels 库，首批 207 个 WebGPU 内核让大模型推理直接跑进浏览器——推理栈从数据中心向端侧/浏览器场景继续下沉。
 

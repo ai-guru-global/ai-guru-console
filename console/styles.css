@@ -24,7 +24,7 @@
   --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC","Noto Serif SC",serif;
   --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   --mono:ui-monospace,"SF Mono",Menlo,Consolas,"JetBrains Mono","Roboto Mono",monospace;
-  --sb-w:232px; --tb-h:50px;
+  --sb-w:232px; --tb-h:44px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -149,7 +149,8 @@ a:hover{color:var(--gold);text-decoration-color:var(--gold-2)}
 /* 机密章：文件式红框标记 */
 .conf{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--red);
   border:1px solid var(--red);padding:2px 7px;white-space:nowrap;flex:none}
-.tb-search{margin-left:auto;position:relative;width:min(320px,32vw);flex:none}
+/* 顶栏唯一可伸缩成员：981–1190px 带内靠它吸收面包屑宽度，地板 180px 保证输入框仍可用 */
+.tb-search{margin-left:auto;position:relative;width:min(320px,32vw);flex:0 1 auto;min-width:180px}
 .tb-search input{
   width:100%;border:1px solid var(--line-2);background:var(--paper-3);
   padding:6px 42px 6px 28px;font-size:12.5px;outline:none;transition:border-color .15s;
@@ -176,28 +177,28 @@ a:hover{color:var(--gold);text-decoration-color:var(--gold-2)}
 .tb-clock{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);white-space:nowrap;letter-spacing:.05em}
 
 /* ---- 视图容器 ---- */
-.view-wrap{padding:26px 30px 80px;max-width:1420px;width:100%;margin:0 auto}
+.view-wrap{padding:18px 30px 80px;max-width:1420px;width:100%;margin:0 auto}
 .view{display:none}
 .view.on{display:block;animation:viewIn .34s cubic-bezier(.22,1,.36,1) both}
 @keyframes viewIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 
 /* ---- 报告题头 view-head：标题，数据注记行，摘要，来源 ---- */
-.view-head{position:relative;border-bottom:2px solid var(--navy-deep);padding-bottom:15px;margin-bottom:23px}
+.view-head{position:relative;border-bottom:2px solid var(--navy-deep);padding-bottom:10px;margin-bottom:16px}
 /* 双规则线：2px 藏蓝主规则与 1px 金副规则，研报抬头语言 */
 .view-head::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:1px;background:var(--gold-2)}
 .view-head h2{
-  font-family:var(--serif);font-size:28px;font-weight:600;color:var(--navy-deep);
+  font-family:var(--serif);font-size:24px;line-height:1.4;font-weight:600;color:var(--navy-deep);
   letter-spacing:.005em;display:flex;align-items:baseline;gap:13px;flex-wrap:wrap;
 }
 .view-head h2 .en{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:.18em;
   text-transform:uppercase;color:var(--ink-3)}
-.vh-meta{display:flex;flex-wrap:wrap;margin:9px 0 11px;font-family:var(--mono);font-size:10.5px;
+.vh-meta{display:flex;flex-wrap:wrap;margin:6px 0 8px;font-family:var(--mono);font-size:10.5px;
   letter-spacing:.06em;color:var(--ink-3)}
 .vh-meta .m{display:inline-flex;align-items:center}
 .vh-meta .m:first-child{color:var(--navy-deep)}
 .vh-meta .m + .m::before{content:"";display:inline-block;width:1px;height:9px;
   background:var(--line-2);margin:0 14px;flex:none}
-.view-head .lead{font-family:var(--serif);font-size:14.5px;line-height:1.78;color:var(--ink-2);max-width:78em}
+.view-head .lead{font-family:var(--serif);font-size:14.5px;line-height:1.62;color:var(--ink-2);max-width:78em}
 .view-head .lead b{color:var(--ink)}
 .view-head .fchips{margin-top:13px;display:flex;flex-wrap:wrap;align-items:center;gap:5px 16px}
 .fchips::before{content:"来源";font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
@@ -207,7 +208,7 @@ a:hover{color:var(--gold);text-decoration-color:var(--gold-2)}
 .fchip:hover{color:var(--gold);border-bottom-color:var(--gold-2)}
 
 /* ---- 章节标题 ---- */
-h3.sec{margin:30px 0 13px;display:flex;align-items:baseline;gap:11px;
+h3.sec{margin:20px 0 10px;display:flex;align-items:baseline;gap:11px;
   border-bottom:1px solid var(--line);padding-bottom:8px}
 h3.sec .no{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--gold);flex:none}
 h3.sec .t{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--navy-deep)}
@@ -416,7 +417,9 @@ li.prov-item:first-child{border-top:none}
 /* ============ 研究台专有组件 ============ */
 /* 工具条 */
 .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0 12px}
-.tools .seg{display:inline-flex;border:1px solid var(--line-2);background:var(--paper-3)}
+.tools .seg{display:inline-flex;border:1px solid var(--line-2);background:var(--paper-3);
+  max-width:100%;overflow-x:auto}
+.tools .seg::-webkit-scrollbar{height:4px}
 .tools .seg button{padding:5.5px 11px;font-size:11.5px;color:var(--ink-2);border-right:1px solid var(--line);
   font-family:var(--mono);letter-spacing:.02em;transition:all .14s}
 .tools .seg button:last-child{border-right:none}
@@ -530,7 +533,7 @@ li.prov-item:first-child{border-top:none}
   border:1px dashed var(--line-2);background:var(--paper-3)}
 
 /* 页脚 */
-.page-foot{margin-top:44px;border-top:2px solid var(--navy-deep);padding-top:14px;
+.page-foot{margin-top:26px;border-top:2px solid var(--navy-deep);padding-top:14px;
   font-family:var(--mono);font-size:10.5px;color:var(--ink-3);line-height:1.7;
   display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
@@ -1114,6 +1117,14 @@ table.cus-matrix{min-width:920px}
 .mig-grid td:first-child{text-align:left;font-size:12px}
 
 /* ============ 响应式 ============ */
+/* 981–1110px：侧栏仍是 232px 纵列、面包屑不可截断，只有时钟能退让（≤640px 已有同规则）
+   实测（981px、最宽面包屑 362.2px）：.tb-search 已收缩到 180px 地板仍溢出 124px，
+   而这 124px 正是时钟 109.5px+gap，故收缩与隐藏时钟两件事都需要，不能只留一个。
+   上界按同一最宽面包屑推到 1110px（该宽度强制显示时钟已量到溢出 0），取闭区间多留 1px，
+   因为面包屑宽度随展开状态在 183.9–362.2 之间浮动 */
+@media (min-width:981px) and (max-width:1110px){
+  .tb-clock{display:none}
+}
 @media (max-width:1180px){
   .kpi-strip{grid-template-columns:repeat(2,1fr)}
   .kpi{border-bottom:1px solid var(--line)}

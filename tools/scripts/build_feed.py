@@ -29,7 +29,7 @@ CHRONICLES = ["_2026大事记.md", "_2025大事记.md"]
 FEED_SIZE = 100
 
 ENTRY = re.compile(
-    r"^-\s+\*\*(\d{4}-\d{2}(?:-\d{2})?)\*\*\s+·\s+"
+    r"^-\s+\*\*(\d{4}-\d{2}(?:-\d{2})?(?:/\d{1,2})?)\*\*\s+·\s+"
     r"(?:\[(?P<title>[^\]]+)\]\((?P<url>[^)]+)\)|(?P<plain>.*?))"
     r"(?:\s+—\s+(?P<summary>.*?))?\s*(?:→\s*(?P<links>\[\[.*\]\]))?\s*$"
 )
@@ -85,6 +85,7 @@ def item_link(item: dict, repo: str) -> str:
 
 
 def rfc822(date: str) -> str:
+    date = date.split("/")[0]  # 复合日期（2026-05-19/20）取首日
     try:
         dt = datetime.strptime(date, "%Y-%m-%d").replace(tzinfo=timezone.utc)
     except ValueError:

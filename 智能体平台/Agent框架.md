@@ -18,7 +18,17 @@ Agent 框架是连接大模型能力与实际应用的编排层：负责工具�
 
 2026 年的关键事件是 Microsoft 将 AutoGen 与 Semantic Kernel 合并为统一的 Microsoft Agent Framework（MAF）并 GA，标志企业级 Agent 编排进入整合期。本线索追踪主流框架的版本演进与格局变化。
 
-## 时间线
+### 2026-10
+
+- **2026-10-01** · [Modal 正式发布 VM Sandboxes：给 Agent 一台完整的 Linux 虚拟机](https://aihot.news/items/rdjmj3nqrje120k46r63xrth4)
+  Modal 工程博客：VM Sandboxes + Modal Clusters（多节点 GPU 集群）+ Sidecars 三件套同日发布，Agent 推理基础设施从「容器化」过渡到「整机 + 集群」形态；与 Kimi K2.6 编码 Agent 服务（9-23 Modal 详解）等案例互证，AI Infra 主流路线回到「以整机为单位的 Agent VM」。
+- **2026-10-01** · [Modal 推出 Sidecars，为 Sandboxes 提供低延迟信任边界](https://aihot.news/items/mxaja99ylejkngzxhp66laxfj)
+  Modal 工程博客：Sidecars 让 Sandboxes 在低延迟信任边界内运行——Agent 推理基础设施从「容器化」过渡到「整机 + 集群 + 信任边界」三件套。
+
+### 2026-09
+
+- **2026-09-28** · [H Company 发布 Holo4 智能体模型系列，含 27B 与 35B-A3B 两个版本](https://aihot.news/items/y1thdkq6a9giiitpxb6e13hwo)
+  Hugging Face Blog：非大厂开源智能体模型补位；与 DeepSeek Harness v0.1（08-13，MIT 许可、「一切皆为插件」元框架）构成 2026 下半年「开源智能体基础设施」双线。（更正登记：本条初稿误将 Harness v0.1 与 Holo4 写作「同日开源」，实际相隔 46 天，已按缓存快照日期改写。）
 
 ### 2026-08
 

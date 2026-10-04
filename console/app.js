@@ -80,6 +80,17 @@ function extLink(url, text) {
   if (!url) return text;
   return '<a href="' + esc(url) + '" target="_blank" rel="noopener">' + text + '</a>';
 }
+/* 事件来源 reference 芯片：镜像/一手主机名可视，无 URL 明示挂账位置（2026-10-03，修正记录留痕） */
+function srcRef(url) {
+  var label, full;
+  if (!url) { label = '无逐字URL'; full = '无逐字 URL——待核实清单第八节逐行挂账'; }
+  else {
+    var host = url.replace(/^https?:\/\//, '').split('/')[0];
+    if (/aihot\.(news|virxact\.com)$/.test(host)) { label = 'aihot镜像'; full = 'aihot 镜像 permalink（上游信源见条目页）'; }
+    else { label = host; full = url; }
+  }
+  return '<span style="font-size:10px;color:#8a8f98;border:1px solid rgba(128,128,128,.35);border-radius:3px;padding:0 4px;margin-left:6px;font-family:ui-monospace,SFMono-Regular,monospace;white-space:nowrap" title="' + esc(full) + '">src·' + esc(label) + '</span>';
+}
 function linkify(s) {
   var t = esc(s);
   t = t.replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
@@ -691,10 +702,11 @@ PANE.topics = function () {
       return '<tr><td><a href="' + clueHref(c.id) + '"><b>' + esc(c.name) + '</b></a></td><td>' + statusTag(c.status) + '</td><td class="mono"><b>' + c.nEvents + '</b></td><td class="mono">' + esc(c.lastEvent || '—') + '</td><td class="mono">' + esc(c.updated) + '</td></tr>';
     }).join('');
     var evs = topicEvents(tk).slice(0, 12).map(function (e) {
-      return '<li><b>' + esc(e.date) + '</b> · ' + extLink(e.url, esc(e.title)) + '<div class="dim" style="font-size:11.5px">' + summaryHtml(e.summary, 90) + '</div></li>';
+      return '<li><b>' + esc(e.date) + '</b> · ' + extLink(e.url, esc(e.title)) + srcRef(e.url) + '<div class="dim" style="font-size:11.5px">' + summaryHtml(e.summary, 90) + '</div></li>';
     }).join('');
     el.innerHTML = h(
       '<div class="callout pine"><div class="c-t">范围定义</div>' + esc(t.def) + '</div>' +
+      (t.idx ? '<details style="margin:10px 0"><summary style="cursor:pointer;font-weight:600">主题 _index.md（主题说明 · 线索列表 · 候选线索）</summary><div class="md-body" style="margin-top:8px">' + termify(Md.render(t.idx, { base: t.key + '/_index.md' })) + '</div></details>' : '') +
       '<div class="grid g2">' +
         '<div><h3 class="sec"><span class="no">' + t.count + '</span><span class="t">本主题线索</span><span class="en">Clues</span></h3>' +
           '<div class="table-scroll"><table class="dense"><thead><tr><th>线索</th><th>状态</th><th>时间线</th><th>最近事件</th><th>更新</th></tr></thead><tbody>' + (clueRows || '<tr><td colspan="5" class="dim">暂无线索</td></tr>') + '</tbody></table></div></div>' +
@@ -956,7 +968,7 @@ function chronFlowHtml() {
     var lis = byMonth[mo].map(function (e) {
       var links = evLinks(e);
       return '<li>' +
-        '<div class="ph">' + esc(mo) + '<span class="when">' + esc(e.date) + '</span></div>' +
+        '<div class="ph">' + esc(mo) + '<span class="when">' + esc(e.date) + '</span>' + srcRef(e.url) + '</div>' +
         '<div class="tt">' + extLink(e.url, esc(e.title)) + '</div>' +
         '<div class="td">' + summaryHtml(e.summary, 0) + (links ? '　→ ' + links : '') + '</div></li>';
     }).join('');
@@ -992,7 +1004,7 @@ PANE.chronicle = function () {
   if (tab === 'hubs') {
     var hubs = DB.events.filter(function (e) { return (e.links || []).length >= 2; });
     var rows = hubs.map(function (e) {
-      return '<tr><td class="mono dim">' + esc(e.date) + '</td><td>' + extLink(e.url, esc(e.title)) + '</td><td>' + evLinks(e) + '</td></tr>';
+      return '<tr><td class="mono dim">' + esc(e.date) + '</td><td>' + extLink(e.url, esc(e.title)) + srcRef(e.url) + '</td><td>' + evLinks(e) + '</td></tr>';
     }).join('');
     el.innerHTML = '<h3 class="sec"><span class="no">' + hubs.length + '</span><span class="t">枢纽事件</span><span class="en">Multi-link</span></h3>' +
       '<div class="table-scroll"><table class="dense"><thead><tr><th>日期</th><th>事件</th><th>关联线索</th></tr></thead><tbody>' + (rows || '<tr><td colspan="3" class="dim">暂无多链事件</td></tr>') + '</tbody></table></div>' +

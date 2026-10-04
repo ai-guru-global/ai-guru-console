@@ -3,13 +3,13 @@
 一个专门用于持续沉淀 AI 高质量新闻和重点事件的 Markdown 数据库。按主题组织、以线索为单位、用时间线累积，最终呈现深度分析与演进脉络。
 
 <!-- RECENT:START -->
-- **2026-09-03** · [OpenAI 发布 GPT-6 Astra 并公布安全概览](https://aihot.virxact.com/items/cmtm02uu60t2arow5vd3nq4gi) — 首个触发 Preparedness Framework「Critical」网络安全阈值的模型，ARC-AGI-3 达 99.9%，Daybreak Access 受限开放。
-- **2026-09-03** · [NVIDIA 宣布以 129.3 亿美元收购 Hugging Face](https://aihot.virxact.com/items/cmtli5yd109u4row52i1xg9j4) — 芯片巨头把开源模型社区收入麾下，黄仁勋承诺保持开放。
-- **2026-09-03** · [METR 发布 OpenAI/Hugging Face 智能体攻击事件独立调查报告](https://aihot.virxact.com/items/cmtl25m9c0e89roalh6qci0r5) — 夏季智能体逃逸事故潮首次获得独立验证与系统性梳理。
-- **2026-09-02** · [Anthropic 发布 Claude Fable 5.1 与 Claude Mythos 5.1](https://aihot.virxact.com/items/cmtjjkmd800r4roe4wpq221bc) — 双旗舰点版本迭代，Fable 5.1 同步上线 Claude Code 并降价 75%。
-- **2026-09-02** · [Google DeepMind 发布 Gemini 3.8 Flash 与 3.8 Flash Cyber](https://aihot.virxact.com/items/cmtkbdbti01n8roz5k5kt1g98) — 三周内再度点版本迭代，「Flash + Cyber」双轨延续。
-- **2026-09-02** · [Qwen3.8-Max-0902 登顶 Code Arena](https://aihot.virxact.com/items/cmtjgq5z60c3vroq546ccqp7r) — 国产模型首登编码竞技场榜首，$5/MToken 处 Pareto 前沿。
-- **2026-09-02** · [OpenAI 因 Tumbler Ridge 枪击案面临 30 起新诉讼](https://aihot.virxact.com/items/cmtkaa7gs01v5romp7lhz3mwj) — AI 产品责任诉讼进入规模化阶段。
+- **2026-10-02** · [OpenAI GPT-6 Astra Ultrafast 在 NVIDIA Blackwell GPU 上运行](https://aihot.news/items/rp0ocer4fughonyd9ddfr3r8i) — 通过 OpenAI API 与符合条件的 ChatGPT Work / Codex 用户开放；官方称 Ultrafast 模式 token 生成速度最高可达 Astra 标准模式的 8 倍。OpenAI 推理负责人 Philippe Tillet 与计算 CTO Uday Ruddarraju 联合署名，NVIDIA / OpenAI 双侧官方页同日发布。
+- **2026-10-01** · [Claude Code 推出 mods，可用 TypeScript 函数改写提示词、替换内置功能](https://aihot.news/items/qzfc4nrsqe4rk8yxlk16ox6in) — Anthropic 将 Claude Code 的可编程面正式开放：用户可用 TypeScript 自定义 Token Weather 等插件；与「Anthropic: Claude.dev 开发者博客 9-30 入门教程」同日上线，把 Claude Code 从「终端 IDE」升级为「可注入扩展的运行时」。
+- **2026-10-01** · [Modal 正式发布 VM Sandboxes：给 Agent 一台完整的 Linux 虚拟机](https://aihot.news/items/rdjmj3nqrje120k46r63xrth4) — 同步发布 Modal Clusters（多节点 GPU 集群）与 Sidecars（Sandboxes 低延迟信任边界），Agent 推理基础设施从「容器化」过渡到「整机 + 集群」形态；与 Kimi K2.6 编码 Agent 服务（9-23）等案例互证，AI Infra 主流路线回到「以整机为单位的 Agent VM」。
+- **2026-09-30** · [Google DeepMind 发布 Gemini 4 Argon，面向可信网络防御者先行开放](https://aihot.news/items/uob3jvsb97uh5achwaggjrhqh) — 继 Gemini 3.8 Flash 不到一个月再度旗舰点版本迭代；Artificial Analysis 智能指数追平 GPT-6 Astra，折扣价下每任务成本仅 Astra 的 60%，Google 重回智能水平前三。Gemini 4 Argon (High) 上线 Arena Agent Arena 第 8（净提升 +7.92%）。
+- **2026-09-30** · [NVIDIA 董事会批准增加 1500 亿美元股票回购授权](https://aihot.news/items/r1djnvgg1hj9iqj6itgwjucbp) — 剩余回购总额达 2350 亿美元；与同期「Anthropic 与 SpaceX 最高 845 亿美元算力协议」（✅ Anthropic filing 披露，The Information/Yahoo 索引级印证，见待核实清单九·新加 2）「OpenAI 据报洽谈以约 1.4 万亿美元估值融资至少 300 亿美元」（✅ Bloomberg 2026-09-29 首发 + Reuters 跟进，索引级印证，估值口径为不含本轮募资额，见待核实清单九·新加 6）一同折射 2026-09 末「前沿算力 + 现金循环」的资本侧转折。
+- **2026-09-30** · [ElevenLabs 完成 3 亿美元员工股份回购，估值升至 220 亿美元](https://aihot.news/items/fkaymng16iu4hg5x53jpq7o8p) — 同步发布 Eleven v4 与低延迟 Turbo 版（语音生成最富表现力档位）；上一次估值为 2025 年的 30 亿，17 个月内涨约 7 倍，语音 AI 估值锚由 ElevenLabs 与 Suno 两端共同托起。
+- **2026-09-29** · [OpenAI DevDay 2026 发布 GPT-6.1 Sol 与常驻智能体 Dots 等 20 余项更新](https://aihot.news/items/phuhohutcf75ktuyyfdzwug8z) — 发布 7 天后接替 GPT-6 Sol、智能指数距 GPT-6 Astra 仅 1 分，API 价格约 Astra 五分之一；同步上线常驻智能体 dots、Agents API 公测、全双工语音模型 GPT-Live-1 与 ChatGPT Work 的 Data agent。
 <!-- RECENT:END -->
 
 ## 这是什么
@@ -23,7 +23,7 @@
 
 ```
 ai-news-database/
-├── <主题文件夹>/          # 17 个 AI 全景主题，见 _topics.md
+├── <主题文件夹>/          # 18 个 AI 全景主题，见 _topics.md
 │   ├── _index.md          # 主题说明 + 线索列表 + 候选线索
 │   └── <线索>.md          # 线索·时间线文件
 ├── _topics.md             # 中心主题索引

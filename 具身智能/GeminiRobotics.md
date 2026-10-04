@@ -18,8 +18,6 @@ Gemini Robotics 是 DeepMind 将 Gemini 多模态模型能力迁移到机器人�
 
 2026 年该线进入第二代：Robotics 2 主打「全身智能」（whole-body intelligence），ER 2 加入视频理解、任务编排与多机器人协作。该线索追踪其模型迭代与商业化落地。
 
-## 时间线
-
 ### 2026-07
 
 - **2026-07-30** · [Gemini Robotics 2 / ER 2 发布](https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/)

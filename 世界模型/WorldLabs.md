@@ -18,7 +18,10 @@ World Labs 由斯坦福教授、ImageNet 之母李飞飞于 2024 年创办，主
 
 该线索追踪 World Labs 的产品进展与「空间智能」叙事在行业内的扩散。
 
-## 时间线
+### 2026-09
+
+- **2026-09-28** · [World Labs 宣布加入 AMD，李飞飞将出任 AMD 执行副总裁兼首席科学家](https://aihot.news/items/ukbm1pni8gdc5ciwwuywzkhwb)
+  李飞飞从斯坦福休假加入 AMD 主理物理 AI 与世界模型方向，World Labs 由独立公司转为 AMD 旗下；同步落地 AMD 端到端 3D / 4D 空间智能管线。AMD 一侧一手印证为同一日新闻发布（amd.com），故为「双方官方 + 主流媒体」双源级别。→ [[商业与投融资/AI人才与并购潮]]
 
 ### 2026-07
 

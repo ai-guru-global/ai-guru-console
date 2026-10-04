@@ -18,7 +18,7 @@ DB.score = {
     { k: 'catchup', l: '补课优先', w: { momentum: 15, biz: 10, moat: 10, policy: 15, coverage: 50 } }
   ],
   sectors: [
-    { id: '基础模型', name: '基础模型', dims: { momentum: 5, biz: 4, moat: 4, policy: 3, coverage: 5 }, conf: 'medium', note: '旗舰竞赛 + 降价 + 安全分级三线并行，本库覆盖最全的赛道' },
+    { id: '基础模型', name: '基础模型', dims: { momentum: 5, biz: 4, moat: 4, policy: 3, coverage: 5 }, conf: 'medium', note: '旗舰竞赛 + 降价 + 安全分级三线并行，本库覆盖最厚的赛道之一' },
     { id: '智能体平台', name: '智能体平台', dims: { momentum: 4, biz: 3, moat: 3, policy: 2, coverage: 3 }, conf: 'medium', note: '框架层快速洗牌，MCP 正在成为互操作标准' },
     { id: 'Agentic编码', name: 'Agentic 编码', dims: { momentum: 5, biz: 5, moat: 3, policy: 2, coverage: 4 }, conf: 'high', note: 'SpaceX 收购与 OpenAI 断供事件后进入阵营化，商业化最快' },
     { id: '多模态大模型', name: '多模态大模型', dims: { momentum: 4, biz: 3, moat: 3, policy: 2, coverage: 2 }, conf: 'medium', note: '视频生成白热但本库仅 2 条线索，覆盖缺口最大' },
@@ -28,7 +28,7 @@ DB.score = {
     { id: '评测与基准', name: '评测与基准', dims: { momentum: 3, biz: 2, moat: 2, policy: 1, coverage: 4 }, conf: 'medium', note: '榜单即信任，LMArena 与专项基准双线' },
     { id: '具身智能', name: '具身智能', dims: { momentum: 5, biz: 3, moat: 4, policy: 3, coverage: 4 }, conf: 'high', note: '宇树 IPO 定价人形机器人叙事，运动会显示保有量翻倍' },
     { id: '世界模型', name: '世界模型', dims: { momentum: 3, biz: 1, moat: 3, policy: 1, coverage: 2 }, conf: 'low', note: '视频生成作世界模拟器，离商业化最远' },
-    { id: '行业应用', name: '行业应用', dims: { momentum: 3, biz: 3, moat: 2, policy: 3, coverage: 4 }, conf: 'low', note: '6 条线索：AI 办公 + 教育/金融/法律垂类均已建档，医疗与科研在列；信源仍以镜像与厂商公告为主，一手财报口径缺位' },
+    { id: '行业应用', name: '行业应用', dims: { momentum: 3, biz: 3, moat: 2, policy: 3, coverage: 5 }, conf: 'low', note: '10 条线索 298 条（2026-10-03 二次复核，本库最多；含 8 条月级条目，评估文档按全日期口径记 290）；办公/教育/金融/法律 4 条建有取证档案，余 6 条尚无；一手直链 8%（23/298），收入口径仅营销电商 1 条可得' },
     { id: 'AI安全与对齐', name: 'AI 安全与对齐', dims: { momentum: 5, biz: 2, moat: 3, policy: 5, coverage: 2 }, conf: 'high', note: '失控事件 + 水印 + 诉讼高发，政策敞口全赛道最大' },
     { id: '开发者工具', name: '开发者工具', dims: { momentum: 4, biz: 4, moat: 2, policy: 2, coverage: 2 }, conf: 'medium', note: '被 Agentic 编码吸收中，独立赛道边界模糊' },
     { id: '语音与音频', name: '语音与音频', dims: { momentum: 3, biz: 3, moat: 2, policy: 3, coverage: 2 }, conf: 'low', note: 'Suno 版权裁定 + 全双工语音，版权是主线' },

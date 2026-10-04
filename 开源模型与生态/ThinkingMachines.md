@@ -18,8 +18,6 @@ Thinking Machines Lab 由 OpenAI 前 CTO Mira Murati 于 2025 年初创办，聚
 
 该线索追踪其模型发布、融资与人才动态。
 
-## 时间线
-
 ### 2026-07
 
 - **2026-07-30** · [Inkling-Small 发布，276B 参数性能持平原版](https://aihot.virxact.com/items/cms7tgf3q03p5ropbe0xhilwo)

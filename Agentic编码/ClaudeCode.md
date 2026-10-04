@@ -18,10 +18,25 @@ Claude Code 是 Anthropic 于 2025 年 2 月推出的 agentic 编码工具，定
 
 它是 Agentic Coding 这一细分赛道最具代表性的产品之一，其演进（研究预览 → GA → SDK → Subagents/Skills/Hooks/Plugins 生态）清晰折射出「AI 编码从助手走向自主工程师」的产业趋势。
 
-## 时间线
+### 2026-10
+
+- **2026-10-01** · [Claude Code 推出 mods，可用 TypeScript 函数改写提示词、替换内置功能](https://aihot.news/items/qzfc4nrsqe4rk8yxlk16ox6in)
+  Anthropic 将 Claude Code 的可编程面正式开放：用户可用 TypeScript 自定义 Token Weather 等插件；与 [Claude Devs 同步发文](https://aihot.news/items/qzfc4nrsqe4rk8yxlk16ox6in) + [Anthropic 开发者博客入门教程：从零构建 Token Weather 上下文窗口预报插件](https://aihot.virxact.com/items/qzfc4nrsqe4rk8yxlk16ox6in) 三方同发，把 Claude Code 从「终端 IDE」升级为「可注入扩展的运行时」。这是自 8-07 默认自动模式、会话间消息（8-07）、Claude Code Projects（9-17）之后的关键一次扩展面开放。
+- **2026-10-01** · [Anthropic 介绍用 Claude Code 与 claude-api skill 自动化评测设计与 hillclimbing](https://aihot.virxact.com/items/qqvpv4tiarctdrthhbx7447b2)
+  Anthropic 开发者博客：「Claude-as-a-judge」自动化评测范式落地 Claude Code，评测与优化两个动作首次以可编程面打通；与同日 mods 发布组合，意味着 Claude Code 既是「被评测对象」也是「评测工具」。
 
 ### 2026-09
 
+- **2026-09-28** · [H Company 发布 Holo4 智能体模型系列](https://aihot.news/items/y1thdkq6a9giiitpxb6e13hwo)
+  Hugging Face Blog：Holo4 含 27B 与 35B-A3B 两个版本，与 Claude Code 同步出现「非大厂但主打开源智能体」新模型——编码 / Agent 生态的开源端补位。
+- **2026-09-25** · [Anthropic 员工实测 Claude Code 的 effort 档位如何影响 Fable 5.1 与 Opus 5.5 输出质量](https://aihot.news/items/d4vqt9ctlmz0oyf3cv3m5e8mp)
+  Claude Devs：实测 effort 档位对模型输出的影响，是 9-22 Opus 5.5 + Claude Code v2.1.280 落地的官方教程延伸；同日 [Opus 5.5 上一个任务要花多少钱：Claude Code 成本拆解](https://aihot.news/items/lllayx4fdocosmfgrzeujx1ud) 与 [Claude Devs 测算 Opus 5.5 相比 Opus 5 在 Claude Code 任务中的成本变化](https://aihot.news/items/cmuhazjqv076rro3b6ta3dnck) 三件套发布，把「能力 + 价格」的双坐标拆开评估。
+- **2026-09-24** · [Claude Code 云会话正式上线，Pro 和 Max 订阅者可领一次性额度](https://aihot.news/items/cmueurvwl03tvroyqdzcth166)
+  Claude Devs 官宣：编码会话可托管在云端运行（不再强制本地），Pro 与 Max 订阅者获一次性额度，是 Claude Code 从「本地终端 IDE」向「云端会话」过渡的产品级里程碑。
+- **2026-09-22** · [Claude Code v2.1.280 发布，新增 Claude Opus 5.5 为默认 Opus 模型](https://aihot.news/items/cmucxceh40salroedruwhn0ee)
+  Claude Code：GitHub Releases：v2.1.280 默认 Opus 模型由 Opus 5 升 Opus 5.5，与 9-22 Opus 5.5 官方发布同日；同日 [Claude 详解 Opus 5.5 一次 Claude Code 任务的成本构成](https://aihot.virxact.com/items/cmucz06v905eironivy08mtvk) 与 [如何在 Claude 与 Claude Code 中用好 Opus 5.5](https://aihot.news/items/cmucxceh40salroedruwhn0ee) 发布。
+- **2026-09-17** · [Claude Code Projects 改版：从文件夹到对话式协调](https://aihot.news/items/cmu5tujnp0jvoroqoq64oqnjr)
+  Claude Blog：Projects 从「文件夹式代码集合」升级为「对话式协调」，多 agent 协同编排从「主从式」（8-07 会话间消息）扩展到「项目级协调」。
 - **2026-09-02** · [Claude 在 Cowork 和 Claude Code 中支持后台操作电脑](https://aihot.virxact.com/items/cmtkh71ky017vrolly7trswyx)
   官方 X 账号宣布 Claude 可在 Cowork 与 Claude Code 中后台操作电脑，编码智能体在跑编码任务的同时并行处理 GUI 操作，computer use 与终端 Agent 正式合流。
 - **2026-09-01** · [Claude Fable 5.1 上线 Claude Code 与 Claude Platform，缓存读取降价 75%](https://aihot.virxact.com/items/cmtj0fqet001lroh9hyk6rqu0)
@@ -39,10 +54,13 @@ Claude Code 是 Anthropic 于 2025 年 2 月推出的 agentic 编码工具，定
 - **2026-07-28** · [MCP 2026-07-28 规范发布](https://blog.modelcontextprotocol.io/posts/2026-07-28/)
   MCP 转向 stateless、可缓存、可路由、可全球扩展的 Web 式架构；与旧版本 wire-incompatible；Anthropic 在全 Claude 产品线推进支持。→ [[智能体平台/MCP协议]]
 
-### 2026-06
+
 
 - **2026-06-29 至 07-03** · Claude Code Week 27 更新
   内置 Explore agent 改为继承主会话模型（上限 Opus）而非 Haiku；background agents 持续更新。
+
+### 2026-06
+
 - **2026-06-09** · [Claude Code 支持嵌套子智能体](https://aihot.virxact.com/items/cmq6ndeig09zysl5ic7g7i7ts)
   Claude Code 负责人 Boris Cherny 官宣支持嵌套子智能体，agent 可自主生成并调用 subagent 处理子任务，多 agent 编排能力升级，与 Cursor 预告的「递归子 agent」方向看齐。
 

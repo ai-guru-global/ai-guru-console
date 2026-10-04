@@ -18,7 +18,12 @@ SWE-bench 由普林斯顿团队于 2023 年 10 月提出，从 12 个流行 Pyth
 
 该线索追踪 SWE-bench 及其变体（Verified/Lite/Multimodal/Pro）的演进与「基准饱和→升级」的循环。
 
-## 时间线
+### 2026-09
+
+- **2026-09-12** · [Epoch AI 评审 ExploitBench v0.1：基于 41 个真实 V8 漏洞的利用基准评测](https://aihot.news/items/cmu61xlxs049erofjv4rqvpf5)
+  Epoch AI 发布 ExploitBench v0.1：基于 41 个真实 V8 漏洞的利用基准评测——「基准饱和 → 升级」循环从编码延伸到网络安全漏洞利用，与 9-15 Dan Hendrycks CheatBench 共同构成 9 月「评测方法学拓展」双线。→ [[训练与数据/RLHF与后训练]]
+- **2026-09-09** · [Cognition 发布 SWE-2 编码模型，以更低成本逼近前沿](https://aihot.news/items/cmtym40hx0004roske1zgdkmu)
+  Cognition 官方 SWE-2 模型：以更低成本逼近前沿编码智能体能力，是 Devin 系列首个以「SWE-bench 系列」为基准对照发布的产品；与同周 OpenAI 公开 wiki 失准事件并承诺改革智能体错位事件报告机制共同构成 9 月初「编码 Agent + 对齐责任」双轨。→ [[Agentic编码/Devin]]
 
 ### 2026-07
 

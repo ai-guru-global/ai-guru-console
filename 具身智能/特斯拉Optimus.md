@@ -18,8 +18,6 @@ Optimus（擎天柱）是特斯拉 2021 年 AI Day 上宣布的人形机器人�
 
 该线索追踪 Optimus 的迭代、量产承诺兑现度与其对具身赛道的鲇鱼效应。
 
-## 时间线
-
 ### 2026-07
 
 - **2026-07-09** · [三代 Optimus 初步定型，马斯克对供应链下最后通牒](https://aihot.virxact.com/items/cmrdpmgpg05zcih4bmwttzqaq)

@@ -4,7 +4,7 @@
 别名: [Google Gemini, Gemini 1.5, Gemini 2.0, Gemini 2.5]
 状态: 活跃
 创建: 2026-07-30
-更新: 2026-09-04
+更新: 2026-10-03
 关键角色: [Google, Google DeepMind]
 ---
 
@@ -18,10 +18,16 @@ Gemini 是 Google DeepMind 的旗舰模型系列，2023 年 12 月发布，定�
 
 在经历 Bard 时期的仓促追赶后，Gemini 2.0/2.5 世代已稳定处于第一梯队；2026 年进入 Gemini 3/3.5 世代的高频点版本迭代（Pro/Flash/Live/Omni 多形态并行）。该线索追踪 Google 在基础模型上的技术路线与产品整合。
 
-## 时间线
-
 ### 2026-09
 
+- **2026-09-30** · [Google DeepMind 发布 Gemini 4 Argon，面向可信网络防御者先行开放](https://aihot.news/items/uob3jvsb97uh5achwaggjrhqh)
+  继 Gemini 3.8 Flash 不到一个月再度旗舰点版本迭代；Artificial Analysis 智能指数追平 GPT-6 Astra，折扣价下每任务成本仅 Astra 的 60%，Google 重回智能水平前三（[Artificial Analysis 完整文章](https://aihot.virxact.com/items/thdata2aa7ex9kgzv72mk4kn3)）。Gemini 4 Argon (High) 上线 Arena Agent Arena 第 8 名（净提升 +7.92%，[镜像](https://aihot.virxact.com/items/m49i2ro59f3lqy8ocoghr9f2j)）；Gemini 4 是 Google DeepMind 首个 proprietary 模型（Demis Hassabis 在 10-01 转发时点明）。同日发布 [SynthID Bio](https://aihot.news/items/deivg466iwv9ypddacud3hd7d)：把不可感知签名直接嵌入蛋白质序列，是面向 AI 生成生物设计的首个水印家族。
+- **2026-09-30** · [Google DeepMind 发布 SynthID Bio，为 AI 生成的蛋白质嵌入可验证水印](https://aihot.news/items/deivg466iwv9ypddacud3hd7d)
+  Sundar Pichai 宣布 SynthID Bio 作为面向 AI 生成生物设计的新型水印方法家族，首次实现将不可感知的签名直接嵌入蛋白质序列、且不影响其生物功能；技术细节与适用范围由 DeepMind 与 Sundar Pichai 官方推文同步公开，属「科学诚信 + 生物安全」双向意义的水印首发。
+- **2026-09-23** · [Google DeepMind 发布 Gemini 3.8 Flash TTS 与 Flash-Lite TTS 语音生成模型](https://aihot.news/items/cmuea8xrm0t1nroghhxj2y3eg)
+  Gemini 3.8 Flash 系列在文本、Live、Thinking、TTS 四档位上完成扩展，TTS 与 ASR（8-26 Gemini 3.5 Transcribe）合拢，DeepMind 拿到「对话 - 听 - 写」全链路。→ [[语音与音频/ElevenLabs|语音与音频]]
+- **2026-09-15** · [Google DeepMind 发布 Gemini 3.8 Live 和 3.8 Live Extended Thinking](https://aihot.news/items/cmu2xqfxz02zhroc1hxuzi6jm)
+  Gemini 主线在 Flash / Flash-Lite / Flash Cyber 之外再扩 Live 双档位，主打实时音视频交互与扩展思考模式，与同周 StepAudio 3（阶跃星辰）和 Vidu S2（生数科技）共同把 9 月中旬的语音 / 视频生成推到多模型同日发布节奏。→ [[语音与音频/ElevenLabs|语音与音频]]
 - **2026-09-03** · [Google DeepMind 发布 WeatherNext 3 全球天气 AI 模型](https://aihot.virxact.com/items/cmtlnmh4o0fmsrow5i7pdq8b0)
   官方博客发布第三代全球天气模型，支持逐小时更新、分辨率较上一代提升约 5 倍。
 - **2026-09-02** · [Google DeepMind 发布 Gemini 3.8 Flash 与 3.8 Flash Cyber 两款新模型](https://aihot.virxact.com/items/cmtkbdbti01n8roz5k5kt1g98)
@@ -62,7 +68,6 @@ Gemini 是 Google DeepMind 的旗舰模型系列，2023 年 12 月发布，定�
   官方开发者渠道宣布旗舰图像模型 Nano Banana Pro 与 Nano Banana 2 正式开放。
 - **2026-05-25** · [AlphaProof Nexus 以几百美元成本解决数十年未解数学问题](https://aihot.virxact.com/items/cmpl3eupd0chwsl01o9tkqehz)
   The Decoder 报道 DeepMind 的 AlphaProof Nexus 以数百美元算力成本攻克悬置数十年的数学难题。
-
 - **2026-05-19** · [Google I/O 2026：Gemini 3.5 系列启动 + Gemini Omni 取代 Veo](https://blog.google/innovation-and-ai/sundar-pichai-io-2026/)
   I/O 2026 发布 Gemini 3.5 Flash（已上线）并预告 3.5 Pro；同日发布 Gemini Omni（取代 Gemini App 中的 Veo），首版 Omni Flash 当日可用，可将任意参考（图像/文本/视频/音频）转为统一输出。2026 年 5 月起 Gemini App 后端默认调用 Omni 而非 Veo。→ [[多模态大模型/视频生成竞赛]]
 - **2026-05–06** · Gemini 3 Deep Think 升级
@@ -93,10 +98,10 @@ Gemini 是 Google DeepMind 的旗舰模型系列，2023 年 12 月发布，定�
 
 - **2026-01-29** · [Project Genie（Genie 3 世界模型）向公众开放](https://mashable.com/article/google-launches-project-genie-3-how-to-try)
   Genie 3 世界模型通过 Project Genie 网页界面向 Google AI Ultra 美国订阅用户推出，可从文本生成可探索的交互式 3D 环境。→ [[世界模型/Genie]]
-- **2026-01** · [AlphaGenome 论文发表于 Nature](https://cen.acs.org/biological-chemistry/genomics/Googles-AlphaGenome-predicts-function-DNA/104/web/2026/01)
-  DNA 功能预测模型正式发表于 Nature（模型本身自 2025-06 起非商用可用），解码人类「暗基因组」。→ [[行业应用/AlphaFold与AI科研]]
 - **2026-01-05** · Gemini 3 Grounding 计费开始
   Gemini 3 的 Google Search Grounding 开始计费。
+- **2026-01** · [AlphaGenome 论文发表于 Nature](https://cen.acs.org/biological-chemistry/genomics/Googles-AlphaGenome-predicts-function-DNA/104/web/2026/01)
+  DNA 功能预测模型正式发表于 Nature（模型本身自 2025-06 起非商用可用），解码人类「暗基因组」。→ [[行业应用/AlphaFold与AI科研]]
 
 ### 2025-03
 

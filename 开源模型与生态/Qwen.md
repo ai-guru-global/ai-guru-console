@@ -18,10 +18,14 @@ Qwen（通义千问）是阿里巴巴的大模型系列，覆盖通用、Coder�
 
 2026 年 Qwen 进入「Agentic AI era」定位，迭代速度进一步加快（Qwen3.5 → 3.5-Omni → 3.6 → 3.7-Max → Qwen4 Coder → 3.8），并横向扩张至全模态、具身智能（VLA、Robot）与图像生成，旗舰闭源 Max 系列与开源系列双线并进；7 月国行 Apple 智能确认集成千问模型。该线索追踪 Qwen 的版本演进与开源生态影响。
 
-## 时间线
-
 ### 2026-09
 
+- **2026-09-20** · [Qwen 开源 Qwen-Image-2.1：7B 统一生成与编辑并原生支持透明图像](https://aihot.news/items/cmu9tfhu904turokx2vfjy34f)
+  Artificial Analysis 评测：登顶两个 AA-Image 榜单的开源权重模型（[镜像](https://aihot.virxact.com/items/kaz49j9sbrf1rcugch9d2fdjm)）；透明图像原生输出使生成 → 编辑工作流首次不需额外抠图通道，是开源图像线的首次「统一模型贯通」范式。→ [[多模态大模型/视频生成竞赛]]
+- **2026-09-18** · Qwen3.8-LiveTranslate 实时同传模型发布
+  官方博客：LAAL（Latency-Aware Accuracy Level）降至 2.3 秒，主打实时同传场景；与 Omni-Flash（9-17）合并构成 9 月中下旬的「实时 + 全模态」双轴。
+- **2026-09-17** · [Qwen 发布原生全模态模型 Qwen3.8-Omni-Flash，主打音视频智能体任务交付](https://aihot.news/items/cmu5smj860insroqokcuh0u9v)
+  继 8-26 Qwen3.8-Flash-Next、9-18 Qwen3.8-LiveTranslate（LAAL 2.3 秒）后再次把全模态能力下放到 Flash 档位；统一模型贯通文本 / 图像 / 音频 / 视频四线。
 - **2026-09-02** · [Qwen3.8-Max-0902 登顶 Code Arena](https://aihot.virxact.com/items/cmtjimzgx083zrobvekm2zmje)
   官方 X：Code Arena: WebDev 以 1691 分首发即总榜第一，混合定价 $5/MToken、自称领跑性价比 Pareto 前沿；2.4T 参数、1M 上下文，Qwen Cloud 可试用（官方口径，榜单原始数据待第三方核验）。
 
@@ -93,3 +97,4 @@ Qwen（通义千问）是阿里巴巴的大模型系列，覆盖通用、Coder�
 - [[开源模型与生态/智谱GLM]]
 - [[推理与基础设施/AI芯片竞争]]
 - [[训练与数据/RLHF与后训练]]
+

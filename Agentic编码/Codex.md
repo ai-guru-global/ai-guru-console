@@ -4,7 +4,7 @@
 别名: [OpenAI Codex, GPT-5-Codex]
 状态: 活跃
 创建: 2026-08-31
-更新: 2026-08-31
+更新: 2026-10-03
 关键角色: [OpenAI]
 ---
 
@@ -18,7 +18,12 @@ Codex 最初是 OpenAI 2021 年推出的代码生成模型（code-davinci 系列
 
 该线索追踪 Codex 的产品演进与用户规模；驱动它的 GPT-x-Codex 模型发布见 [[基础模型/GPT系列]]。
 
-## 时间线
+### 2026-09
+
+- **2026-09-29** · [OpenAI 推出新版 Codex Cloud，Agents API 开放预览并支持 computer use](https://aihot.virxact.com/items/l7k2qzyclr52j4zegcqo6mys3)
+  DevDay 2026 同步发布：Codex Cloud 可复用配置并跨设备跟进任务（[OpenAI Developers 官宣](https://aihot.virxact.com/items/vfjmts2i5gd8f3y5cerlb7h2q)），Agents API 开放预览且支持 computer use——Codex 从「云端编码任务」升级为「可跨设备跟进的常驻云智能体」，与同日 ChatGPT 常驻智能体 dots、Anthropic Claude Code 云会话（9-24）构成前沿厂商「编码 Agent 云端常驻化」的同月三方动作。→ [[智能体平台/ClaudeAgentSDK]]
+- **2026-09-15** · [Gergely Orosz 探访 OpenAI：Codex 驱动的智能体软件工厂](https://aihot.virxact.com/items/cmu2utske02sjrowk2zs2agim)
+  Pragmatic Engineer：OpenAI 内部以 Codex 驱动「智能体软件工厂」的一手探访；与 Augment Code 9-10「软件工厂建设人均产出增长 4.5 倍」复盘（[镜像](https://aihot.virxact.com/items/cmtym29350002roszb5f930dv)）互证——「软件工厂」在 2026-09 从口号变成有内部实践复盘的组织形态。
 
 ### 2026-07
 
@@ -42,6 +47,8 @@ Codex 最初是 OpenAI 2021 年推出的代码生成模型（code-davinci 系列
   OpenAI 以 GPT-5-Codex 为底座推出可并行执行多任务的编码 Agent（CLI + 云端），正式与 Claude Code 正面竞争。
 
 ### 2021
+
+### 2021-08
 
 - **2021-08** · 初代 Codex 代码模型发布
   基于 GPT-3 微调的代码生成模型，是 GitHub Copilot 第一代的底层引擎，2023 年退役。

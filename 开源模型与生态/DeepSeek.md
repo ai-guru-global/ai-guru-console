@@ -18,7 +18,10 @@ DeepSeek（深度求索）是量化基金幻方（High-Flyer）孵化的 AI 实�
 
 该线索追踪 DeepSeek 的模型发布、技术创新（MLA、MoE、GRPO、蒸馏）与其对全球 AI 格局的冲击。
 
-## 时间线
+### 2026-09
+
+- **2026-09-10** · [DeepSeek 发布 V4.1-Flash，API 价格同步下调](https://aihot.news/items/cmtv48yni0oq5rorpf4o74549)
+  1M 上下文、FP4 KV 缓存与跨层注意力复用，主打编码智能体 prefill 效率（[MarkTechPost 详解](https://aihot.virxact.com/items/cmtv7kmzk02vdrok9y0y8njiv)）；WorkBuddy 上线即日起两周免费试用（[镜像](https://aihot.virxact.com/items/cmtvqbs1q03q9rofb98re4l3n)）。开源 MoE 主线在前沿模型密集发布周后维持自身节奏。Baseten 工程博客次日（09-11）发布 [V4.1-Flash 编码智能体 prefill 优化分析](https://aihot.news/items/cmtym24xb0002rob419mlyhlb)。
 
 ### 2026-08
 
@@ -47,10 +50,10 @@ DeepSeek（深度求索）是量化基金幻方（High-Flyer）孵化的 AI 实�
 
 ### 2026-05
 
-- **2026-05 底** · A 轮约 70 亿美元（约 500 亿人民币）
-  投后估值 520-590 亿美元；腾讯、宁德时代入局，梁文锋自参与。
 - **2026-05-24** · [旗舰模型 V4-Pro 75 折转为永久](https://aihot.virxact.com/items/cmpk417ey03vssl01z5zsemms)
   Bloomberg 报道：原定月底到期的 V4-Pro 大幅折扣永久化，开发者价格保持在原价四分之一，延续激进定价策略。
+- **2026-05 底** · A 轮约 70 亿美元（约 500 亿人民币）
+  投后估值 520-590 亿美元；腾讯、宁德时代入局，梁文锋自参与。
 
 ### 2026-04
 

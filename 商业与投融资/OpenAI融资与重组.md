@@ -4,7 +4,7 @@
 别名: [OpenAI 估值, OpenAI 营利化重组]
 状态: 活跃
 创建: 2026-07-30
-更新: 2026-09-04
+更新: 2026-10-03
 关键角色: [OpenAI, Microsoft, SoftBank, Thrive Capital, Amazon, NVIDIA, Anthropic]
 ---
 
@@ -18,7 +18,16 @@ OpenAI 2015 年以非营利组织创立，2019 年引入「利润上限（capped
 
 该线索追踪 OpenAI 的融资、估值、治理与重组进程——它是理解整个 AI 行业资本逻辑的第一线索。
 
-## 时间线
+### 2026-09
+
+- **2026-09-30** · [OpenAI 据报道洽谈以约 1.4 万亿美元估值融资至少 300 亿美元](https://aihot.virxact.com/items/hxdv40od8cwti1sfmkmursiop)
+  TechCrunch 报道；✅ 2026-10-03 核验升级——首发为 [Bloomberg 2026-09-29](https://www.bloomberg.com/news/articles/2026-09-29/openai-targets-30-billion-in-new-funding-at-1-4-trillion-value)（「aims to raise at least $30 billion … according to people familiar」）+ [Reuters 2026-09-29](https://www.reuters.com/legal/transactional/openai-targets-30-billion-funding-14-trillion-valuation-bloomberg-news-reports-2026-09-29/) 跟进（估值「not including the money raised」），双主流成立（正文付费墙/超时，索引级），见待核实清单九·新加 6。估值口径为**不含本轮募资额**，与 Anthropic「$9650 亿（Series H 投后）」比较须注明口径差。匿名消息源层级：「洽谈中」可核、「成交」不可核。同期 [NVIDIA 董事会批准增加 1500 亿美元股票回购授权](https://aihot.news/items/r1djnvgg1hj9iqj6itgwjucbp)（[镜像](https://aihot.virxact.com/items/r1djnvgg1hj9iqj6itgwjucbp)）使「前沿算力 + 现金循环」形成单月双向通道。
+- **2026-09-29** · [OpenAI 宣布 ChatGPT 周活跃用户超 12 亿，ChatGPT Work 和 Codex 周用户超 3500 万](https://aihot.virxact.com/items/mhxg8rc7sqcsb29as21wy3his)
+  IT之家：ChatGPT WAU 突破 12 亿，ChatGPT Work 与 Codex 周活超 3500 万；OpenAI DevDay 2026 的分发成果在 WAU 端的首个可核口径。→ [[消费级AI应用/ChatGPT产品]]
+- **2026-09-19** · [FT 报道 OpenAI 预计 2030 年前累计现金消耗约 $278B](https://aihot.virxact.com/items/cmu7mv3mi0j8brogr1ktcfhb6)
+  Rohan Paul 转 FT：OpenAI 在 2030 年前累计现金消耗约 2780 亿美元；与 8-20「最迟 2027 年上市」表态、8-31 ChatGPT Ads ARR $10 亿共同说明「收入 + 现金消耗 + IPO 时间表」三轴在 2026-09 月内加速校准。
+- **2026-09-10** · [OpenAI 成立数学与人工智能独立顾问组](https://aihot.news/items/cmubj78b8125qrolnzwod3otj)
+  OpenAI 官宣成立由陶哲轩等领衔的数学与 AI 独立顾问组；与同期 Anthropic 9-23 成立生命科学实验室互为「前沿实验室借外脑背书自身扩张方向」的双侧动作。
 
 ### 2026-08
 
@@ -53,12 +62,12 @@ OpenAI 2015 年以非营利组织创立，2019 年引入「利润上限（capped
 
 - **2026-05-28** · [Anthropic Series H 关闭，650 亿美元 / 9650 亿估值](https://www.reuters.com/business/anthropic-raises-65-billion-now-valued-965-billion-2026-05-28/)
   领投 Altimeter、Dragoneer、Greenoaks、Sequoia；估值超越 OpenAI 当时水平。
-- **2026-05** · Anthropic ARR 达 470 亿美元，反超 OpenAI（CNBC 口径）
-  2025 全年约 100 亿美元收入，5 月年化达 470 亿；OpenAI 同期约 240-250 亿。注意口径差异：OpenAI 扣除云厂商分成而 Anthropic 不扣。✅ 已核实（2026-09-04，CNBC/Reuters/Bloomberg 多源）。
 - **2026-05-16** · [OpenAI 大规模重组，总裁 Brockman 挂帅](https://aihot.virxact.com/items/cmp81gwxx0ezsslnze6fa6wif)
   IT之家报道，总裁 Greg Brockman 在新一轮组织重组中统帅挂帅，架构向 IPO 对齐。
 - **2026-05-15** · [纳德拉：微软对 OpenAI 累计投入已超 1000 亿美元](https://aihot.virxact.com/items/cmp6ba93100fbslnzmec29858)
   IT之家报道，纳德拉回顾「当年没人愿意下注」——微软仍是 OpenAI 最大金主。
+- **2026-05** · Anthropic ARR 达 470 亿美元，反超 OpenAI（CNBC 口径）
+  2025 全年约 100 亿美元收入，5 月年化达 470 亿；OpenAI 同期约 240-250 亿。注意口径差异：OpenAI 扣除云厂商分成而 Anthropic 不扣。✅ 已核实（2026-09-04，CNBC/Reuters/Bloomberg 多源）。
 
 ### 2026-04
 
@@ -85,7 +94,10 @@ OpenAI 2015 年以非营利组织创立，2019 年引入「利润上限（capped
 - **2026-01-07** · [Anthropic 签订 Term Sheet](https://www.cnbc.com/2026/01/07/anthropic-funding-term-sheet-valuation.html)
   CNBC 报道 100 亿美元轮，估值 3500 亿。
 
+
 ### 2025-10（背景）
+
+### 2025-10
 
 - **2025-10-28** · [OpenAI 完成转 PBC 重组](https://openai.com/index/built-to-benefit-everyone/)
   OpenAI Group PBC 落地，非营利基金会保留控制权并持约 26%（约 1300 亿美元）股权；与 Microsoft 重签 AGI 权利协议。

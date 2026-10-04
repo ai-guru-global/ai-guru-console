@@ -18,8 +18,6 @@ Llama 是 Meta 的开放权重大模型系列。2023 年 2 月首代以研究许
 
 该线索追踪 Llama 的版本演进、许可策略与其在开源生态中地位的起落。
 
-## 时间线
-
 ### 2026-09
 
 - **2026-09-02** · [Meta 发布 Muse Spark 1.3，智能体与科学推理能力提升](https://aihot.virxact.com/items/cmtkkcguj04aurollf1lq9a9s)

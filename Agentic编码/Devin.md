@@ -18,7 +18,14 @@ Devin 是 Cognition AI 推出的自主软件工程师 Agent，2024 年以「首�
 
 该线索追踪 Devin 的产品演进与 Cognition 的商业化。
 
-## 时间线
+### 2026-09
+
+- **2026-09-25** · [Cognition 宣布年化收入运行率突破 10 亿美元](https://aihot.news/items/cmuh4q0ef044fro55mt9bfnxy)
+  距 9-07「E 轮估值 $480 亿」仅 18 天，营收锚跑赢估值重定价；后续 9-09「SWE-2 编码模型」与 9-10「WorkBuddy 上线 DeepSeek V4.1-Flash 免费试用」共同把 Devin 系列推向「企业付费 + 主流 IDE 集成」双轨。
+- **2026-09-09** · [Cognition 发布 SWE-2 编码模型，以更低成本逼近前沿](https://aihot.news/items/cmtym40hx0004roske1zgdkmu)
+  Cognition（Devin）在 9-07 完成 E 轮后立刻上线新模型；同周 9-05 OpenAI 公开 wiki 事件（The Verge / The Decoder 双源）并承诺改革智能体错位事件报告机制，编码 Agent 厂商首次同时承担「资本重定价 + 智能体错位责任」双重身份。
+- **2026-09-07** · [Cognition 完成超 20 亿美元 E 轮融资，估值达 480 亿美元](https://aihot.news/items/cmtym40hx0006roskf9ja0kdg)
+  9 个月之内由 20 亿（2025-12）涨至 480 亿（24 倍），AI 编码 Agent 赛道的资本锚锚定在 ARR 估值比 ≈ 60x（按 9-25 ARR $10 亿）；与 9-25「Cognition ARR 突破 10 亿」相隔约 18 天，估值锚跑赢 ARR 锚。→ [[商业与投融资/AI人才与并购潮]]
 
 ### 2026-07
 
@@ -48,3 +55,4 @@ Devin 是 Cognition AI 推出的自主软件工程师 Agent，2024 年以「首�
 - [[Agentic编码/ClaudeCode]]
 - [[开发者工具/GitHubCopilot]]
 - [[商业与投融资/AI人才与并购潮]]
+

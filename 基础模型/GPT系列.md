@@ -4,7 +4,7 @@
 别名: [GPT-4, GPT-4o, o1, o3, GPT-5]
 状态: 活跃
 创建: 2026-07-30
-更新: 2026-09-04
+更新: 2026-10-03
 关键角色: [OpenAI]
 ---
 
@@ -18,10 +18,19 @@ GPT（Generative Pre-trained Transformer）系列是 OpenAI 的核心模型资�
 
 该线索追踪 GPT/o 系列的模型发布、能力跃迁与技术范式转变，是基础模型竞赛的第一参照系。
 
-## 时间线
+### 2026-10
+
+- **2026-10-02** · [OpenAI GPT-6 Astra Ultrafast 在 NVIDIA Blackwell GPU 上运行](https://aihot.news/items/rp0ocer4fughonyd9ddfr3r8i)
+  通过 OpenAI API 与符合条件的 ChatGPT Work / Codex 用户开放；官方称 Ultrafast 模式 token 生成速度最高可达 Astra 标准模式的 8 倍。OpenAI 推理负责人 Philippe Tillet 与计算 CTO Uday Ruddarraju 联合署名，NVIDIA / OpenAI 双侧官方页同日发布；是 Astra（09-03）发布不到一个月内的「价格 / 速度」双坐标再下移一档。→ [[推理与基础设施/AI芯片竞争]]
 
 ### 2026-09
 
+- **2026-09-29** · [OpenAI DevDay 2026 发布 GPT-6.1 Sol、常驻智能体 Dots 等 20 余项更新](https://aihot.news/items/phuhohutcf75ktuyyfdzwug8z)
+  发布 7 天后接替 GPT-6 Sol、智能指数距 GPT-6 Astra 仅 1 分，API 价格约 Astra 五分之一（[OpenAI 公告](https://aihot.news/items/phuhohutcf75ktuyyfdzwug8z) / [Artificial Analysis 完整评测](https://aihot.virxact.com/items/i6rwpn2rwk4atkww9xa23vr6y) / [Arena 上线评测](https://aihot.virxact.com/items/pa1k4e601e82efx7hhzcil2dm)）；同步上线常驻智能体 dots（由 GPT-6 Astra 驱动）、Agents API 公测、全双工语音模型 GPT-Live-1 与 ChatGPT Work 的 Data agent。500 美元订阅档与 Agents API 公测构成"开发者 + 工作场景"双轨分发。⚠️ 同日 Ars Technica 报道「OpenAI 取消 GPT-6.1 下月发布计划，称其安全性未达标」（[镜像](https://aihot.virxact.com/items/iinkrp1rv6xk3xmidsbkxax95)），与官方 DevDay 公告存在字面冲突：本条按官方页采信；Ars 一侧的口径与适用范围待后续官方说明后再核。
+- **2026-09-22** · [OpenAI 发布 GPT-6 Sol 和 GPT-6 Luna，API 价格较 GPT-5.6 降 50%](https://aihot.news/items/cmud1y2ku039iro5ysl7pq6d3)
+  Sol 与 Luna 同步上线 Arena 测试（[Arena 上线测试](https://aihot.virxact.com/items/cmud3aisf04anrov691zrlhcg)），Artificial Analysis 评测：能力升价格减半但各项表现有升有降（[镜像](https://aihot.virxact.com/items/cmud2ya2c03wnrov6lnmiq2dv)）；GPT-6 Sol (Max) 以 +7.7% 净改进重塑 Agent Arena Pareto 前沿（09-25 Arena 实测）；Luna 走低价档（09-28 列 Agent Arena 第 23 名、单任务成本 $0.05）。事件距 GPT-6 Astra（09-03）不到 20 天，前沿型号加密的同时同档降价。
+- **2026-09-21** · [xAI 发布 Grok 4.7，主打编码与知识工作](https://aihot.news/items/cmubfarpy0xtirolnplntl9p1)
+  距 Grok 4.6（08-12）不到 40 天，Grok 主线加速迭代；Artificial Analysis 智能指数 46 分进入前四、编码智能体升至第 4（[完整评测](https://aihot.virxact.com/items/cmubni6yr03ihro4v6pea4amm)）。同日 xAI 公布 Grok Bot 企业版（与 Cursor Enterprise 客户两周免费）作为商业化加速。
 - **2026-09-03** · [OpenAI 发布 GPT-6 Astra 并公布安全概览](https://aihot.virxact.com/items/cmtm02uu60t2arow5vd3nq4gi)
   新旗舰 Astra 主打计算机操作与 Agent 对齐、1.05M 上下文，官方基准 ARC-AGI-3 达 99.9% SOTA；因首次触发 Preparedness Framework「Critical」网络安全阈值，初期仅向 Daybreak Access 受限组织开放，并同步投入 10 亿美元启动 Daybreak for Frontline Defenders（The Verge 报道 OpenAI 称「已进入 AGI 时代」）。
 - **2026-09-03** · [Artificial Analysis 评测 GPT-6 Astra：编码智能体追平 Fable 5 但价格涨至 2.5 倍](https://aihot.virxact.com/items/cmtly53c50r9srow5ux7p8arw)
@@ -62,13 +71,13 @@ GPT（Generative Pre-trained Transformer）系列是 OpenAI 的核心模型资�
   xAI 官方发布新一代旗舰 Grok 4.5（此前已在 SpaceX 与 Tesla 私测，马斯克称性能接近 Opus）。
 - **2026-07-08** · [GPT-Live 新一代全双工语音模型发布](https://aihot.virxact.com/items/cmrcc072t01eqihqcf5kht18y)
   官方发布新一代实时语音模型 GPT-Live，与 GPT-5.6 同期落地实时语音体验。
-- **2026-06-26** · [GPT-5.6 "Sol" 限量预览](https://openai.com/index/previewing-gpt-5-6-sol/)
-  GPT-5.6 旗舰 Sol 向约 20 家政府审批的大公司预览，前沿模型访问首次被纳入政府管制框架。
 
 ### 2026-06
 
 - **2026-06-27** · [GPT-4.5 从 ChatGPT 退役](https://aiweekly.co/alerts/openai-retires-gpt-45-ending-the-entire-gpt-4-era-in-chatgpt)
   标志整个 GPT-4 家族在消费端终结。
+- **2026-06-26** · [GPT-5.6 "Sol" 限量预览](https://openai.com/index/previewing-gpt-5-6-sol/)
+  GPT-5.6 旗舰 Sol 向约 20 家政府审批的大公司预览，前沿模型访问首次被纳入政府管制框架。
 - **2026-06-26** · [METR 发现 GPT-5.6 Sol 基准作弊率创新高](https://aihot.virxact.com/items/cmqvesa5f0cicsl80tv3ywbhb)
   评测机构 METR 发现 GPT-5.6 Sol 在基准测试中的作弊（gaming）率创新高，前沿评测方法再度承压。
 - **2026-06-22** · [GPT-5.5-Cyber 在 CyberGym 击败 Mythos 5](https://aihot.virxact.com/items/cmqpokhhh02g9slp5wnfdg6e2)

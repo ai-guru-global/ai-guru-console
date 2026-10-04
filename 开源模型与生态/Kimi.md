@@ -4,7 +4,7 @@
 别名: [月之暗面, Moonshot, Kimi K2, Kimi K3]
 状态: 活跃
 创建: 2026-08-03
-更新: 2026-08-31
+更新: 2026-10-03
 关键角色: [月之暗面, 杨植麟]
 ---
 
@@ -18,7 +18,20 @@
 
 2026 年 Kimi 进入密集发布期（K2.5 → K2.6 → K2.7-Code → K3），K3 在 WAIC 2026 发布并成为全球首个开源 3T 级前沿模型；同年 5 月完成约 20 亿美元融资、投后估值超 200 亿美元。该线索追踪 Kimi 模型演进与月之暗面的商业化。
 
-## 时间线
+### 2026-09
+
+- **2026-09-24** · [OpenRouter 解析 Kimi K3：开源权重与许可证条款，以及如何调用](https://aihot.virxact.com/items/cmuetpj5l04curohbgsl4cj6m)
+  OpenRouter 官方公告逐条解析 K3 的开源权重、许可证条款与调用方式——K3（07-16 发布的全球首个开源 3T 级前沿模型）的下游生态文档化，第三方推理平台成为开源权重的事实分发层。
+- **2026-09-23** · [Fireworks 发布 Ember-1，以约四成更少 token 达到 Kimi K3 质量](https://aihot.virxact.com/items/cmuemnn9m07yproynbzmmumd3)
+  Fireworks AI：自研 Ember-1 以约四成更少 token 达到 K3 质量——推理服务商以「蒸馏 + 工程优化」把开源旗舰当作质量锚点而非直接使用对象，K3 成为第三方模型的对标基线。
+- **2026-09-23** · [Modal 详解如何以万亿 token 规模服务 Kimi K2.6 编码 Agent 推理](https://aihot.virxact.com/items/cmueg56ob04iqrovxup3jp0ly)
+  Modal 工程博客：万亿 token 规模的 K2.6 编码 Agent 推理服务实践——开源大模型的「生产级推理服务」由第三方基础设施商公开复盘，K 系成为 Agent 推理的主力负载之一。→ [[推理与基础设施/vLLM与推理引擎]]
+- **2026-09-22** · [Kimi 发布浏览器扩展，由 Kimi WebBridge 更名而来](https://aihot.virxact.com/items/cmuckjawr09ljroedz4yf3xqf)
+  官方 X：浏览器扩展从 WebBridge 更名为 Kimi 品牌主线——月之暗面把浏览器入口收编进主品牌，与 Perplexity Comet、ChatGPT 浏览器路线同赛道竞争。
+- **2026-09-21** · [Kimi 发布 Kimi Code Desktop 1.0，macOS 与 Windows 版同步上线](https://aihot.virxact.com/items/cmuaytowf0c4oroln02tacq0c)
+  公众号「月之暗面（Kimi）」：Kimi Code Desktop 1.0 双平台同步上线——K 系从 API/开源权重走到自有桌面编码客户端，与 Claude Code、Codex Cloud（9-29）构成「前沿编码客户端」三方格局。→ [[Agentic编码/ClaudeCode]] [[Agentic编码/Codex]]
+- **2026-09-10** · [Anthropic 报告指控阿里、月之暗面与 DeepSeek 对 Claude 发起蒸馏攻击](https://aihot.news/items/cmtw0ejbx03jdro8s0ve1llhi)
+  TechCrunch 报道：月之暗面被 Anthropic 官方报告点名为蒸馏攻击发起方之一——K 系开源权重的高质量使其同时成为「被蒸馏对象」与「蒸馏指控方」，本条为负面事件登记，指控细节以 Anthropic 报告为准、月之暗面回应未取得。→ [[AI安全与对齐/AI监管政策]]
 
 ### 2026-07
 
@@ -57,3 +70,4 @@
 - [[开源模型与生态/智谱GLM]]
 - [[评测与基准/LMArena]]
 - [[商业与投融资/AI人才与并购潮]]
+

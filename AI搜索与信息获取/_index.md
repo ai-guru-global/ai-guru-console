@@ -12,6 +12,7 @@
 
 - [Perplexity](Perplexity.md) — 活跃
 - [ChatGPT搜索](ChatGPT搜索.md) — 活跃
+- [GEO](GEO.md) — 活跃
 
 <!-- 新建线索后在此追加：- [线索名](线索名.md) — 状态 -->
 

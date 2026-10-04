@@ -331,9 +331,10 @@ def parse_corrections() -> list[dict]:
 
 
 def pack_library() -> dict:
-    """文档中心：仓库根与 docs/ 的 md 全量内嵌（大事记除外——事件层已解析，raw 体积大）。"""
+    """文档中心：仓库根与 docs/（含子目录）的 md 全量内嵌（大事记除外——事件层已解析，raw 体积大）。"""
     files = []
-    targets = sorted(list(ROOT.glob("*.md")) + list((ROOT / "docs").glob("*.md")))
+    # docs 用 rglob：页面自述「docs/ 全量」，且线索模板/README/_topics 均引用 docs/superpowers/ 子目录文档（2026-10-03，修正记录留痕）
+    targets = sorted(list(ROOT.glob("*.md")) + list((ROOT / "docs").rglob("*.md")))
     for p in targets:
         if p.name in ("_2025大事记.md", "_2026大事记.md"):
             continue
@@ -491,6 +492,8 @@ def main() -> None:
             continue
         for p in sorted(tdir.glob("*.md")):
             if p.name == "_index.md":
+                # 主题说明 + 线索列表 + 候选线索：内嵌为 idx 字段，主题详情页渲染（2026-10-03，修正记录留痕）
+                t["idx"] = p.read_text(encoding="utf-8")
                 continue
             c = parse_clue(p, t["key"])
             clues.append(c)

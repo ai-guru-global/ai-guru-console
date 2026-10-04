@@ -4,7 +4,7 @@
 别名: [GitHub Copilot, Copilot]
 状态: 活跃
 创建: 2026-07-30
-更新: 2026-08-31
+更新: 2026-10-03
 关键角色: [GitHub, Microsoft, OpenAI]
 ---
 
@@ -18,7 +18,19 @@ GitHub Copilot 2021 年基于 OpenAI Codex 推出，是 AI 编程助手品类的
 
 该线索追踪 Copilot 的产品演进、商业化数据，及其在 Cursor/Claude Code 等新势力冲击下的战略调整。
 
-## 时间线
+### 2026-10
+
+- **2026-10-01** · [Cursor 上线 GLM 5.3 与 GLM 5.3 Flash](https://x.com/cursor_ai/status/2105787358557999585)
+  Cursor 官方账号宣布 GLM 5.3 与 GLM 5.3 Flash 现已在 Cursor 中可用；GLM 5.3 Max 是 CursorBench 4.0 上得分最高的开源权重模型——为 SpaceX 收购后 OpenAI 断供背景下的「模型组合去 OpenAI 化」再下一城，与 8-29「依赖 xAI Grok 与自研 Composer」相承；间接把 GLM 5.3 推到 Copilot 之外的第二大编码 IDE 主线。
+
+### 2026-09
+
+- **2026-09-25** · [GitHub Copilot app 新手教程：如何用 canvases 构建自定义工作流](https://aihot.virxact.com/items/cmuha4bdk063qro3buzyc19hv)
+  GitHub Blog：canvases（07-21 发布）的自定义工作流官方教程——从功能发布到工作流模板化的常规节奏，Copilot 平台化路线的配套内容层。
+- **2026-09-17** · [GitHub 用 Copilot 智能体将 Copilot 运行时从 TypeScript 迁移到 83 万行 Rust](https://aihot.virxact.com/items/cmu4tu41w07ufrokck6s0p0cp)
+  GitHub Blog：Copilot 智能体自身完成 83 万行 TypeScript → Rust 迁移——「AI 编码工具用 AI 编码工具重写自己」的自举案例，也是编码 Agent 处理大规模遗留代码迁移的公开工程证据；同周 Pragmatic Engineer 探访 OpenAI「Codex 智能体软件工厂」（9-15）与 Augment「软件工厂人均产出 4.5 倍」（9-10）构成同月三例。→ [[Agentic编码/Codex]]
+- **2026-09-10** · [Cursor 推出 Projects：协调者智能体管理数千个子智能体处理大型开发任务](https://aihot.virxact.com/items/cmtw4o8qc03iwrolkwc03elil)
+  Cursor Blog：Projects 把单任务智能体升级为「协调者 + 子智能体」两级结构；与 GitHub Copilot 7-27 Harness 形成「Cursor 协调者 vs Copilot Harness」两条「AI 编码 IDE 中台」路线分叉。
 
 ### 2026-07
 
@@ -48,7 +60,6 @@ GitHub Copilot 2021 年基于 OpenAI Codex 推出，是 AI 编程助手品类的
 - **2026-04-24** · [GPT-5.5 正式登陆 GitHub Copilot](https://aihot.virxact.com/items/cmodaepgp007esl8izvohbnax)
   OpenAI 总裁 Greg Brockman 宣布 GPT-5.5 上线 GitHub Copilot，Copilot 继续第一时间接入 OpenAI 最新旗舰模型。
 
-### 2026-03
 
 - **2026-03（04-02 更新日志）** · Copilot in Visual Studio 3 月更新
   新增 custom agents、agent skills、新工具，扩展性大幅提升。

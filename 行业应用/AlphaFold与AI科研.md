@@ -4,7 +4,7 @@
 别名: [AlphaFold, AI for Science, 蛋白质结构预测]
 状态: 活跃
 创建: 2026-07-30
-更新: 2026-09-04
+更新: 2026-10-03
 关键角色: [Google DeepMind, Isomorphic Labs]
 ---
 
@@ -18,10 +18,14 @@ AlphaFold 是 DeepMind 的蛋白质结构预测系统：2020 年 AlphaFold2 在 
 
 该线索以 AlphaFold 为主轴，追踪 AI 在科学研究（生物、材料、气象等）中的落地进展。
 
-## 时间线
-
 ### 2026-09
 
+- **2026-09-30** · [Google DeepMind 发布 SynthID Bio，为 AI 生成的蛋白质嵌入可验证水印](https://aihot.news/items/deivg466iwv9ypddacud3hd7d)
+  Sundar Pichai 官宣：首次将不可感知签名直接嵌入蛋白质序列且不影响生物功能——AI 设计蛋白的可追溯性成为「科学诚信 + 生物安全」的双向基础设施，与 9-23 Anthropic ART 酶发现互为「生成 + 溯源」两侧。
+- **2026-09-24** · [NVIDIA 联合 Google DeepMind 等机构开放 2800 多种病毒的蛋白复合物预测结构数据集](https://aihot.virxact.com/items/cmufo8rn007i8ro8wylbdcop0)
+  NVIDIA Blog / Hugging Face：2800+ 种病毒的蛋白复合物预测结构开放——AlphaFold 路线的预测结构从单蛋白扩展到「病毒 × 复合物」系统级开放数据，芯片厂商首次以数据资产而非算力身份入场 AI 科研。
+- **2026-09-23** · [Anthropic 成立生命科学实验室，Claude 自主发现类 CRISPR 的新型酶系统 ART](https://aihot.news/items/cmuefqp730041rovxbpewc3gn)
+  Anthropic 官宣：前沿实验室首个以「AI 自主科学发现」命名的独立研究单元，首个成果为类 CRISPR 新型酶系统 ART——LLM 厂商从「科研辅助工具」跨入「自主发现主体」叙事的标志性事件。→ [[行业应用/医疗AI]]
 - **2026-09-03** · [Google DeepMind 发布 WeatherNext 3 全球天气 AI 模型，hourly 更新且分辨率较上一代提升约 5 倍](https://aihot.virxact.com/items/cmtlnmh4o0fmsrow5i7pdq8b0)
   DeepMind 官方博客发布 WeatherNext 3：小时级更新、分辨率较上一代提升约 5 倍——继 GraphCast 之后，DeepMind 气象 AI 从研究模型进入常态化业务产品线。
 
@@ -43,7 +47,6 @@ AlphaFold 是 DeepMind 的蛋白质结构预测系统：2020 年 AlphaFold2 在 
 
 - **2026-06-30** · [Claude Science 科研工作台正式上线](https://aihot.virxact.com/items/cmr0xc7sg0040slb3yenz5k02)
   Anthropic 官方发布科研工作台，把科学文献、数据与实验工作流接入 Claude 生态——继 OpenAI（GPT-Rosalind）与 Google（AlphaFold 系）之后，AI for Science 成为第三条巨头产品线。
-
 - **2026-06-19** · [AlphaFold 负责人 John Jumper 离职 DeepMind，加入 Anthropic](https://aihot.virxact.com/items/cmql4yj5e014zsllucl69g3l6)
   诺贝尔化学奖得主、AlphaFold 核心创始人转投 Anthropic（Demis Hassabis 在 X 确认）——AI for Science 头牌科学家的流向成为前沿实验室人才争夺的标志性事件。
 
@@ -51,7 +54,6 @@ AlphaFold 是 DeepMind 的蛋白质结构预测系统：2020 年 AlphaFold2 在 
 
 - **2026-05-25** · [AlphaProof Nexus 攻克两道悬置 56 年的数学难题](https://aihot.virxact.com/items/cmpl3eupd0chwsl01o9tkqehz)
   DeepMind 形式化证明系统以仅几百美元的计算成本解决数十年未解的数学问题（The Decoder 报道、IT之家跟进）——「AI 数学家」从竞赛级题目进阶到真实悬置难题。
-
 - **2026-05-20** · [OpenAI 宣布解决一道悬置 80 年的数学问题](https://aihot.virxact.com/items/cmpernh3q009mslbge6t5nqvg)
   OpenAI 称用 AI 解决了一道存在 80 年的数学难题（TechCrunch 报道，The Decoder 称其为「AI 数学里程碑」）——AI 驱动的科学发现首次在数学最前沿打出标志性案例。
 

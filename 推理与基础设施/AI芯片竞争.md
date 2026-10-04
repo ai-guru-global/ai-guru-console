@@ -18,10 +18,19 @@ AI 芯片是这轮 AI 浪潮的物理底座。NVIDIA 凭 CUDA 生态与 H100/Bla
 
 该线索追踪芯片产品迭代、供需格局与算力地缘政治。
 
-## 时间线
+### 2026-10
+
+- **2026-10-02** · [OpenAI GPT-6 Astra Ultrafast 在 NVIDIA Blackwell GPU 上运行](https://aihot.news/items/rp0ocer4fughonyd9ddfr3r8i)
+  通过 OpenAI API 与符合条件的 ChatGPT Work / Codex 用户开放；官方称 Ultrafast 模式 token 生成速度最高可达 Astra 标准模式的 8 倍。OpenAI 推理负责人 Philippe Tillet 与计算 CTO Uday Ruddarraju 联合署名，NVIDIA / OpenAI 双侧官方页同日发布；是 Astra（09-03）发布不到一个月内的「价格 / 速度」双坐标再下移一档。→ [[基础模型/GPT系列]]
 
 ### 2026-09
 
+- **2026-09-30** · [NVIDIA 董事会批准增加 1500 亿美元股票回购授权，剩余总额达 2350 亿美元](https://aihot.news/items/r1djnvgg1hj9iqj6itgwjucbp)
+  NVIDIA 官方：剩余回购总额达 2350 亿美元；与同月「Anthropic 与 SpaceX 最高 845 亿美元算力协议」「OpenAI 据报洽谈以约 1.4 万亿美元估值融资至少 300 亿美元」一同折射 2026-09 末「前沿算力 + 现金循环」的资本侧转折。
+- **2026-09-30** · [Google 首次轨道 AI 芯片试验确认在轨运行正常](https://aihot.virxact.com/items/fe27jbwrn6gfzym6j9q179auw)
+  Rohan Paul：Google 与 Planet 合作的原型卫星通过 SpaceX Transporter-18 拼车任务入轨、搭载四颗 TPU；是 Google 长期 Project Suncatcher（送算力入太空）的第一步。
+- **2026-09-28** · [北京或批准部分 NVIDIA 新款工作站芯片采购，阿里、字节拟购百万颗](https://aihot.news/items/fxee0mj2zabmuypu49wy699z8)
+  X.PIN：北京或批准部分 NVIDIA 新款工作站芯片采购，阿里、字节拟购百万颗；与中国侧「昇腾 + 寒武纪 + 摩尔线程」国产算力替代并行，构成「准许采购 + 国产替代」的双轨。
 - **2026-09-03** · [NVIDIA 宣布以 129.3 亿美元收购 Hugging Face](https://aihot.virxact.com/items/cmtli5yd109u4row52i1xg9j4)
   NVIDIA 官方博客宣布以约 129.3 亿美元收购开源模型平台 Hugging Face，黄仁勋承诺保持开放，纳德拉、Pichai 亦表态支持开源生态（IT之家、X 多源跟进）——芯片巨头把开源模型社区收入麾下，CUDA 之上再叠一层生态锁定。
 - **2026-09-01** · [路透社调查：美国 AI 数据中心现大量幽灵用电需求，得州等多州出手整治](https://aihot.virxact.com/items/cmtipeu1u01a2ro9yi22t9cev)

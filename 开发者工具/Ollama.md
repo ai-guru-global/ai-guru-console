@@ -18,8 +18,6 @@ Ollama 2023 年由前 Docker 员工创立，以「Docker 式体验跑本地大�
 
 该线索追踪 Ollama 的产品演进与本地推理生态（llama.cpp、量化格式、桌面端应用）的发展。
 
-## 时间线
-
 ### 2026-09
 
 - **2026-09-01** · [Hugging Face 发布 @huggingface/kernels，提供 207 个 WebGPU 内核用于浏览器本地 AI 推理](https://aihot.virxact.com/items/cmtitozyq04j2ro9ydv3oxgsd)
