@@ -1,6 +1,8 @@
 /* ============================================================================
- * AI GURU 工作台，AI 全行业研究台应用逻辑
- * 双层 hash 路由：#/视图 + #/视图/页签，32 节 99 页，侧栏归入 12 个板块
+ * AI GURU 工作台，AI 全行业拆解台应用逻辑
+ * 定位：用最细的维度一层层拆解 AI 全行业——主轴是五层产业链 × 56 节点，
+ * 线索/大事/档案是节点上的证据层，不是产品本体。
+ * 双层 hash 路由：#/视图 + #/视图/页签，32 节 99 页，侧栏归入 11 个板块
  * 交互含筛选、线索详情、主题详情、大事记、档案检索、日报、玩家详情、议题账本、全局搜索
  * ============================================================================ */
 (function () {
@@ -438,7 +440,7 @@ RENDER.guide = function () {
     '<div class="view-head">' +
       '<h2>阅读指南<span class="en">Reading Guide</span></h2>' +
       '<div class="vh-meta"><span class="m">' + DB.guide.paths.length + ' 条路线</span><span class="m">' + DB.guide.tour.length + ' 站通读</span><span class="m">进度存本机</span></div>' +
-      '<p class="lead">99 个页面按 12 个板块铺成一条研究动线：<b>看结构 → 找证据 → 做核验 → 下判断 → 落成行动</b>，本机运营独立收尾。不知从哪进：按 P1→P7 顺序读完整套，即完成从听懂行话到能下判断的全程；或在「通读序列」里开启逐站通读模式。</p>' +
+      '<p class="lead">本台不是新闻台。<b>拆解主轴：五层产业链 × ' + chainTotal() + ' 节点</b>，一层层下钻到最细维度；新闻与线索只在节点上作为证据出现。动线：<b>拆结构 → 看玩家与赛道 → 找证据 → 做核验 → 下判断 → 落行动</b>。不知从哪进：按 P1→P7 顺序读完整套，即完成从听懂行话到能下判断的全程；或在「通读序列」里开启逐站通读模式。</p>' +
     '</div>');
 };
 
@@ -543,8 +545,8 @@ RENDER.overview = function () {
   return viewShell('overview',
     '<div class="view-head">' +
       '<h2>总览，一屏开局<span class="en">Overview</span></h2>' +
-      '<div class="vh-meta"><span class="m">快照 ' + esc(DB.meta.builtAt) + '</span><span class="m">' + n.clues + ' 线索 · ' + n.topics + ' 主题 · ' + n.events + ' 大事 · ' + n.archive + ' 档案</span><span class="m">时间线式线索库，宁漏勿错</span></div>' +
-      '<p class="lead">这是 <b>AI GURU 工作台</b>：' + n.clues + ' 条持续追踪的线索、' + n.events + ' 条大事、' + n.verify + ' 条待核实、' + n.archive + ' 条精选档案，全部由 AI News Database 内容库的仓库 md 构建内嵌。最近更新 ' + esc(DB.stats.lastUpdated) + '。</p>' +
+      '<div class="vh-meta"><span class="m">快照 ' + esc(DB.meta.builtAt) + '</span><span class="m">五层产业链 ' + chainTotal() + ' 节点</span><span class="m">' + n.clues + ' 线索 · ' + n.events + ' 大事 · ' + n.archive + ' 档案（证据层）</span></div>' +
+      '<p class="lead">这是 <b>AI GURU 工作台</b>：用五层产业链 × ' + chainTotal() + ' 节点把 AI 全行业拆到最细维度；证据层内嵌 ' + n.clues + ' 条线索、' + n.events + ' 条大事、' + n.verify + ' 条待核实、' + n.archive + ' 条精选档案，全部由仓库 md 构建生成。最近更新 ' + esc(DB.stats.lastUpdated) + '。</p>' +
     '</div>');
 };
 
@@ -648,23 +650,23 @@ PANE.overview = function () {
   capEvs.forEach(function (e) { if (e.meta && e.meta.amountUsd) capSum += e.meta.amountUsd; });
   var assetFlow = '<div class="flow" style="margin-top:14px">' +
     '<div class="step"><div class="t">观点判断</div><div class="v">' + analysisTotal + ' <small style="font-size:12px">条</small></div><div class="d">' + n.clues + ' 条线索「分析」段的结构化观点，见 <a href="#/clues/analysis">观点库</a></div></div>' +
-    '<div class="step"><div class="t">档案来源</div><div class="v">' + Object.keys(srcSet).length + ' <small style="font-size:12px">个</small></div><div class="d">3512 条精选资讯的独立信源，见 <a href="#/archive/sources">来源分布</a></div></div>' +
+    '<div class="step"><div class="t">档案来源</div><div class="v">' + Object.keys(srcSet).length + ' <small style="font-size:12px">个</small></div><div class="d">' + n.archive + ' 条精选档案的独立信源，见 <a href="#/archive/sources">来源分布</a></div></div>' +
     '<div class="step"><div class="t">模型登记</div><div class="v">' + DB.models.length + ' <small style="font-size:12px">个</small></div><div class="d">前沿模型规格登记册，待回填字段持续填数</div></div>' +
     '<div class="step"><div class="t">资本事件</div><div class="v">' + capEvs.length + ' <small style="font-size:12px">条</small></div><div class="d">披露合计约 ' + (capSum >= 10000 ? (capSum / 10000) + ' 万亿' : capSum + ' 亿') + ' 美元，见 <a href="#/capital/rank">金额榜</a></div></div>' +
   '</div>';
   el.innerHTML = h(
     '<div class="kpi-strip">' +
-      '<div class="kpi"><div class="k">线索库</div><div class="v">' + n.clues + ' <small>条，' + n.topics + ' 主题</small></div><div class="w">活跃 ' + (st['活跃'] || 0) + ' · 观察中 ' + (st['观察中'] || 0) + ' · 已完结 ' + (st['已完结'] || 0) + '</div></div>' +
-      '<div class="kpi dark"><div class="k">大事记 · 最新</div><div class="v">' + esc(latest.date) + ' <small>' + esc(latest.title.slice(0, 14)) + '</small></div><div class="w">2025–2026 两卷归档，仅收官方一手源与多源印证</div></div>' +
+      '<div class="kpi dark"><div class="k">拆解主轴</div><div class="v">L1–L5 <small>× ' + chainTotal() + ' 节点</small></div><div class="w">算力硬件 → 数据模型 → 平台工具 → 行业应用 → 商业生态，逐层下钻</div></div>' +
+      '<div class="kpi"><div class="k">证据层</div><div class="v">' + n.clues + ' 线索 <small>+' + n.archive + ' 档案</small></div><div class="w">活跃 ' + (st['活跃'] || 0) + ' · 观察中 ' + (st['观察中'] || 0) + ' · 已完结 ' + (st['已完结'] || 0) + '，只挂在节点上</div></div>' +
       '<div class="kpi"><div class="k">待核实</div><div class="v">' + n.verify + ' <small>条</small></div><div class="w">' + VERIFY_ORDER.map(function (m) { return m + ' ' + VERIFY_COUNTS[m]; }).join(' · ') + '，详见风险雷达</div></div>' +
-      '<div class="kpi"><div class="k">精选档案</div><div class="v">' + n.archive + ' <small>条，2017 起沉淀</small></div><div class="w">标题级全文检索：<a href="#/archive">Archive</a> · <a href="#/daily">日报</a></div></div>' +
+      '<div class="kpi"><div class="k">大事记 · 最新</div><div class="v">' + esc(latest.date) + ' <small>' + esc(latest.title.slice(0, 14)) + '</small></div><div class="w">2025–2026 两卷归档，仅收官方一手源与多源印证</div></div>' +
     '</div>' +
 
     '<div class="grid g4 map-grid" style="margin-top:14px">' +
-      navCard('01', '线索库', 'Clues', '每条线索一个持续追加的时间线文档：概述、时间线、分析、关联线索。', '<a href="#/clues">浏览全部 ' + n.clues + ' 条</a><a href="#/topics">按主题进入</a>') +
-      navCard('02', '大事记与周报', 'Chronicle', '年度重点事件一行登记 + 类型打标；周报自动攒每周增量。', '<a href="#/chronicle">大事记</a><a href="#/digest">本周周报</a><a href="#/capital">资本动向</a>') +
-      navCard('03', '档案检索', 'Archive', '3512 条精选资讯的标题级检索与按日回看，2017 至今。', '<a href="#/archive">语料检索</a><a href="#/daily">日报回看</a>') +
-      navCard('04', '图谱与研判', 'Map & Research', '玩家、赛道、模型登记册、资本结构层；研判与议题在本机。', '<a href="#/players">玩家</a><a href="#/sectors">赛道</a><a href="#/models">模型</a><a href="#/theses">议题</a>') +
+      navCard('01', '拆解主轴', 'Anatomy', '五层产业链 ' + chainTotal() + ' 节点把全行业拆到最细维度：节点页聚合线索、大事、档案与玩家，聚合为零即采集缺口。', '<a href="#/chain">产业链全景</a><a href="#/topics">横向主题域</a><a href="#/sectors">赛道矩阵</a>') +
+      navCard('02', '竞争与赛道', 'Landscape', '节点上的玩家、赛道评分、模型登记册与定价成本——结构与竞争的两个观察面。', '<a href="#/players">玩家</a><a href="#/scores">评分卡</a><a href="#/models">模型</a><a href="#/sim">推理账单</a>') +
+      navCard('03', '证据与信号', 'Evidence', n.clues + ' 条线索时间线、' + n.events + ' 条大事、' + n.archive + ' 条档案：新闻只在这里作为证据存在。', '<a href="#/clues">线索库</a><a href="#/chronicle">大事记</a><a href="#/archive">语料检索</a><a href="#/daily">日报</a>') +
+      navCard('04', '核验与判断', 'Trust & Judgment', '待核实清单、开放问题、议题账本与决策台：证据先过核验，再落成可结算的判断。', '<a href="#/verify">事实核查</a><a href="#/overview/unknowns">开放问题</a><a href="#/theses">议题</a><a href="#/decisions">决策台</a>') +
     '</div>' +
     assetFlow +
 
@@ -688,7 +690,7 @@ RENDER.topics = function () {
     '<div class="view-head">' +
       '<h2>主题<span class="en">Topics</span></h2>' +
       '<div class="vh-meta"><span class="m">' + DB.topics.length + ' 主题</span><span class="m">真相文件 _topics.md</span><span class="m">点击行进主题详情</span></div>' +
-      '<p class="lead">仓库按 AI 全景 ' + DB.topics.length + ' 个主题组织，每个主题一份定义、若干线索与关联大事。</p>' +
+      '<p class="lead">主题域是拆解的横向切面：' + DB.topics.length + ' 个领域与五层产业链（<a href="#/chain">纵向主轴</a>）正交。每个主题一份定义、若干线索与关联大事。</p>' +
     '</div>');
 };
 
@@ -779,7 +781,7 @@ RENDER.clues = function () {
     '<div class="view-head">' +
       '<h2>线索库<span class="en">Clue Library</span></h2>' +
       '<div class="vh-meta"><span class="m">' + DB.clues.length + ' 条线索</span><span class="m">点击行进详情</span><span class="m">分页：列表 / 热榜 / 观点库 / 收录动态</span></div>' +
-      '<p class="lead">每条线索一份时间线文档：概述给事实，时间线给脉络，分析给观点，关联线索给网络。观点库聚合全部「分析」段——事实与观点分离设计的观点侧总账。</p>' +
+      '<p class="lead">证据层的原子单位：每条线索一份时间线文档——概述给事实，时间线给脉络，分析给观点，关联线索给网络。观点库聚合全部「分析」段，是事实与观点分离设计的观点侧总账。</p>' +
     '</div>');
 };
 
@@ -940,7 +942,7 @@ RENDER.chronicle = function () {
     '<div class="view-head">' +
       '<h2>大事记<span class="en">Chronicle</span></h2>' +
       '<div class="vh-meta"><span class="m">' + DB.events.length + ' 条</span><span class="m">2025–2026 两卷</span><span class="m">官方一手源 + 多源印证</span><span class="m">类型为规则自动打标</span></div>' +
-      '<p class="lead">年度重点事件一行登记：标题直连原始信源，摘要给一句话事实，箭头双链跳转对应线索。</p>' +
+      '<p class="lead">证据层的年鉴：年度重点事件一行登记——标题直连原始信源，摘要给一句话事实，箭头双链跳转对应线索。</p>' +
     '</div>');
 };
 
@@ -1686,12 +1688,48 @@ PANE.capital = function () {
 };
 
 /* ============================================================ 产业链 */
+/* 成熟度六阶段：S 曲线 + Gartner 炒作曲线的改造版（Gartner 原五段为技术成熟度口径，
+ * 本台并入「重构期」刻画被新范式重写的存量）。刻画节点行业位置，是观点层判断非事实。 */
+var MAT_STAGES = [
+  { k: '萌芽期', cls: 'sprout', en: 'Emerging', hint: '技术可行但商业未证' },
+  { k: '过热期', cls: 'hype', en: 'Hype', hint: '资本与叙事领先于收入' },
+  { k: '挤泡沫期', cls: 'defla', en: 'Deflation', hint: '高预期回落，出清开始' },
+  { k: '爬坡期', cls: 'scale', en: 'Scaling', hint: '单位经济跑通，份额扩张' },
+  { k: '成熟期', cls: 'mature', en: 'Mature', hint: '格局与利润率趋稳' },
+  { k: '重构期', cls: 'reshape', en: 'Reshaping', hint: '被新范式重写中的存量' }
+];
+var MAT_BY_K = {};
+MAT_STAGES.forEach(function (m) { MAT_BY_K[m.k] = m; });
+function matBadge(k) {
+  var m = MAT_BY_K[k];
+  if (!m) return '';
+  return '<span class="mat ' + m.cls + '" title="' + esc(m.en + '：' + m.hint) + '">' + esc(k) + '</span>';
+}
+function matLegend() {
+  return '<div style="display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center">' +
+    MAT_STAGES.map(function (m) { return '<span class="mat ' + m.cls + '" title="' + esc(m.hint) + '">' + esc(m.k) + '</span>'; }).join('') +
+    '<span class="note" style="font-size:10.5px">六阶段为 S 曲线/炒作曲线改造口径，观点层判断非事实</span></div>';
+}
+/* 节点集合的成熟度分布（按固定阶段序） */
+function matDist(nodes) {
+  var c = {};
+  nodes.forEach(function (nd) { if (nd.maturity) c[nd.maturity] = (c[nd.maturity] || 0) + 1; });
+  return MAT_STAGES.filter(function (m) { return c[m.k]; }).map(function (m) {
+    return matBadge(m.k) + '<span class="mono" style="font-size:10px;color:var(--ink-3)">×' + c[m.k] + '</span>';
+  }).join(' ');
+}
+function chainSubTotal() {
+  return DB.chain.layers.reduce(function (s, ly) {
+    return s + ly.nodes.reduce(function (n, nd) { return n + ((nd.sub && nd.sub.length) || 0); }, 0);
+  }, 0);
+}
+
 RENDER.chain = function () {
   return viewShell('chain',
     '<div class="view-head">' +
-      '<h2>产业链<span class="en">Value Chain</span></h2>' +
-      '<div class="vh-meta"><span class="m">' + chainTotal() + ' 节点 × ' + DB.chain.layers.length + ' 层</span><span class="m">手工策展 console/chain.js</span><span class="m">节点页自动聚合全库语料</span></div>' +
-      '<p class="lead">五层价值流：<b>算力硬件 → 数据与模型 → 平台与工具 → 行业应用 → 商业与生态</b>。每层拆解 10+ 节点，节点页把分散的线索、大事、档案与玩家聚到一个产业结构坐标上；聚合为零的节点即采集缺口信号。</p>' +
+      '<h2>产业链 · 拆解主轴<span class="en">Value Chain</span></h2>' +
+      '<div class="vh-meta"><span class="m">' + chainTotal() + ' 节点 × ' + DB.chain.layers.length + ' 层 + ' + chainSubTotal() + ' 二级细分</span><span class="m">节点页带拆解卡与成熟度</span><span class="m">手工策展 console/chain.js</span><span class="m">证据聚合运行时进行</span></div>' +
+      '<p class="lead">本台主轴。五层价值流：<b>算力硬件 → 数据与模型 → 平台与工具 → 行业应用 → 商业与生态</b>。全景页顶部先给行业通行的<b>技术栈视图</b>（应用 → 模型 → 基础设施 → 芯片 → 能源，底三层合称「AI 工厂」）作定位框架，56 个节点全部映射进五档；标准栈之外本台另拆 L3 平台与工具、L5 商业与生态两层。每层拆解 10+ 节点，节点页带一张「拆解卡」（成熟度阶段 / 价值来源 / 护城河 / 瓶颈 / 领先指标，关键节点再下钻二级细分），并把分散的线索、大事、档案与玩家聚到这个产业结构坐标上；聚合为零的节点即采集缺口信号。</p>' +
     '</div>');
 };
 
@@ -1699,14 +1737,57 @@ function chainTable(layer) {
   var rows = layer.nodes.map(function (nd) {
     var st = nodeStats(nd);
     return '<tr data-node="' + nd.id + '" data-layer="' + layer.key + '" style="cursor:pointer">' +
-      '<td><a href="' + chainNodeHref(layer.key, nd.id) + '"><b>' + esc(nd.name) + '</b></a></td>' +
+      '<td><a href="' + chainNodeHref(layer.key, nd.id) + '"><b>' + esc(nd.name) + '</b></a>' + (nd.sub && nd.sub.length ? ' <span class="mono" style="font-size:9px;color:var(--gold)">+' + nd.sub.length + ' 细分</span>' : '') + '</td>' +
       '<td class="dim">' + esc(nd.def) + '</td>' +
+      '<td>' + matBadge(nd.maturity) + '</td>' +
       '<td class="mono"><b>' + st.clues.length + '</b></td>' +
       '<td class="mono">' + st.events.length + '</td>' +
       '<td class="mono">' + st.archive.length + '</td>' +
       '<td class="mono">' + st.players.length + '</td></tr>';
   }).join('');
-  return '<div class="table-scroll"><table class="dense"><thead><tr><th>节点</th><th>定义</th><th>线索</th><th>大事</th><th>档案</th><th>玩家</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+  return '<div class="table-scroll"><table class="dense"><thead><tr><th>节点</th><th>定义</th><th>成熟度</th><th>线索</th><th>大事</th><th>档案</th><th>玩家</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
+}
+
+/* 技术栈视图（AI Stack）：行业通行分层（应用→模型→基础设施→芯片→能源，底三层=AI 工厂）
+ * 映射到本台节点；标准栈之外的 L3/L5 扩展层与原始参考图一并列出。数据见 chain.js 的 DB.chain.stack。 */
+function chainStackHtml() {
+  var st = DB.chain.stack;
+  if (!st || !st.tiers) return '';
+  var layerOf = {}, nodeOf = {}, layerName = {};
+  DB.chain.layers.forEach(function (ly) {
+    layerName[ly.key] = ly.name;
+    ly.nodes.forEach(function (nd) { layerOf[nd.id] = ly.key; nodeOf[nd.id] = nd; });
+  });
+  function tierHtml(t) {
+    var chips = (t.nodes || []).map(function (id) {
+      var nd = nodeOf[id];
+      return nd ? '<a class="fchip" href="' + chainNodeHref(layerOf[id], id) + '" title="' + esc(nd.def) + '">' + esc(nd.name) + '</a>' : '';
+    }).join('');
+    return '<div class="tier">' +
+      '<div class="t-side"><div class="t-name">' + esc(t.name) + '<span class="t-n">' + (t.nodes || []).length + ' 节点</span></div>' +
+        '<div class="t-en">' + esc(t.en) + '</div>' +
+        '<a class="t-map" href="#/chain/' + esc(t.maps) + '">↳ ' + esc(t.maps + ' ' + layerName[t.maps]) + '</a></div>' +
+      '<div class="t-main"><div class="t-desc">' + esc(t.desc) + '</div><div class="t-nodes">' + chips + '</div></div>' +
+    '</div>';
+  }
+  var plain = st.tiers.filter(function (t) { return !t.factory; }).map(tierHtml).join(''),
+      fact = st.tiers.filter(function (t) { return t.factory; }).map(tierHtml).join('');
+  var extChips = (st.extensions || []).map(function (x) {
+    return '<a class="fchip ais-ext-chip" href="#/chain/' + esc(x.key) + '" title="' + esc(x.note) + '">+ ' + esc(x.key + ' ' + x.name) + '</a>';
+  }).join('');
+  var extNotes = (st.extensions || []).map(function (x) {
+    return '<li><b>' + esc(x.key + ' ' + x.name) + '</b>——' + esc(x.note) + '</li>';
+  }).join('');
+  return '<h3 class="sec"><span class="no">S</span><span class="t">技术栈视图 · 标准分层</span><span class="en">AI Stack</span></h3>' +
+    '<p class="note" style="margin:0 0 8px">' + esc(st.note) + '</p>' +
+    '<div class="aistack">' +
+      '<div class="ais-cap"><span>自上而下：需求牵引</span><span>自下而上：物理托底</span></div>' +
+      plain +
+      (fact ? '<div class="aif"><div class="aif-cap"><b>' + esc(st.factory.name) + '</b><span class="en">' + esc(st.factory.en) + '</span><span class="d">' + esc(st.factory.desc) + '</span></div>' + fact + '</div>' : '') +
+    '</div>' +
+    '<div class="ais-ext"><span class="ais-ext-t">标准栈之外 · 本台扩展层</span>' + extChips + '</div>' +
+    '<ul class="ais-notes">' + extNotes + '</ul>' +
+    (st.refImage ? '<details class="ais-ref"><summary>原始参考图 · 行业技术栈分层（2026-10 微信收录，留档 console/assets/ai-stack-layers.png）</summary><img src="' + esc(st.refImage) + '" alt="AI 技术栈分层参考图：Applications / Models / Infrastructure / Chips / Energy，底三层合称 AI Factories"></details>' : '');
 }
 
 PANE.chain = function () {
@@ -1721,7 +1802,13 @@ PANE.chain = function () {
     el.innerHTML = chainLayerHtml(layer);
     return;
   }
-  el.innerHTML = DB.chain.layers.map(function (ly) {
+  el.innerHTML =
+    chainStackHtml() +
+    '<div class="callout" style="margin-bottom:14px"><div class="c-t">成熟度视图 · ' + chainTotal() + ' 节点全景</div>' +
+      matDist(DB.chain.layers.reduce(function (a, ly) { return a.concat(ly.nodes); }, [])) +
+      '<div style="margin-top:7px">' + matLegend() + '</div>' +
+      '<p class="note" style="margin-top:6px">阶段判断方法论出处与纪律见知识库「<a href="#/kb/method/anatomy">行业拆解方法论</a>」；节点排序按层与价值流，不按热度。</p></div>' +
+    DB.chain.layers.map(function (ly) {
     return '<h3 class="sec"><span class="no">' + ly.key + '</span><span class="t">' + esc(ly.name) + ' · ' + ly.nodes.length + ' 节点</span><span class="en">' + esc(ly.en) + '</span></h3>' +
       '<p class="note" style="margin:0 0 8px">' + esc(ly.desc) + '</p>' + chainTable(ly);
   }).join('');
@@ -1778,6 +1865,7 @@ function chainLayerHtml(layer) {
   }).join('');
   return h(
     '<div class="callout pine"><div class="c-t">' + esc(layer.key) + ' · ' + esc(layer.name) + ' <span class="en">' + esc(layer.en) + '</span></div>' + esc(layer.desc) +
+    '<div style="margin-top:7px">成熟度分布　' + matDist(layer.nodes) + '</div>' +
     '<div style="display:flex;flex-wrap:wrap;gap:5px 14px;margin-top:9px"><a class="fchip" href="#/chain/map">← 产业链全景</a>' + flowChips + '</div></div>' +
     '<div class="kpi-strip">' +
       '<div class="kpi"><div class="k">节点</div><div class="v">' + layer.nodes.length + ' <small>个</small></div><div class="w">本层拆解粒度</div></div>' +
@@ -1827,12 +1915,32 @@ function chainNodeHtml(node, layer) {
   var st = nodeStats(node);
   var upNodes = (node.upstream || []).map(function (id) { return findChainNode(id); }).filter(Boolean);
   var downNodes = (node.downstream || []).map(function (id) { return findChainNode(id); }).filter(Boolean);
+  /* 层内前后节点：一条层内的下钻动线（上一层 → 本节点 → 下一节点） */
+  var sibIdx = layer.nodes.indexOf(node);
+  var prevNd = sibIdx > 0 ? layer.nodes[sibIdx - 1] : null;
+  var nextNd = sibIdx < layer.nodes.length - 1 ? layer.nodes[sibIdx + 1] : null;
   var relChips = function (list, label) {
     if (!list.length) return '<p class="note">（' + label + '：无）</p>';
     return list.map(function (x) {
       return '<a class="fchip" href="' + chainNodeHref(x.layer.key, x.node.id) + '">' + esc(x.node.name) + '</a>';
     }).join('');
   };
+  /* 拆解卡：卖方研究 initiation 模板的变体（驱动→价值来源、护城河、风险→瓶颈、催化剂→领先指标），
+   * 加成熟度阶段与二级细分；全部为观点层判断，可被证据整卡推翻，修正走 git。 */
+  var mat = MAT_BY_K[node.maturity] || null;
+  var anatomyCard =
+    '<div class="card" style="margin:14px 0 0">' +
+      '<h4><span class="no">AC</span>拆解卡<span class="en">Anatomy Card' + (mat ? ' · ' + esc(mat.en) : '') + '</span></h4>' +
+      (mat ? '<div class="prov-row"><span class="k">阶段</span><p>' + matBadge(node.maturity) + ' ' + esc(mat.hint) + '</p></div>' : '') +
+      (node.why ? '<div class="prov-row"><span class="k">价值来源</span><p>' + esc(node.why) + '</p></div>' : '') +
+      (node.moat ? '<div class="prov-row"><span class="k">护城河</span><p>' + esc(node.moat) + '</p></div>' : '') +
+      (node.bottleneck ? '<div class="prov-row"><span class="k">瓶颈</span><p>' + esc(node.bottleneck) + '</p></div>' : '') +
+      (node.signals && node.signals.length ? '<div class="prov-row"><span class="k">领先指标</span><p>' + node.signals.map(esc).join('；') + '</p></div>' : '') +
+      (node.sub && node.sub.length ? '<div class="prov-row"><span class="k">二级细分</span><p>' + node.sub.map(function (s) {
+        return '<b>' + esc(s.name) + '</b> — ' + esc(s.def);
+      }).join('<br>') + '</p></div>' : '') +
+      '<p class="note" style="margin-top:9px">卡上字段全部是观点层判断（非事实），出处与口径见知识库「<a href="#/kb/method/anatomy">行业拆解方法论</a>」；证伪即改，修正走 git 留痕。</p>' +
+    '</div>';
   var clueRows = st.clues.slice(0, 12).map(function (c) {
     return '<tr><td><a href="' + clueHref(c.id) + '"><b>' + esc(c.name) + '</b></a></td><td>' + esc(c.topic) + '</td><td class="mono">' + c.nEvents + '</td><td class="mono">' + esc(c.lastEvent || '—') + '</td></tr>';
   }).join('');
@@ -1861,11 +1969,15 @@ function chainNodeHtml(node, layer) {
     return '<a class="fchip" href="#/kb/companies/' + p.id + '">' + esc(p.name) + '</a>';
   }).join('');
   return h(
-    '<div class="callout"><div class="c-t">' + esc(layer.key) + ' · ' + esc(layer.name) + '</div><b>' + esc(node.name) + '</b> — ' + esc(node.def) +
+    '<div class="callout"><div class="c-t">' + esc(layer.key) + ' · ' + esc(layer.name) + '</div><b>' + esc(node.name) + '</b> ' + matBadge(node.maturity) + ' — ' + esc(node.def) +
     '<div class="fchips" style="margin-top:9px"><span class="tag plain">上游</span> ' + relChips(upNodes, '上游') + '　<span class="tag plain">下游</span> ' + relChips(downNodes, '下游') + '</div>' +
     (termChips ? '<div class="fchips" style="margin-top:6px"><span class="tag plain">术语</span> ' + termChips + '</div>' : '') +
     (compChips ? '<div class="fchips" style="margin-top:6px"><span class="tag plain">公司档案</span> ' + compChips + '</div>' : '') +
-    '<div class="fchips" style="margin-top:6px"><a class="fchip" href="#/chain/' + layer.key + '">← 回' + esc(layer.name) + '</a><a class="fchip" href="#/chain">产业链全景</a></div></div>' +
+    '<div class="fchips" style="margin-top:6px"><a class="fchip" href="#/chain/' + layer.key + '">← 回' + esc(layer.name) + '</a><a class="fchip" href="#/chain">产业链全景</a>' +
+      (prevNd ? '<a class="fchip" href="' + chainNodeHref(layer.key, prevNd.id) + '">← ' + esc(prevNd.name) + '</a>' : '') +
+      (nextNd ? '<a class="fchip" href="' + chainNodeHref(layer.key, nextNd.id) + '">' + esc(nextNd.name) + ' →</a>' : '') + '</div></div>' +
+
+    anatomyCard +
 
     '<div class="kpi-strip">' +
       '<div class="kpi"><div class="k">关联线索</div><div class="v">' + st.clues.length + ' <small>条</small></div><div class="w">关键词命中线索全文</div></div>' +

@@ -1,12 +1,12 @@
 # 贡献指南
 
-感谢你对 AI News Database 感兴趣！我们欢迎各种形式的贡献，包括但不限于：
+感谢你对 AI GURU 工作台（ai-guru-console，逐层拆解 AI 全行业的研究台）感兴趣！我们欢迎各种形式的贡献，包括但不限于：
 
 - 提交 Bug 报告
 - 提出新功能建议
 - 改进文档
 - 提交代码修复或新功能
-- **贡献 AI 新闻线索/时间线**（本仓库当前主体，详见下文「内容库贡献」）
+- **完善拆解骨架或贡献证据层线索/时间线**（产业链节点见 `console/chain.js`，内容规范详见下文「内容库贡献」）
 - 分享使用经验
 - 帮助回答其他用户的问题
 
@@ -25,7 +25,7 @@
 
 ## 内容库贡献
 
-本仓库现在以 **AI 新闻内容库**为主体（根目录按主题组织的中文 md 文件夹）。欢迎你以「线索」「新闻条目」的方式参与贡献。
+本仓库以**拆解台 + 证据层内容库**为主体（拆解骨架在 `console/chain.js`，证据层为根目录按主题组织的中文 md 文件夹）。欢迎你以「线索」「新闻条目」的方式参与证据层贡献——它们最终会挂到产业链节点上。
 
 > 完整主题清单见 [`_topics.md`](_topics.md)；格式规范详见 `docs/superpowers/specs/2026-07-21-content-restructure-design.md` §5。
 
@@ -191,7 +191,7 @@ feat: add support for Dev.to official source
 
 ## 添加新采集源
 
-如果你想为 AI News Database 添加一个新的官方技术源，通常需要修改以下文件（注意路径在 `tools/cmd/` 下）：
+如果你想为证据层添加一个新的官方技术源，通常需要修改以下文件（注意路径在 `tools/cmd/` 下）：
 
 1. `tools/cmd/internal/official/registry.go` - 在 `registerDefaultSources()` 中注册源信息
 2. `tools/cmd/internal/crawler/factory.go` - 在 `NewCrawler()` 中返回对应的采集器

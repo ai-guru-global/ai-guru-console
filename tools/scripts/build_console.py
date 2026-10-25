@@ -538,7 +538,7 @@ def main() -> None:
         return
 
     CONSOLE_DIR.mkdir(exist_ok=True)
-    header = "/* AI News Database 工作台内嵌数据。由 tools/scripts/build_console.py 生成，勿手改；内容更新后重跑 make console。 */\nvar DB = {};\n"
+    header = "/* AI GURU 工作台（AI 全行业拆解台）证据层内嵌数据。由 tools/scripts/build_console.py 生成，勿手改；内容更新后重跑 make console。 */\nvar DB = {};\n"
     parts = [header]
     for key, val in [("meta", meta), ("topics", topics), ("clues", clues), ("events", events), ("verify", verify), ("stats", stats), ("archive", archive), ("docs", docs), ("digest", digest), ("corrections", corrections), ("library", library)]:
         parts.append(f"DB.{key} = " + js_out(val) + ";\n")
