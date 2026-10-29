@@ -13,6 +13,8 @@
 - [ElevenLabs](ElevenLabs.md) — 活跃
 - [Suno](Suno.md) — 活跃
 
+- [OpenAI实时语音](OpenAI实时语音.md) — 活跃
+
 <!-- 新建线索后在此追加：- [线索名](线索名.md) — 状态 -->
 
 ## 候选线索（待建）

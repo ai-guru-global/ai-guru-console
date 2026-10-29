@@ -13,6 +13,9 @@
 - [ChatGPT产品](ChatGPT产品.md) — 活跃
 - [Meta-AI](Meta-AI.md) — 活跃
 
+- [NotebookLM](NotebookLM.md) — 活跃
+- [AI陪伴与CharacterAI](AI陪伴与CharacterAI.md) — 观察中
+
 <!-- 新建线索后在此追加：- [线索名](线索名.md) — 状态 -->
 
 ## 候选线索（待建）
@@ -20,4 +23,3 @@
 <!-- 素材已在 mirror 沉淀中多次出现但尚无归属线索；认领者从 docs/线索模板.md 复制新建 -->
 
 - **Grok App 与 xAI 消费端** — xAI 面向消费者的产品线素材增多，与 ChatGPT/Meta AI 形成第三极
-- **AI 陪伴产品线** — 陪伴类应用的素材持续积累，是情感化消费 AI 的代表赛道

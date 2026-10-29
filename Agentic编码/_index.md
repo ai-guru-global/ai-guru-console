@@ -15,6 +15,9 @@
 - [Devin](Devin.md) — 活跃
 - [Codex](Codex.md) — 活跃
 
+- [GeminiCLI](GeminiCLI.md) — 活跃
+- [Windsurf](Windsurf.md) — 已完结
+
 <!-- 新建线索后在此追加：- [线索名](线索名.md) — 状态 -->
 
 ## 候选线索（待建）

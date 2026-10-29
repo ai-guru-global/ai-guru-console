@@ -240,7 +240,7 @@ var TABS = {
   calendar: [{ k: 'year', l: DB.calendar.year + ' 全年' }, { k: 'next', l: '未来 90 天' }],
   glossary: [{ k: 'dict', l: '术语词典' }],
   kb: [{ k: 'method', l: '方法论' }, { k: 'eng', l: '工程方式' }, { k: 'roles', l: '岗位' }, { k: 'companies', l: '公司' }, { k: 'biz', l: '商业模式' }, { k: 'career', l: '职业路径' }, { k: 'ops', l: '操盘手册' }],
-  chain: [{ k: 'map', l: '全景' }, { k: 'L1', l: '算力硬件' }, { k: 'L2', l: '数据模型' }, { k: 'L3', l: '平台工具' }, { k: 'L4', l: '行业应用' }, { k: 'L5', l: '商业生态' }],
+  chain: [{ k: 'map', l: '全景' }, { k: 'density', l: '证据密度' }, { k: 'L1', l: '算力硬件' }, { k: 'L2', l: '数据模型' }, { k: 'L3', l: '平台工具' }, { k: 'L4', l: '行业应用' }, { k: 'L5', l: '商业生态' }],
   research: [{ k: 'docs', l: '文档' }, { k: 'guide', l: '使用说明' }],
   theses: [{ k: 'ledger', l: '账本' }, { k: 'settle', l: '结算台' }, { k: 'stats', l: '统计' }],
   digest: [{ k: 'current', l: '本期' }, { k: 'daily', l: '每日明细' }],
@@ -1748,6 +1748,53 @@ function chainTable(layer) {
   return '<div class="table-scroll"><table class="dense"><thead><tr><th>节点</th><th>定义</th><th>成熟度</th><th>线索</th><th>大事</th><th>档案</th><th>玩家</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
 }
 
+/* 证据密度全景（专题页 #/chain/density）：全部节点的线索聚合一览。
+ * 数字为运行时聚合口径——nodeStats 关键词命中，随库更新自动变化，非人工标注；
+ * 条形按全库峰值归一（跨层可比），节点保持价值流序（与全景页同一纪律，不按热度）。 */
+function chainDensityHtml() {
+  var rows = [];
+  DB.chain.layers.forEach(function (ly) {
+    ly.nodes.forEach(function (nd) { rows.push({ ly: ly, nd: nd, st: nodeStats(nd) }); });
+  });
+  var max = rows.reduce(function (m, x) { return Math.max(m, x.st.clues.length); }, 0);
+  var hitIds = {};
+  rows.forEach(function (x) { x.st.clues.forEach(function (c) { hitIds[c.id] = 1; }); });
+  var attached = Object.keys(hitIds).length;
+  var zero = rows.filter(function (x) { return !x.st.clues.length; });
+  var top = rows.slice().sort(function (a, b) { return b.st.clues.length - a.st.clues.length; })[0];
+  function bar(x) {
+    var n = x.st.clues.length;
+    var w = max ? Math.max(n ? 2 : 0, Math.round(n / max * 100)) : 0;
+    return '<div style="display:flex;align-items:center;gap:10px;padding:2.5px 0">' +
+      '<a href="' + chainNodeHref(x.ly.key, x.nd.id) + '" title="' + esc(x.nd.def) + '" style="flex:0 0 186px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + esc(x.nd.name) + '</a>' +
+      '<div style="flex:1;min-width:0;height:9px;background:var(--paper-2)">' +
+        (n ? '<div style="height:100%;width:' + w + '%;background:var(--gold-2)"></div>' : '') +
+      '</div>' +
+      '<span class="mono" style="flex:0 0 34px;text-align:right;font-weight:600">' + n + '</span>' +
+      (n ? '' : '<span class="tag red" style="flex:0 0 auto">采集缺口</span>') +
+      '</div>';
+  }
+  var kpi = '<div class="kpi-strip">' +
+    opsKpi('全库线索', DB.clues.length, '证据层总量') +
+    opsKpi('挂载到节点', attached + '<small> / ' + DB.clues.length + '</small>', '命中至少一个节点的线索') +
+    opsKpi('有证据节点', (rows.length - zero.length) + '<small> / ' + rows.length + '</small>', zero.length ? '零线索节点 ' + zero.length + ' 个，见文末缺口清单' : '全部节点均有线索覆盖') +
+    (top ? opsKpi('密度峰值', top.st.clues.length + '<small> 条</small>', top.nd.name + '（' + top.ly.key + '）') : '') +
+    '</div>';
+  var sections = DB.chain.layers.map(function (ly) {
+    var inLayer = rows.filter(function (x) { return x.ly === ly; });
+    var hits = inLayer.reduce(function (s, x) { return s + x.st.clues.length; }, 0);
+    return '<h3 class="sec"><span class="no">' + ly.key + '</span><span class="t">' + esc(ly.name) + ' · ' + ly.nodes.length + ' 节点</span><span class="en">' + esc(ly.en) + '</span></h3>' +
+      '<p class="note" style="margin:0 0 6px">去重命中 ' + layerAgg(ly).clues.length + ' 条线索 · 合计 ' + hits + ' 次（跨节点重复计）</p>' +
+      inLayer.map(bar).join('');
+  }).join('');
+  var zeroHtml = zero.length
+    ? '<div class="callout red" style="margin-top:16px"><div class="c-t">采集缺口 · ' + zero.length + ' 个零线索节点</div><div class="fchips" style="margin-top:6px">' +
+        zero.map(function (x) { return '<a class="fchip" href="' + chainNodeHref(x.ly.key, x.nd.id) + '">' + esc(x.ly.key + ' ' + x.nd.name) + '</a>'; }).join('') + '</div></div>'
+    : '';
+  return kpi + sections + zeroHtml +
+    '<p class="note" style="margin-top:14px">数字为<b>运行时聚合口径</b>：节点关键词（console/chain.js）在页面加载时对全库线索做包含匹配（名称＋主题＋引言＋正文），随证据层更新自动变化，非人工标注。一条线索可命中多个节点——跨节点非互斥，各层「合计」≠全库线索数；条形按全库峰值归一，跨层可比。聚合为零即采集缺口，与「<a href="#/sectors/gaps">研究缺口</a>」互为印证。</p>';
+}
+
 /* 技术栈视图（AI Stack）：行业通行分层（应用→模型→基础设施→芯片→能源，底三层=AI 工厂）
  * 映射到本台节点；标准栈之外的 L3/L5 扩展层与原始参考图一并列出。数据见 chain.js 的 DB.chain.stack。 */
 function chainStackHtml() {
@@ -1796,6 +1843,7 @@ PANE.chain = function () {
   var cn = currentChainNode();
   if (cn) { el.innerHTML = chainNodeHtml(cn.node, cn.layer); return; }
   var tab = state.tabs.chain;
+  if (tab === 'density') { el.innerHTML = chainDensityHtml(); return; }
   if (tab !== 'map') {
     var layer = DB.chain.layers.filter(function (ly) { return ly.key === tab; })[0];
     if (!layer) { el.innerHTML = '<div class="callout">未知分层。</div>'; return; }
